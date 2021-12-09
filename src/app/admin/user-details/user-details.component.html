@@ -1,0 +1,133 @@
+<div class="container-header">
+  <div class="header_now">
+    <div class="div_right">
+      <h4 class="font-weight-bold fnt-zs">Questions</h4>
+    </div>
+    <div class="search_sec">
+      <!-- <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search Record" />
+        <div class="input-group-append">
+          <button class="btn btn-success" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row mx-auto">
+      <div class="col-md-4 card mx-auto">
+        <div class="card" *ngFor="let info of User">
+          <img
+            class="card-img-top"
+            src="../../assets/images/students/stu2f-removebg-preview.png"
+            alt="Card image cap"
+          />
+          <div class="card-body bg_green d-flex justify-content-between align-items-center">
+            <h3 class="card-title cls_user"><i class="fa fa-user mx-2"></i>{{info.userName}}</h3>
+            <p class="card-text cls_user"><i class="fa fa-phone mx-2"></i>{{info.mobileNo}}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHECKING WITH TYPESCRIPT FUNCTIONALITY -->
+      <!-- <div class="col-md-5 mx-auto">
+    
+                <div>
+    
+                    <div *ngFor="let role of Roles">
+                        <label for="roles">
+                            <input type="checkbox" name="roles" value="{{role.rId}}" [attr.checked]="mode.indexOf(role.rId) > -1 ? true : null" (change)="updateCheckedOptions(role, $event)"/>
+                            {{ role.roleName }}
+                        </label>
+                    </div>
+    
+                </div>
+    
+            </div> -->
+
+      <div class="col-md-4 card mx-auto">
+        <div id="active-roles">
+          <span>
+            <p class="sub-head-line text-left">Active Roles for the User</p>
+          </span>
+          <div *ngFor="let role of userRoles">
+            <label for="roles">
+              <!-- <input type="text" name="roles" value="{{role.rId}}"/> -->
+              <span
+                ><button
+                  style="outline: none"
+                  (click)="deleteRole(role.roleId)"
+                  mat-icon-button
+                >
+                  <mat-icon class="red-icon">
+                    <i class="fas fa-trash fa-sm"></i>
+                  </mat-icon></button
+              ></span>
+              <span>{{ role.roleName }}</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="preceding-roles">
+          <span>
+            <p class="sub-head-line text-left">Proceeding Roles of User</p>
+          </span>
+          <div *ngFor="let role of userPrecedingRoles" class="py-2">
+            <span
+              ><small>{{ role.roleName }}</small></span
+            >
+            <span class="pull-right"
+              ><small
+                >{{ role.from | date: "d,MMM yyyy" }}-{{
+                  role.to | date: "d,MMM
+                                yyyy"
+                }}</small
+              ></span
+            >
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 card mx-auto">
+        <div id="roles-to-assign" class="mx-5">
+          <div>
+            <span>
+              <p class="sub-head-line text-left">Roles to assign</p>
+            </span>
+            <!-- <span class="pull-right">
+                            <button mat-raised-button style="outline: none;background: #7e30e6;color: white;">Update</button>
+                        </span> -->
+          </div>
+          <div *ngFor="let role of Roles">
+            <label
+              for="roles"
+              [ngClass]="mode.indexOf(role.rId) > -1 ? 'hide' : 'show'"
+            >
+              <!-- <input type="checkbox" name="roles" value="{{role.rId}}" [disabled]="mode.indexOf(role.rId) > -1 ? true : null" [attr.checked]="mode.indexOf(role.rId) > -1 ? true : null" (change)="updateCheckedOptions(role, $event)"/> -->
+              <span
+                ><button
+                  style="outline: none"
+                  (click)="updateRole(role.rId)"
+                  mat-icon-button
+                >
+                  <mat-icon class="green-icon">
+                    <i class="fas fa-check-circle fa-sm"></i>
+                  </mat-icon></button
+              ></span>
+              <span>{{ role.roleName }}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-2 mx-auto">
+                <div>
+                    <button mat-raised-button style="outline: none;background: #7e30e6;color: white;">Update</button>
+                </div>
+            </div> -->
+    </div>
+  </div>
+</div>

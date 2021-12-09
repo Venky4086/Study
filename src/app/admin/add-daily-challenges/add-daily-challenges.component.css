@@ -1,0 +1,84 @@
+.q-card {
+  background: white;
+  border-radius: 5px;
+}
+button {
+  outline: none;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.qid {
+    background: #007755;
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
+    border-radius: 5px;
+    padding: 6px;
+    display: block;
+    line-height: 18px;
+    height: 30px;
+    width: 30px;
+}
+span {
+  font-size: 14px;
+}
+.que {
+  color: #007bff;
+  font-size: 16px;
+}
+.cls-green {
+  color: #007755 !important;
+  font-style: normal !important;
+}
+
+.katex .mathdefault {
+  font-family: "Roboto" !important;
+  font-style: normal !important;
+}
+.clsBold {
+  font-weight: 600 !important;
+  color: #007755;
+}
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+.calendarCls
+{
+    border-radius:5px;
+    color:#777;
+    
+}
+.form-control1
+{
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}

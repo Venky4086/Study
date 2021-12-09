@@ -1,0 +1,486 @@
+<div class="card mx-3">
+<div class="container-fluid mt-3 js-sans">
+  <div class="backCls">
+    <div>
+    <img src="../assets/images/backBtn.png" (click)="goBack()"  alt="btn"> 
+  </div>
+  <div class="font-weight-bold mx-2"> Dashboard</div>
+  </div>
+  <div class="row ml-2 my-2">
+   
+    <div
+      class="col-md-4 col-lg-4 col-xs-12 col-sm-4"
+      *ngFor="let sub of practiceResults"
+    >
+      <div class="row ml-2 my-2">
+        <h3 class="font-weight-bold mb-0">Practice</h3>
+      </div>
+
+      <mat-card
+        class="bgcard js-sans border3"
+        [style.border-top]="
+          sub.percentage < 40
+            ? '4px solid red'
+            : sub.percentage < 60
+            ? '4px solid orange'
+            : sub.percentage < 80
+            ? '4px solid blue'
+            : '4px solid #61B15A'
+        "
+        [percent]="sub.percentage"
+        (click)="pmaccuracyClick(sub.subjectId, sub.subject, sub.standard)"
+      >
+        <!--backgroundColor  -->
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image">
+            <circle-progress
+              [percent]="sub.percentage"
+              [radius]="27"
+              [innerStrokeWidth]="8"
+              [outerStrokeColor]="
+                sub.percentage < 40
+                  ? 'red'
+                  : sub.percentage < 60
+                  ? 'orange'
+                  : sub.percentage < 80
+                  ? 'blue'
+                  : '#61B15A'
+              "
+              [backgroundColor]="
+                sub.percentage < 40
+                  ? '#ff00004d'
+                  : sub.percentage < 60
+                  ? '#ffa50066'
+                  : sub.percentage < 80
+                  ? '#0000ff57'
+                  : '#00800030'
+              "
+              [animation]="true"
+              [animationDuration]="1000"
+            ></circle-progress>
+            <img src="../../../assets/images/chesmistry-and.png" alt="" />
+          </div>
+          <div class="pull-right ml-auto">
+            <div
+              class="font-design"
+              *ngIf="sub.standard == 10"
+              style="
+                font-weight: bold;
+                color: rgb(171, 71, 188);
+                font-size: 1em;
+              "
+            >
+              Class {{ sub.standard }}
+            </div>
+            <div
+              class="font-design"
+              *ngIf="sub.standard == 9"
+              style="font-weight: bold; color: rgb(255, 152, 0); font-size: 1em"
+            >
+              Class {{ sub.standard }}
+            </div>
+            <div
+              class="font-design"
+              *ngIf="sub.standard == 8"
+              style="
+                font-weight: bold;
+                color: rgb(139, 195, 74);
+                font-size: 1em;
+              "
+            >
+              Class {{ sub.standard }}
+            </div>
+
+            <div
+              *ngIf="sub.subjectId == 11"
+              style="color: rgb(128, 0, 0)"
+              class="font-design1"
+            >
+              {{ sub.subject }}
+            </div>
+            <div
+              *ngIf="sub.subjectId == 12"
+              style="color: #0000ff"
+              class="font-design1"
+            >
+              {{ sub.subject }}
+            </div>
+            <div
+              *ngIf="sub.subjectId == 13"
+              style="color: #19caca"
+              class="font-design1"
+            >
+              {{ sub.subject }}
+            </div>
+            <div class="font-design2">attempts - {{ sub.attempts }}</div>
+          </div>
+        </mat-card-header>
+      </mat-card>
+
+      <div *ngIf="practiceResults?.length == 0">
+        <mat-card class="js-selectedCorectAnswersArray">
+          No Practice taken
+        </mat-card>
+      </div>
+    </div>
+
+    <div
+      class="col-md-4 col-lg-4 col-xs-12 col-sm-4"
+      *ngFor="let sub of testResults"
+    >
+      <div class="row ml-2 my-2">
+        <h3 class="font-weight-bold mb-0">Test</h3>
+      </div>
+
+      <mat-card
+        class="bgcard1 js-sans borderRed"
+        [style.border-top]="
+          sub.subjectPercentage < 40
+            ? '4px solid red'
+            : sub.subjectPercentage < 60
+            ? '4px solid orange'
+            : sub.subjectPercentage < 80
+            ? '4px solid blue'
+            : '4px solid #61B15A'
+        "
+        [percent]="sub.subjectPercentage"
+        (click)="testaccuracy(sub.subjectId, sub.subject, sub.standard)"
+      >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image">
+            <circle-progress
+              [percent]="sub.subjectPercentage"
+              [radius]="27"
+              [outerStrokeColor]="
+                sub.subjectPercentage < 40
+                  ? 'red'
+                  : sub.subjectPercentage < 60
+                  ? 'orange'
+                  : sub.subjectPercentage < 80
+                  ? 'blue'
+                  : '#61B15A'
+              "
+              [backgroundColor]="
+                sub.subjectPercentage < 40
+                  ? '#ff00004d'
+                  : sub.subjectPercentage < 60
+                  ? '#ffa50066'
+                  : sub.subjectPercentage < 80
+                  ? '#0000ff57'
+                  : '#00800030'
+              "
+              [innerStrokeWidth]="8"
+              [animation]="true"
+              [animationDuration]="1000"
+            ></circle-progress>
+          </div>
+
+          <div class="pull-right ml-auto">
+            <div
+              class="font-design"
+              *ngIf="sub.standard == 10"
+              style="
+                font-weight: bold;
+                color: rgb(171, 71, 188);
+                font-size: 1em;
+              "
+            >
+              Class {{ sub.standard }}
+            </div>
+            <div
+              class="font-design"
+              *ngIf="sub.standard == 9"
+              style="font-weight: bold; color: rgb(255, 152, 0); font-size: 1em"
+            >
+              Class {{ sub.standard }}
+            </div>
+            <div
+              class="font-design"
+              *ngIf="sub.standard == 8"
+              style="
+                font-weight: bold;
+                color: rgb(139, 195, 74);
+                font-size: 1em;
+              "
+            >
+              Class {{ sub.standard }}
+            </div>
+
+            <div
+              *ngIf="sub.subjectId == 11"
+              style="color: rgb(128, 0, 0)"
+              class="font-design1"
+            >
+              {{ sub.subject }}
+            </div>
+            <div
+              *ngIf="sub.subjectId == 12"
+              style="color: #0000ff"
+              class="font-design1"
+            >
+              {{ sub.subject }}
+            </div>
+            <div
+              *ngIf="sub.subjectId == 13"
+              style="color: #19caca"
+              class="font-design1"
+            >
+              {{ sub.subject }}
+            </div>
+            <div class="font-design2">attempts - {{ sub.attempts }}</div>
+          </div>
+          <!-- <div class="pull-right ml-auto">
+                  <div style="font-weight: bold;">Class {{ sub.standard }}</div>
+                  <div class="font-design1">{{ sub.subject }}</div>
+                  <div class="font-design2">attempts - {{ sub.attempts }}</div>
+                </div> -->
+        </mat-card-header>
+      </mat-card>
+
+      <div *ngIf="testResults?.length == 0">
+        <mat-card class="js-selectedCorectAnswersArray">
+          No test's taken
+        </mat-card>
+      </div>
+    </div>
+
+    <div
+      class="col-md-4 col-lg-4 col-xs-12 col-sm-4"
+      *ngFor="let sub of dailyChallenge"
+    >
+      <div class="row ml-2 my-2">
+        <h3 class="font-weight-bold mb-0">Daily Challenge</h3>
+      </div>
+
+      <mat-card
+        class="bgcard js-sans bordegree"
+        [style.border-top]="
+          sub.subjectPercentage < 40
+            ? '4px solid red'
+            : sub.subjectPercentage < 60
+            ? '4px solid orange'
+            : sub.subjectPercentage < 80
+            ? '4px solid blue'
+            : '4px solid #61B15A'
+        "
+        [percent]="sub.subjectPercentage"
+        (click)="challengeAccuracy(sub.subjectId, sub.subject, sub.standardId)"
+      >
+        <!--backgroundColor  -->
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image">
+            <circle-progress
+              [percent]="sub.subjectPercentage"
+              [radius]="27"
+              [innerStrokeWidth]="8"
+              [outerStrokeColor]="
+                sub.subjectPercentage < 40
+                  ? 'red'
+                  : sub.subjectPercentage < 60
+                  ? 'orange'
+                  : sub.subjectPercentage < 80
+                  ? 'blue'
+                  : '#61B15A'
+              "
+              [backgroundColor]="
+                sub.subjectPercentage < 40
+                  ? '#ff00004d'
+                  : sub.subjectPercentage < 60
+                  ? '#ffa50066'
+                  : sub.percentage < 80
+                  ? '#0000ff57'
+                  : '#00800030'
+              "
+              [animation]="true"
+              [animationDuration]="1000"
+            ></circle-progress>
+            <img src="../../../assets/images/chesmistry-and.png" alt="" />
+          </div>
+          <div class="pull-right ml-auto">
+            <div
+              class="font-design"
+              *ngIf="sub.standard == 10"
+              style="
+                font-weight: bold;
+                color: rgb(171, 71, 188);
+                font-size: 1em;
+              "
+            >
+              Class {{ sub.standard }}
+            </div>
+            <div
+              class="font-design"
+              *ngIf="sub.standard == 9"
+              style="font-weight: bold; color: rgb(255, 152, 0); font-size: 1em"
+            >
+              Class {{ sub.standard }}
+            </div>
+            <div
+              class="font-design"
+              *ngIf="sub.standard == 8"
+              style="
+                font-weight: bold;
+                color: rgb(139, 195, 74);
+                font-size: 1em;
+              "
+            >
+              Class {{ sub.standard }}
+            </div>
+
+            <div
+              *ngIf="sub.subjectId == 11"
+              style="color: rgb(128, 0, 0)"
+              class="font-design1"
+            >
+              {{ sub.subject }}
+            </div>
+            <div
+              *ngIf="sub.subjectId == 12"
+              style="color: #0000ff"
+              class="font-design1"
+            >
+              {{ sub.subject }}
+            </div>
+            <div
+              *ngIf="sub.subjectId == 13"
+              style="color: #19caca"
+              class="font-design1"
+            >
+              {{ sub.subject }}
+            </div>
+            <div class="font-design2">attempts - {{ sub.attempts }}</div>
+          </div>
+        </mat-card-header>
+      </mat-card>
+      <div *ngIf="dailyChallenge?.length == 0">
+        <mat-card class="js-selectedCorectAnswersArray">
+          No Daily Challenge taken
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid px-0">
+    <div class="row">
+      <div class="row ml-2 my-2">
+        <h3 class="font-weight-bold mb-0">Forums</h3>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xs-12 col-sm-6 border">
+        <mat-card class="js-sans" (click)="discussionaccuracy()">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="col-md-3 text-center border-right">
+              <img
+                src="../../../assets/images/question.png"
+                width="70"
+                height="70"
+                alt=""
+              />
+            </div>
+            <div class="col-md-3 text-center border-right">
+              <div style="font-weight: bold" class="ad-design">My Posts</div>
+              <span class="text-center pl-3 circle_design ad-design">
+                {{ questionsasked.questionsAsked }}
+              </span>
+              <!-- <span class="text-center pl-2 ad-design"
+                      *ngIf="questionsasked.questionsAsked!=1  && questionsasked.questionsAsked!=2 && questionsasked.questionsAsked!=3 && questionsasked.questionsAsked!=4 && questionsasked.questionsAsked!=5 && questionsasked.questionsAsked!=6 && questionsasked.questionsAsked!=7 && questionsasked.questionsAsked!=8 && questionsasked.questionsAsked!=9 ">
+                      {{questionsasked.questionsAsked }}</span>
+                    <span class="text-center pl-2 ad-design"
+                      *ngIf="questionsasked.questionsAsked===1  || questionsasked.questionsAsked===2 || questionsasked.questionsAsked===3 || questionsasked.questionsAsked===4 || questionsasked.questionsAsked===5 || questionsasked.questionsAsked===6 || questionsasked.questionsAsked===7 || questionsasked.questionsAsked===8 || questionsasked.questionsAsked===9 ">
+                      0{{questionsasked.questionsAsked }}</span> -->
+            </div>
+
+            <div class="col-md-3 text-center border-right">
+              <div style="font-weight: bold" class="ad-design">Comments</div>
+              <span class="text-center circle_design pl-3 ad-design">
+                {{ discussAccuracy.comments }}
+              </span>
+              <!-- <span class="text-center pl-4 ad-design"
+                      *ngIf="discussAccuracy.comments!=1  && discussAccuracy.comments!=2 && discussAccuracy.comments!=3 && discussAccuracy.comments!=4 && discussAccuracy.comments!=5 && discussAccuracy.comments!=6 && discussAccuracy.comments!=7 && discussAccuracy.comments!=8 && discussAccuracy.comments!=9 ">{{
+                      discussAccuracy.comments }}</span>
+                    <span class="text-center pl-4 ad-design"
+                      *ngIf="discussAccuracy.comments===1  || discussAccuracy.comments===2 || discussAccuracy.comments===3 || discussAccuracy.comments===4 || discussAccuracy.comments===5 || discussAccuracy.comments===6 || discussAccuracy.comments===7 || discussAccuracy.comments===8 || discussAccuracy.comments===9 ">0{{
+                      discussAccuracy.comments }}</span> -->
+            </div>
+
+            <div class="col-md-3 text-center">
+              <div
+                style="font-weight: bold"
+                class="ad-design"
+                class="ad-design"
+              >
+                Views
+              </div>
+              <span class="text-center circle_design pl-3 ad-design">
+                {{ discussAccuracy.views }}
+              </span>
+              <!-- <span class="text-center pl-2 ad-design"
+                      *ngIf="discussAccuracy.views!=1  && discussAccuracy.views!=2 && discussAccuracy.views!=3 && discussAccuracy.views!=4 && discussAccuracy.views!=5 && discussAccuracy.views!=6 && discussAccuracy.views!=7 && discussAccuracy.views!=8 && discussAccuracy.views!=9 ">{{
+                      discussAccuracy.views }}</span>
+                    <span class="text-center pl-2 ad-design"
+                      *ngIf="discussAccuracy.views===1  || discussAccuracy.views===2 || discussAccuracy.views===3 || discussAccuracy.views===4 || discussAccuracy.views===5 || discussAccuracy.views===6 || discussAccuracy.views===7 || discussAccuracy.views===8 || discussAccuracy.views===9 ">0{{
+                      discussAccuracy.views }}</span> -->
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+      <div class="col-md-6 col-lg-6 col-xs-12 col-sm-6 border">
+        <mat-card class="js-sans" (click)="solutions()">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="mx-2">
+              <img
+                src="../../../assets/images/reply-message.png"
+                width="70"
+                height="70"
+                alt=""
+              />
+            </div>
+            <!-- <h4 style="color: #00c9c4;">My Replies</h4> -->
+            <div class="col-md-3 text-center border-right">
+              <div style="font-weight: bold" class="ad-design">My Replies</div>
+              <span class="text-center circle_design pl-2 ad-design">
+                {{ solution.totalSolutions }}
+              </span>
+              <!-- <span class="text-center pl-4 ad-design"
+                      *ngIf="questionsasked.solutionsAsked!=1  && questionsasked.solutionsAsked!=2 && questionsasked.solutionsAsked!=3 && questionsasked.solutionsAsked!=4 && questionsasked.solutionsAsked!=5 && questionsasked.solutionsAsked!=6 && questionsasked.solutionsAsked!=7 && questionsasked.solutionsAsked!=8 && questionsasked.solutionsAsked!=9 ">{{
+                      questionsasked.solutionsAsked }}</span>
+                    <span class="text-center pl-4 ad-design"
+                      *ngIf="questionsasked.solutionsAsked===1  || questionsasked.solutionsAsked===2 || questionsasked.solutionsAsked===3 || questionsasked.solutionsAsked===4 || questionsasked.solutionsAsked===5 || questionsasked.solutionsAsked===6 || questionsasked.solutionsAsked===7 || questionsasked.solutionsAsked===8 || questionsasked.solutionsAsked===9 ">0{{
+                      questionsasked.solutionsAsked }}</span> -->
+            </div>
+
+            <div class="col-md-3 text-center border-right">
+              <div style="font-weight: bold" class="ad-design pl-3">
+                Comments
+              </div>
+              <span class="text-centern circle_design pl-4 ad-design">
+                {{ solution.comments }}
+              </span>
+              <!-- <span class="text-center pl-4 ad-design"
+                      *ngIf="solution.comments!=1  && solution.comments!=2 && solution.comments!=3 && solution.comments!=4 && solution.comments!=5 && solution.comments!=6 && solution.comments!=7 && solution.comments!=8 && solution.comments!=9 ">{{
+                      solution.comments }}</span>
+                    <span class="text-center pl-4 ad-design"
+                      *ngIf="solution.comments===1  || solution.comments===2 || solution.comments===3 || solution.comments===4 || solution.comments===5 || solution.comments===6 || questionsasked.comments===7 || solution.solutionsAsked===8 || solution.comments===9 ">0{{
+                      solution.comments }}</span> -->
+              <!-- <span class="text-center">{{ solution.comments }}</span> -->
+            </div>
+
+            <div class="col-md-3 text-center">
+              <div style="font-weight: bold" class="ad-design pl-3">Views</div>
+              <span class="text-center circle_design pl-4 ad-design">
+                {{ solution.views }}
+              </span>
+              <!-- <span class="text-center pl-3 ad-design"
+                      *ngIf="solution.views!=1  && solution.views!=2 && solution.views!=3 && solution.views!=4 && solution.views!=5 && solution.views!=6 && solution.views!=7 && solution.views!=8 && solution.views!=9 ">{{
+                      solution.views }}</span>
+                    <span class="text-center pl-3 ad-design"
+                      *ngIf="solution.views===1  || solution.views===2 || solution.views===3 || solution.views===4 || solution.views===5 || solution.views===6 || solution.views===7 || solution.views===8 || solution.views===9 ">0{{
+                      solution.views }}</span> -->
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

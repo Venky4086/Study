@@ -1,0 +1,18 @@
+
+.fancy-select{
+    border: none;
+    outline: none;
+    width: 200px;
+    height: 50px;
+    background-color: #e5e5e5;
+}
+.qs{
+    border-radius: 12px;
+}
+
+.mat-raised-button{
+    background-color: #80c9f0;
+}
+.mat-raised-button:hover{
+    background-color: lightseagreen;
+}

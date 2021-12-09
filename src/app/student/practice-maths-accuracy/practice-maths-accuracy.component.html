@@ -1,0 +1,123 @@
+<div class="card mx-3">
+<div class="star all-content mt-3">
+  <div class="container-fluid content-section">
+    <div class="row">
+      <!-- <div class="col-md-2 side-nav">
+        <ul>
+          <li routerLink='/dashboard' class="active"><span>Home</span><span class="icons  ml-5"><i
+                class="fas fa-home"></i></span></li>
+          <li routerLink='/dashboard'><span>Dashboard</span><span class="icons ml-3"><i
+                class="fas fa-columns"></i></span></li>
+          <li routerLink='/profile'><span style="margin-left: -5px;">User_Profile</span><span class="icons ml-3"><i
+                class="fas fa-user"></i></span></li>
+          <li routerLink='/admin-page-details'><span>User_Roles</span><span class="icons ml-3"><i
+                class="fas fa-user-plus"></i></span></li>
+        </ul>
+      </div> -->
+
+      <div class="col">
+        <div class="container-fluid mt-2">
+          <ul class="breadcrumb">
+            <div class="fat-arrow">
+              <div class="inner" routerLink="/dashboard" style="color: #dee2e6">
+                Dashboard
+              </div>
+            </div>
+            <div class="fat-arrow">
+              <div class="inner" routerLink="/dashboard" style="color: #dee2e6">
+                Practice
+              </div>
+            </div>
+            <div class="fat-arrow">
+              <div class="inner" routerLink="/dashboard" style="color: #dee2e6">
+                Class {{ standard }}
+              </div>
+            </div>
+            <div class="fat-arrow">
+              <div class="inner" style="color: #f8f9fa">{{ subjectName }}</div>
+            </div>
+          </ul>
+        </div>
+        <div class="container-fluid">
+          <div class="backCls">
+            <div>
+              <img src="../assets/images/backBtn.png" (click)="goBack()"  alt="btn"> 
+            </div>
+             <div class="font-weight-bold mx-2"> Practice History Page</div>
+          </div>
+          <div class="col-md-12">
+            <div class="mat-card favorites-head py-4 px-2">
+              <h4 class="text-center font-weight-bold">
+                <span class="font-weight-bold" style="font-size :20px !important">Total Practice Accuracy :</span>
+                <span class="font-weight-bold" style="font-size :20px !important">{{ AllPractiseQns.accuracy }} %</span>
+              </h4>
+              <div class="row d-flex">
+                <div class="col-md">
+                  <div class="mat-card mx-2 p-4 M">
+                    <span> Questions </span
+                    ><span class="pull-right text-white">{{
+                      AllPractiseQns.questionsCount
+                    }}</span>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="mat-card mx-2 p-4 P">
+                    <span> Attempts </span
+                    ><span class="pull-right text-white">
+                      {{ AllPractiseQns.totalOfAttemptedQns }}</span
+                    >
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="mat-card mx-2 p-4 C">
+                    <span>Correct </span
+                    ><span class="pull-right text-white">{{
+                      AllPractiseQns.correctCount
+                    }}</span>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="mat-card mx-2 p-4 B">
+                    <span> Wrong </span
+                    ><span class="pull-right text-white">
+                      {{ AllPractiseQns.wrongCount }}</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- table area starts here css -->
+          <div class="col-md-12 text-center table-responsive pt-2 mb-2">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 60px">S.No</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Attempts</th>
+                  <th scope="col">Correct</th>
+                  <th scope="col">Wrong</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr
+                  *ngFor="let question of QuestionDetails; let i = index"
+                  (click)="getAllPractiseQns(question.questionId)"
+                >
+                  <td class="text-center">{{ i + 1 }}</td>
+                  <td class="text-center">{{ question.title }}</td>
+                  <td class="text-center">{{ question.totalSubmissions }}</td>
+                  <td class="text-center">{{ question.correctCount }}</td>
+                  <td class="text-center">{{ question.wrongcount }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

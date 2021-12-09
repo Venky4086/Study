@@ -1,0 +1,52 @@
+<div class="card mx-3">
+    <div class="container-fluid">
+
+        <div class="row d-flex my-3">
+            <div>  <img
+                src="../assets/images/backBtn.png"
+                (click)="goBack()"
+                alt="btn"
+              /><span class="head-tag"> Assignments</span> 
+                <div class="pull-right"> <button mat-icon-button> <i class="fas fa-filter"></i> </button> </div>    
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-3 my-2" *ngFor="let a of assignments" (click)="goToQuestions(a.aid,a.status)">
+                <mat-card class="matclr" [ngStyle]="styleObject(a.subject)">
+                    <div class="py-1 gbgree d-flex justify-content-center align-items-center">
+                        <h4>{{ a.title }}</h4>
+                    </div>
+                    <div class="py-1">
+                        {{ a.standard }}-{{ a.subject }}-{{ a.topic }}
+                    </div>
+
+                    <div class="py-1">
+                        <span> Questions : <span class="fnntwt">{{ a.noOfQuestions }}</span> </span>
+                    </div>
+
+                    <div class="py-1">
+                        <span> Marks : <span class="fnntwt">{{ a.marks }} </span>
+                    </span></div>
+
+
+                    <div class="py-2"><p> Start Date : <span class="fnntwt">{{ a.startDate | date:'dd-MM-yyyy' }}</span>
+                        </p></div>
+                    <div class="py-2"><p> End Date : <span class="fnntwt">{{ a.endDate | date:'dd-MM-yyyy' }}</span> </p>
+                    </div>
+                    <div class="py-2">
+                        <p *ngIf="a.status == 'pending'"> Status : <span class="red bold">{{ a.status }} </span> </p>
+                        <p *ngIf="a.status == 'Completed'"> Status : <span class="green bold">{{ a.status }} </span> </p>
+                    </div>
+                    <div class="py-2 text-primary bold">
+                        <p *ngIf="a.status == 'Completed'"> <span style="color:rgb(79 103 109)" >Marks : </span> <span class="markscls"> {{ a.userMarks }}/{{ a.marks }} </span></p>
+                        <p *ngIf="a.status != 'Completed'"> <span style="color:rgb(79 103 109)">Marks : </span> <span class="markscls">Not Submitted</span> </p>
+                    </div>
+                </mat-card>
+            </div>
+
+        </div>
+    </div>
+
+</div>

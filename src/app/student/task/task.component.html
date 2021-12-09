@@ -1,0 +1,32 @@
+
+<div class="container-fluid">
+
+    <div class="row my-2">
+
+        <div class="col-3">
+            Male Keyword
+        </div>
+
+        <div class="col-6">
+            <input class="form-control" type="text" [(ngModel)]="malekey" placeholder="Male Keyword">
+        </div>
+
+    </div>
+
+    <div class="row my-2">
+
+        <div class="col-3">
+            Female Keyword
+        </div>
+    
+        <div class="col-6">
+            <input class="form-control" type="text" [(ngModel)]="femalekey" placeholder="Female Keyword">
+        </div>
+
+    </div>
+
+</div>
+
+<button (click)="save()" class="btn btn-primary mx-2">Save</button>
+<button (click)="reset()" class="mx-2 btn btn-warning">Reset</button>
+

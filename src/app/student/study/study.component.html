@@ -1,0 +1,86 @@
+<div class="card h-100 mx-3">
+<div class="star container-fluid mb-2">
+  <div class="backCls my-2">
+    <div>
+      <img
+        src="../assets/images/backBtn.png"
+        (click)="goBack()"
+        alt="btn"
+      />
+    </div>
+    <div class="font-weight-bold mx-2">Study</div>
+  </div>
+
+    <div class="col-md-12">
+      <div class="container-fluid" *ngIf="!selectedStandard">
+        <ul class="breadcrumb">
+          <div class="fat-arrow">
+            <div class="inner" style="color: #dee2e6;">Select Class</div>
+          </div>
+        </ul>
+      </div>
+  
+      <div class="container-fluid" *ngIf="selectedStandard">
+        <ul class="breadcrumb">
+          <div class="fat-arrow">
+            <div class="inner" style="color: #dee2e6;" *ngIf="selectedStandard" (click)="goToStandards()">Class {{
+              selectedStandard }} </div>
+          </div>
+          <div class="fat-arrow">
+            <div class="inner" style="color: #dee2e6;" *ngIf="selectedStandard"> Select Subject</div>
+          </div>
+        </ul>
+      </div>
+  
+      <div class="row justify-content-center">
+        <div class="col-md-3 text-center" *ngFor="let standard of standards; let i = index"
+          (click)="showSubjects(standard.standardId, standard.standard, i)">
+          <div class="book mx-auto">
+            <ul>
+              <li class="cover pt-4 text-white text-center" [ngClass]="isOpen[i] ? 'cover-u' : 'none'"
+                [style.backgroundColor]="colors[i]" [style.border-left]="borders[i]">
+  
+                <div class="mt-3 text-center">
+                  <span class="cls text-center">CLASS</span>
+                  <h1 *ngIf="standard.standardId == 1" class="class-icon mt-3 text-center" style="color: #ab47bc ;">12</h1>
+                  <h1 *ngIf="standard.standardId == 2" class="class-icon mt-3 text-center" style="color: #f58505;">11</h1>
+                  <h1 *ngIf="standard.standardId == 3" class="class-icon mt-3 text-center" style="color: #ab47bc ;">10</h1>
+                  <h1 *ngIf="standard.standardId == 4" class="class-icon mt-3 text-center" style="color: #f58505;">9</h1>
+                  <h1 *ngIf="standard.standardId == 5" class="class-icon mt-3 text-center" style="color: #85af55;">8</h1>
+                </div>
+              </li>
+  
+              <li class="page page1" [style.backgroundColor]="pageBgcolors[i]">
+                <div class="subbooks">    
+                  <button mat-raised-button color="primary" *ngFor="let sub of subjects; let i = index"
+                    class="primary my-3" [style.background]="subColors[i]"
+                    (click)="getTopics(standard.standardId,sub.subjectId,standard.standard,sub.subject)">
+                     {{ sub.subject }}
+                  </button>               
+                </div>
+              </li>
+  
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <!-- <div class="row justify-content-center">
+
+        <div class="col-md-3" *ngFor="let s of standards">
+
+          <mat-card class="text-center">
+
+            <h1 *ngIf="s.standardId == 3" class="class-icon mt-3" style="color: #ab47bc ;">10</h1>
+
+            {{ s.standard }}
+
+          </mat-card>
+
+        </div>
+
+      </div> -->
+
+    </div>
+</div>
+</div>

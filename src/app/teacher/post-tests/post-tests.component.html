@@ -1,0 +1,181 @@
+<div class="star">
+
+    <div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="py-2"><span class="title font-shadow"> Tests</span> <button class="btn btn-secondary btn-rounded pull-right add-asbtn" mat-button (click)="openDialog();" > Add Test </button></div>
+                    <div style="min-height: 321px;">
+                        <div class="container-fluid">
+                            <!-- <span>Questions</span> -->
+                            <div class="row my-3">
+                                
+                                <div class="col-3" *ngFor="let a of Tests" (click)="ViewOrEditAssignment(a.tId)">
+                                    <div class="assign p-4">
+                                        <div class="py-1 text-center">
+                                            <h4 class="title-sub">Real numbers</h4>
+                                        </div>
+                                        <h6 class="py-1"> 
+                                            {{ a.stdId }}-{{ a.subjectId }}-{{ a.topic }}
+                                        </h6>
+
+                                        <div class="py-1">
+                                            <span> <b class="font-shadow">Questions :</b> {{ a.noOfQuestions }} </span> <span> Marks : {{ a.marks }} </span> 
+                                        </div>
+            
+                                        <div class="py-2 "><span class="font-shadow">uploaded on :</span> <small class="ml-1">{{ a.inTime | date:'dd-MM-yyyy' }}</small> </div>
+                                        <div class="py-2 "><span class="font-shadow">Start Date :</span> <small class="ml-1">{{ a.startDate | date:'dd-MM-yyyy' }} </small></div>
+                                        <div class="py-2 "><span class="font-shadow">End Date :</span> <small class="ml-1">{{ a.endDate | date:'dd-MM-yyyy' }} </small></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="container my-2" *ngIf="showForm">
+                            <div class="row bg-white" style="border: 1px solid rgb(226, 226, 226);">
+                                <div class="col">
+                                      
+                                      <mat-horizontal-stepper linear #stepper>
+                                        <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+                                            <ng-template matStepLabel>Basic Details</ng-template>
+                                            <form [formGroup]="testForm">
+                                                <div class="basic__details">
+                                                    <div class="my-3 d-flex">
+    
+                                                        <input formControlName="title" type="text" class="form-control" placeholder="Test Title">
+    
+                                                    </div>
+                                                    <div class="my-3">
+                    
+                                                        <select class="cust-select mx-2" formControlName="stdId" [(ngModel)]="standard" (change)="fetchSubejcts()">
+                                                            <option value="" selected>Standard</option>
+                                                            <option *ngFor="let s of standards" [value]="s.standardId" >Class {{ s.standard }}</option>
+                                                        </select>
+                    
+                                                        <select class="cust-select mx-2" formControlName="subjectId" [(ngModel)]="subject" (change)="fetchTopics()">
+                                                            <option value="" selected>Subject</option>
+                                                            <option *ngFor="let s of subjects" [value]="s.subjectId" >{{ s.subject }}</option>
+                                                        </select>
+                    
+                                                        <select class="cust-select mx-2" formControlName="topic" [(ngModel)]="topic">
+                                                            <option value="" selected>Topic</option>
+                                                            <option *ngFor="let s of topics" [value]="s.topic">{{ s.topic }}</option>
+                                                        </select>
+                    
+                                                    </div>
+    
+                                                    <div class="my-3 d-flex">
+    
+                                                        <div class="mx-2">
+                                                            Start Date <input formControlName="startDate" class="form-control mt-1" type="date">
+    
+                                                            No of Question <input formControlName="noOfQuestions" class="form-control mt-1" type="text">
+                                                        </div>
+    
+                                                        <div class="mx-2">
+                                                            End Date <input formControlName="endDate" class="form-control mt-1" type="date">
+    
+                                                            Marks <input formControlName="marks" class="form-control mt-1" type="text">
+                                                        </div>
+    
+                                                        <div class="mx-2"> 
+                                                            <select class="cust-select mx-2" formControlName="section">
+                                                                <option value="" selected>Section</option>
+                                                                <option value="A">A</option>
+                                                                <option value="B">B</option>
+                                                                <option value="C">C</option>
+                                                            </select>
+    
+                                                            <!-- Marks <input formControlName="marks" class="form-control my-1" type="text"> -->
+                                                        </div>
+    
+                                                    </div>
+    
+                                                </div>
+                                                <button mat-button [disabled]="testForm.invalid" (click)="addTestForm()">Add</button>
+                                            </form>
+                                            <div>
+                                              <button mat-button matStepperNext>Next</button>
+                                            </div>
+                                        </mat-step>
+                                        <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+                                            <ng-template matStepLabel>Add Questions</ng-template>
+                                            <div class="questions">
+                                                <div class="" *ngIf="Questions.length">
+                                                    <div class="py-2">
+                                                        <p class="my-3" *ngFor="let q of Questions;let i=index">
+                                                            <span>{{ i+1 }} . {{ q }}</span> <button (click)="deleteQuestion(i)" class="pull-right" mat-icon-button><i class="fas fa-trash"></i></button>
+                                                        </p>
+                                                        <!-- <button mat-stroked-button>Post Test</button> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div>
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlTextarea1">Enter Question here</label>
+                                                    <textarea [(ngModel)]="question" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                    <div class="row my-2">
+                                                        <div class="col-1 align-items-center my-auto text-center">
+                                                            <input type="radio" name="option">
+                                                        </div>
+                                                        <div class="col-11">
+                                                            <input class="form-control" placeholder="option" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row my-2">
+                                                        <div class="col-1 align-items-center my-auto text-center">
+                                                            <input type="radio" name="option">
+                                                        </div>
+                                                        <div class="col-11">
+                                                            <input class="form-control" placeholder="option" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row my-2">
+                                                        <div class="col-1 align-items-center my-auto text-center">
+                                                            <input type="radio" name="option">
+                                                        </div>
+                                                        <div class="col-11">
+                                                            <input class="form-control" placeholder="option" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row my-2">
+                                                        <div class="col-1 align-items-center my-auto text-center">
+                                                            <input type="radio" name="option">
+                                                        </div>
+                                                        <div class="col-11">
+                                                            <input class="form-control" placeholder="option" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <button class="my-1" mat-raised-button (click)="addQuestion()">Add</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div>
+                                              <button mat-button matStepperPrevious>Back</button>
+                                              <button mat-button matStepperNext>Next</button>
+                                            </div>
+                                        </mat-step>
+                                        <mat-step>
+                                          <ng-template matStepLabel>Review</ng-template>
+                                          <p>You are now done.Review and post Test</p>
+                                          <button mat-stroked-button>post Test</button>
+                                          <!-- <div>
+                                            <button mat-button matStepperPrevious>Back</button>
+                                            <button mat-button (click)="stepper.reset()">Reset</button>
+                                          </div> -->
+                                        </mat-step>
+                                      </mat-horizontal-stepper>
+                                      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

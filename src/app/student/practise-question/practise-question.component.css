@@ -1,0 +1,174 @@
+/* 
+ol > * + *::before {
+    content: "|";
+    padding: 0 12px;
+  }
+  .breadcrumb>li:hover{
+    text-decoration: underline
+  } */
+  div,span{
+    font-family: 'Josefin Sans', sans-serif !important;
+  }
+  i:hover{
+    cursor: pointer;
+  }
+  .desccard{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background: white;
+  }
+ .breadcrumb{
+   margin-bottom: 2px;
+ }
+ .bcca-breadcrumb{
+   margin-bottom: 0px!important;
+ }
+  .btn-outline-info {
+    color: #5b3dd8;
+    border-color: #9b4ceb;
+}
+.btn-outline-info:hover{
+  color: white;
+  background-color:#5b3dd8 ;
+}
+.primary{
+  background:#186480!important;
+}
+.secondary{
+  background:#43a2ab;
+}
+.exams{
+  border: 2px solid #f1f4f6 !important;
+  padding: 6px;
+  color: #707070;
+  background: #ffffff;
+  font-size: 14px;
+}
+  .opt{
+    border-radius: 100%;
+    padding:4px 6px;
+    color: white;
+    background: #00775f;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 14px;
+  }
+ 
+  /* .container{
+    box-shadow: -0.3px 2px 20px 0 rgba(0,0,0,.1);
+  } */
+  .options{
+      border: 1px solid rgba(0,0,0,.1);
+      margin-bottom: 15px;
+  }
+ .success{
+   background: green;
+ }
+ .primary{
+  height: 34px;
+  margin-left: 12px;
+  width: 80px;
+ }
+  span,label,p{
+    font-family: "verdana"; 
+  }
+  .title{
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    /* letter-spacing: 1.3px; */
+    text-align: left;
+    font-family: "verdana";
+  }
+  .question{
+    color: #000;
+    font-family: 'Font Awesome 5 Free' !important;
+    /* font-family: "Sans-serif"!important;  */
+  }
+  i.marg-lef{
+      margin-left: 24px;
+  }
+  .fa-chevron-right{
+    color: darkgray;
+  }
+.ad{
+    border: 1px solid #c7c8c9;
+    border-radius: 5px;
+    padding: 1px 4px;
+    cursor: default;
+}
+
+li{
+  display: flex;
+  list-style: none;
+}
+li:last-child{
+  color: #575366;
+  cursor: context-menu;
+  font-weight: bold;
+}
+
+/* share btn css  */
+/* share css  */
+  /* Add application styles & imports to this file! */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+  @import '~ngx-sharebuttons/themes/material/material-dark-theme';
+  @import '~ngx-sharebuttons/themes/modern/modern-light-theme';
+  @import '~ngx-sharebuttons/themes/circles/circles-dark-theme';
+  
+  body {
+    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+  }
+  
+  h1 {
+    color: #000;
+    text-align: center;
+  }
+     
+  h3 {
+    text-align: center;
+    background-color: #ededed;
+    padding: 0;
+    margin-bottom: 1em;
+  }
+  
+  h4 {
+    margin-top: 0.5em;
+  }
+  
+  ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style-type: none;
+    /* background-color: #000; */
+  }
+  
+  li {
+    flex: 1;
+    /* background-color: #000; */
+    margin: 0 1em;
+    overflow: hidden;
+  }
+  
+  a {
+    box-sizing: border-box;
+    text-decoration: none;
+    padding: .3em;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-weight: bold;
+    transition: background-color ease-in-out 200ms;
+  }
+  
+  .active {
+    background-color: rgba(0,0,0, 0.25);
+  }

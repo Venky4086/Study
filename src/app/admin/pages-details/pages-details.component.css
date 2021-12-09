@@ -1,0 +1,29 @@
+ul>li{
+    list-style: none;
+}
+.fancy-li{
+    border-radius: 5px;
+}
+li{
+    background: white;
+}
+li:hover{
+    color: white;
+    background: #8a2be3;
+}
+.side-heads{
+    text-shadow: 2px 2px 2px #00000030;
+    color: blueviolet;
+    font-size: 18px;
+}
+h3{
+    text-shadow: 2px 2px 2px #00000030;
+    color: blue;
+}
+.admn-details{
+    background: #c5e3c1;
+    padding: 28px 40px 20px 40px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}

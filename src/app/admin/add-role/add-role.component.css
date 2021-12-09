@@ -1,0 +1,34 @@
+button {
+  outline: none;
+}
+.fancy-tab-form {
+    width: 38%;
+    min-height: 30vh;
+    border-radius: 5px;
+    background-color: #007755;
+}
+/* .tab-header{
+    border-bottom: 2px solid darkgray;
+} */
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.active {
+  background-color: #4b9a75;
+  color: #000;
+  border-radius: 5px;
+}
+input.input-role,
+input.input-usertype {
+  width: 80%;
+  border: none;
+  height: 40px;
+  padding-left: 10px;
+  outline: none;
+}
+.cardHeigt {
+  min-height: 100vh;
+}

@@ -1,0 +1,470 @@
+<!-- <div class="container-fluid mt-3">
+
+    <div class="row mx-2">
+
+        <mat-card class="p-0 js-sans">
+
+            <div class="container-fluid">
+
+                <div class="row border-bottom my-4">
+
+                    <h4>User Profile</h4>
+
+                </div>
+
+                <div class="row mx-auto text-center my-2">
+
+                    <div class="profile-img">
+                        <img [src]="profile.imageUri" class="img-responsive pro-img" alt="">
+                    </div>
+
+                </div>
+
+                <div class="row mx-auto text-center">
+
+                    <div class="col-4">
+
+                        <mat-form-field appearance="outline" class="full-width js-sans">
+
+                            <mat-label>Name</mat-label>
+
+                            <input type="text" [disabled]="isEdit" matInput placeholder="Name" [ngModel]="profile.userName">
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-4">
+
+                        <mat-form-field appearance="outline" class="full-width js-sans">
+
+                            <mat-label>Mobile</mat-label>
+
+                            <input type="text" [disabled]="isEdit" matInput placeholder="Mobile" [ngModel]="profile.mobileNo">
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-4">
+
+                        <mat-form-field appearance="outline" class="full-width js-sans">
+
+                            <mat-label>Gender</mat-label>
+
+                            <input type="text" [disabled]="isEdit" matInput placeholder="Name" [ngModel]="profile.gender">
+
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+
+                <div class="row mx-auto text-center">
+
+                    <div class="col-4">
+
+                        <mat-form-field appearance="outline" class="full-width js-sans">
+
+                            <mat-label>Date Of Birth</mat-label>
+
+                            <input type="text" [disabled]="isEdit" matInput placeholder="Date of birth" [ngModel]="profile.dob | date">
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-4">
+
+                        <mat-form-field appearance="outline" class="full-width js-sans">
+
+                            <mat-label>E-mail</mat-label>
+
+                            <input type="text" [disabled]="isEdit" matInput placeholder="E-mail" [ngModel]="profile.emailId">
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-4">
+
+                        <mat-form-field appearance="outline" class="full-width js-sans">
+
+                            <mat-label>Address</mat-label>
+
+                            <input type="text" [disabled]="isEdit" matInput placeholder="Address" [ngModel]="profile.address">
+
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+
+                <div class="my-2 mx-auto text-center">
+
+                    <button mat-raised-button class="mx-1" color="primary" (click)="isEdit = !isEdit"> Edit </button>
+                    <button mat-raised-button class="mx-1" color="primary"> Update </button>
+
+                </div>
+
+            </div>
+
+        </mat-card>
+
+    </div>
+
+</div> -->
+
+<div class="star">
+  <div class="backCls mb-2 mx-3">
+    <div>
+      <img src="../assets/images/backBtn.png" (click)="goBack()"  alt="btn"> 
+    </div>
+     <div class="font-weight-bold mx-2"> Profile Details</div>
+  </div>
+    <div class="container clsmax profile-card mt-4">
+  
+      <div class="settings">
+        <input checked="true" class="nav" name="nav" type="radio">
+        <span class="nav">Profile</span>
+        <input class="nav" name="nav" type="radio">
+        <span class="nav">Account</span>
+        <input class="nav" name="nav" type="radio">
+        <span class="nav">Privacy</span>
+        <input class="nav" name="nav" type="radio">
+        <span class="nav">Advanced</span>
+        <main class="content card">
+          <section id="profile">
+            <form>
+              <div class="pull-right p-2">
+                <button (click)="isEdit = !isEdit" mat-icon-button color="primary"> <i class="fas fa-edit"></i> </button>
+              </div>
+              <ul class="py-2">
+                <li class="large padding avatar py-4">
+  
+                  <span *ngIf="userprofileinfo?.imageUri ;else noImage"
+                    style="background-image: url('https://storage.googleapis.com/study-amaze-bucket/users/{{ userprofileinfo.userId }}/{{userprofileinfo.imageUri}}');"></span>
+  
+                  <ng-template #noImage>
+                    <img class="ui-w-100 rounded-circle" width="100px !important" height="100px !important"
+                      src="../../assets/images/profile.png" alt="">
+                  </ng-template>
+  
+                  <div>
+                    <fieldset class="material-button">
+                      <div>
+                        <input style="display: none;" #fileInput type="file" (change)="onFileChange($event)">
+                        <button (click)="fileInput.click()" matTooltip="Image size should be < 100 KB"
+                          aria-label="image size should be < 100 KB"><span style="font-size: 12px;">Change Profile
+                            Pic</span></button>
+                      </div>
+                    </fieldset>
+                  </div>
+  
+                </li>
+  
+                <li>
+                  <fieldset class="material">
+                    <div>
+                      <input required="true" type="text" value="{{userprofileinfo?.userName}}" [disabled]="!isEdit">
+                      <label>Name</label>
+                      <hr />
+                    </div>
+                  </fieldset>
+                </li>
+                <li>
+                  <fieldset class="material">
+                    <div>
+                      <input required="true" type="text" value="{{userprofileinfo?.mobileNo}}" disabled>
+                      <label>Mobile Number</label>
+                      <hr />
+                    </div>
+                  </fieldset>
+                </li>
+                <li>
+                  <fieldset class="material">
+                    <div>
+                      <input required="true" type="text" value="{{userprofileinfo.gender}}" [disabled]="!isEdit">
+                      <label>Gender</label>
+                      <hr />
+                    </div>
+                  </fieldset>
+                </li>
+                <li>
+                  <fieldset class="material">
+                    <div>
+                      <input required="true" type="text" value="{{userprofileinfo.dob | date : 'dd-MMMM-yyyy'}}" disabled>
+                      <label>Date Of Birth</label>
+                      <hr />
+                    </div>
+                  </fieldset>
+                </li>
+                <li>
+                  <fieldset class="material">
+                    <div class="pt-3">
+                      <input required="true" type="text" value="{{userprofileinfo.emailId}}" disabled>
+                      <label>Email</label>
+                      <hr />
+                    </div>
+                  </fieldset>
+                </li>
+                <li>
+                  <fieldset class="material">
+                    <div>
+                      <input required="true" type="text" value="{{userprofileinfo.userTypeInString}}" disabled>
+                      <label>UserType</label>
+                      <hr />
+                    </div>
+                  </fieldset>
+                </li>
+                <li class="large">
+                  <fieldset class="material">
+                    <div>
+                      <input required="true" type="text" value="{{userprofileinfo.address}}" [disabled]="!isEdit">
+                      <label>Location</label>
+                      <hr />
+                    </div>
+                  </fieldset>
+                </li>
+                <li class="large padding pt-5">
+                  <fieldset class="material-button center">
+                    <div>
+                      <input class="save" type="submit" value="Save">
+                    </div>
+                  </fieldset>
+                </li>
+              </ul>
+            </form>
+          </section>
+          <section id="account" class="pt-5">
+            <form>
+              <ul class="py-2">
+                <!-- <li>
+                  <fieldset class="material">
+                    <div class="pt-3">
+                      <input  required="true" type="text" value="{{userprofileinfo.emailId}}" [disabled]="!isEdit">
+                      <label>Email</label>
+                      <hr/>
+                    </div>
+                  </fieldset>
+                </li>
+                <li>
+                  <fieldset class="material">
+                    <div>
+                      <input  required="true" type="text"value="{{userprofileinfo.userTypeInString}}" [disabled]="!isEdit">
+                      <label>UserType</label>
+                      <hr/>
+                    </div>
+                  </fieldset>
+                </li> -->
+                <li *ngIf="userprofileinfo.userType == 1">
+                  <fieldset class="material">
+                    <div>
+                      <input required="true" type="text" value="Class {{standard}}" [disabled]="!isEdit">
+                      <label>Standard</label>
+                      <hr />
+                    </div>
+                  </fieldset>
+                </li>
+                <li *ngIf="userprofileinfo.userType == 1">
+                  <fieldset class="material">
+                    <div>
+                      <input required="true" type="text" value="{{userprofileinfo.schoolOrCollege}}" [disabled]="!isEdit">
+                      <label>School Name</label>
+                      <hr />
+                    </div>
+                  </fieldset>
+                </li>
+                <br /><br /><br /><br />
+                <li class="padding">
+                  <fieldset class="material-button">
+                    <div>
+                      <button class="connect gh connected">
+                        <span>Unlink Github Account</span>
+                      </button>
+                    </div>
+                  </fieldset>
+                </li>
+                <li class="padding">
+                  <fieldset class="material-button">
+                    <div>
+                      <button class="connect tw">
+                        <span>Link Twitter Account</span>
+                      </button>
+                    </div>
+                  </fieldset>
+                </li>
+                <li class="padding">
+                  <fieldset class="material-button">
+                    <div>
+                      <button class="connect fb">
+                        <span>Link Facebook Account</span>
+                      </button>
+                    </div>
+                  </fieldset>
+                </li>
+                <li class="padding">
+                  <fieldset class="material-button">
+                    <div>
+                      <button class="connect li">
+                        <span>Link LinkedIn Account</span>
+                      </button>
+                    </div>
+                  </fieldset>
+                </li>
+                <li class="large padding pt-5">
+                  <fieldset class="material-button center">
+                    <div>
+                      <input class="save" type="submit" value="Save">
+                    </div>
+                  </fieldset>
+                </li>
+              </ul>
+            </form>
+          </section>
+          <section class="upcoming" id="privacy">
+            <h4 class="font-weight-bold m-3">Coming&nbsp;soon!</h4>
+          </section>
+          <section class="upcoming" id="advanced">
+            <!-- <h1>Coming&nbsp;soon!</h1> -->
+            <!-- <div class="about m-2">
+    
+              <mat-card>
+                <mat-card-title>About</mat-card-title><div class="container">
+                  <div class="row mt-4">
+                    <div class="col">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Experience</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    </div>
+                    <div class="col">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Outline form field</mat-label>
+                        <input matInput placeholder="Placeholder">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-hint>Hint</mat-hint>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+    
+            </div> -->
+            <!-- <div class="example-action-buttons">
+              <button mat-button (click)="accordion.openAll()">Expand All</button>
+              <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+            </div> -->
+            <mat-accordion class="example-headers-align m-2" multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    About
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Enter your College and Highest Qualification
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+  
+                <mat-form-field class="mx-2" appearance="outline">
+                  <mat-label>College</mat-label>
+                  <input matInput [(ngModel)]="college">
+                </mat-form-field>
+  
+                <mat-form-field class="mx-2" appearance="outline">
+                  <mat-label>Highest Qualification</mat-label>
+                  <input matInput [(ngModel)]="education">
+                </mat-form-field>
+  
+                <mat-form-field class="mx-2" appearance="outline">
+                  <mat-label>Subject</mat-label>
+                  <input matInput [(ngModel)]="subject">
+                </mat-form-field>
+  
+                <mat-form-field class="mx-2" appearance="outline">
+                  <mat-label>Experience</mat-label>
+                  <input type="number" matInput [(ngModel)]="exp">
+                </mat-form-field>
+  
+                <button class="mx-2 mat-raised-button" (click)="SaveOrUpdate()">Save</button>
+  
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Skills
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Add your skills
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+  
+                <div *ngFor="let skill of skills; let i = index">
+  
+                  <mat-form-field class="mx-1" appearance="outline">
+                    <mat-select appearance="outline">
+                     <mat-option  value="Skills">Skill</mat-option>
+                     <mat-option  value="Certifications">Certifications</mat-option>
+                    </mat-select>
+                </mat-form-field>
+  
+                  <mat-form-field class="mx-1" appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input matInput [(ngModel)]="skills[i].title" name="title-{{i}}">
+                  </mat-form-field>
+  
+                  <mat-form-field class="mx-1" appearance="outline" style="width:55%">
+                    <mat-label>Description</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+  
+                  <mat-form-field class="mx-1" appearance="outline">
+                    <mat-label>Proficiency</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                  <button mat-icon-button (click)="remove(i,'s')"> <i class="fas fa-times"></i> </button>
+                </div>
+  
+  
+                <button mat-raised-button class="mx-2" (click)="add('s')">add</button>
+  
+                <button mat-raised-button class="mx-2" (click)="addSKorCert()">Save</button>
+  
+              </mat-expansion-panel>
+  
+              <!-- <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Achievements
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Add your achievements
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+  
+                <div *ngFor="let achievement of achievements; let i = index">
+                  <mat-form-field class="mx-1" appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+  
+                  <mat-form-field class="mx-1" appearance="outline" style="width:75%">
+                    <mat-label>Description</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                  <button mat-icon-button (click)="remove(i,'a')"> <i class="fas fa-times"></i> </button>
+                </div>
+  
+                <button mat-raised-button class="mx-2" (click)="add('a')">Add</button>
+                <button mat-raised-button class="mx-2">Save</button>
+  
+              </mat-expansion-panel> -->
+            </mat-accordion>
+  
+  
+          </section>
+        </main>
+      </div>
+  
+    </div>
+  </div>

@@ -1,0 +1,187 @@
+
+  /* newpagecss */
+  body{
+              
+      background: rgb(255,255,255);
+      background: -moz-linear-gradient(-45deg,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); 
+      background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); 
+      background: linear-gradient(135deg,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); 
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      
+  }
+  
+  .box1{
+    background:rgba(255,255,255,0.6);
+    padding: 20px 20px 20px 20px;
+    border: 1px;
+    border-radius: 0px;
+    word-wrap: break-word;
+    box-shadow:0 3px 6px #dadada;
+    min-height: 360px;
+  
+  }
+  .box2{
+  background-color: transparent;
+  border:1px solid #c9cacc;
+  padding: 5px 5px 5px 5px;
+    min-height: 360px;
+    border-radius: 0px;
+    word-wrap: break-word;
+    
+  
+  }
+  
+  p.background {
+      background: #efefef;
+      border-radius: 2px;
+      padding: 10px 10px 10px 10px;
+      margin-top: 5px;
+                  
+      word-wrap: break-word;
+  
+  }
+  
+    .logo-main {
+      display: block;
+      margin: 5px auto;
+      margin-left :50%
+    }
+  
+  #footer{
+      position:fixed;
+     
+      z-index: 1;
+      height:80px;
+      background:rgba(255,255,255,0.9);
+      bottom:0px;
+      left:0px;
+      padding: 5px 5px 5px 5px;
+      right:0px;
+      margin-bottom:0px;
+      -webkit-box-shadow: -1px -9px 20px -15px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px -9px 20px -15px rgba(0,0,0,0.75);
+  box-shadow: -1px -9px 20px -15px rgba(0,0,0,0.75);
+    }
+  hr.style18{
+      border-top: 1px solid #c9cacc;
+  }
+  ::-webkit-scrollbar {
+            width: 2px;
+           
+          }
+           
+          /* Track */
+          ::-webkit-scrollbar-track {
+              -webkit-box-shadow: inset 0 0 6px #fff; 
+              -webkit-border-radius: 10px;
+              border-radius: 10px;
+          }
+           
+          /* Handle */
+          ::-webkit-scrollbar-thumb {
+              -webkit-border-radius: 10px;
+              border-radius: 10px;
+              background: steelblue; 
+              -webkit-box-shadow: inset 0 0 6px #fff; 
+          }
+          ::-webkit-scrollbar-thumb:window-inactive {
+            background: rgba(255,0,0,0.4); 
+          }
+          .usrans{
+              /* border: 1px solid; */
+              width: 527px;
+              background: #d0c4e2;
+              padding: 5px;
+              margin-left: 10px;
+              border-radius: 3px;
+          }
+          .alert-danger {
+              color: #721c24;
+              background-color: #f17a85;
+              border-color: #f5c6cb;
+          }
+          .alert-warning {
+            color: #856404;
+            background-color: #efcc5d;
+            border-color: #ffeeba;
+        }
+        .btn-outline-warning {
+          color: #957106;
+          border-color: #ffc107;
+      }
+      .alert-success {
+        color: #155724;
+        background-color: #6fd287;
+        border-color: #c3e6cb;
+    }
+      .a, .b{
+        padding: 15px;
+        /* box-shadow: 0 1px 2px 0 rgba(0,0,0,.15); */
+        height: 100px;
+    }
+    .btn:hover{
+      cursor: default;
+      /* background: none!important; */
+    }
+    
+  /* responsive */
+          /* @media only screen and (min-width: 768px) and (max-width: 1440px){
+              .mainn{
+                margin-top: -20px;
+                margin-bottom: 50px;
+                margin-left: 125px;
+              }
+          }
+          @media only screen and(min-width :325px) and (max-width:600px){
+            .col-md-5{
+              margin-left: 0px!important;
+            }
+          } */
+  
+          .opt{
+            border-radius: 100%;
+            padding:4px 6px;
+            color: white;
+            background: #00775F;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-size: 14px;
+          }
+        /* button */
+        .soln{
+          color: black;
+          background-color: yellow;
+          border: none;
+        }
+        .soln:hover{
+          color: black;
+          background-color: yellowgreen!important;
+          border: none;
+        }
+        .solnhere{
+          padding: 10px;
+          border: 1px solid #cbdceb;
+          box-shadow:10px 10px 10px #888888;
+          background: aliceblue;
+        }
+        hr {
+          height: 1px;
+      }
+  
+      /* BREADCRUMB ICONS COLOR */
+  .fa-chevron-right{
+    color: #738f93;
+    font-size: 15px;
+  }
+  li{
+    display: flex;
+    list-style: none;
+  }
+  li:last-child{
+    color: #575366;
+    cursor: context-menu;
+    font-weight: bold;
+  }

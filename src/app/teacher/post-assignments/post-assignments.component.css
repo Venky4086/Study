@@ -1,0 +1,56 @@
+.fa-trash{
+    color: red;
+}
+.title{
+    font-size: 22px;
+}
+select.cust-select{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+input[type="date"],input[type="time"]{
+    width: 200px;
+    height: 40px;
+}
+/* ::ng-deep .mat-icon{
+    display: none !important;
+} */
+.add-asbtn{
+    background-color: #b23cfd;
+    text-transform: inherit;
+    border-color:#b23cfd;
+    color: white;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #b23cfd !important;
+  }
+  /* Font color */
+  input.mat-input-element {
+    color: #b23cfd !important;
+  }
+  /* .assign-cards{
+    background: rgba(223,222,254,.6);
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 10%);
+
+  } */
+  .assign{
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 10%);
+    cursor: pointer;
+    border-radius:10px;
+  }
+  .assign2{
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 10%);
+    background: rgba(222,254,229,.6);
+    cursor: pointer;
+    border-radius:10px;
+  }
+  .title-sub{
+      color:black ;
+      letter-spacing:0.02em;
+  }
+  ::ng-deep .mat-tab-body-content{
+    overflow:hidden !important;
+  }

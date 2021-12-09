@@ -1,0 +1,21 @@
+.green{
+    color:rgba(0, 128, 0, 0.623);
+}
+.blue{
+    color:rgba(0, 0, 255, 0.678);
+}
+.orange{
+    color:rgba(255, 166, 0, 0.692);
+}
+.opt{
+    border-radius: 100%;
+    padding:2px 8px;
+    color: white;
+    background: #00775f;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width:25px;
+    height:25px;
+    font-size: 14px;
+  }

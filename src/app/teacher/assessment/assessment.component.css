@@ -1,0 +1,5 @@
+.assign2{
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 10%);
+    cursor: pointer;
+    border-radius:10px;
+  }

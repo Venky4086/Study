@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+  /* border: 1px solid darkgray; */
+  border-collapse: collapse;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.name-tag {
+  color: darkgray;
+  margin-top: 20px;
+}
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary1 {
+  color: #fff;
+  background-color: #007755 !important;
+  border-color: #007755 !important;
+}

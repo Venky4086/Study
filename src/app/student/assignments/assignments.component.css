@@ -1,0 +1,34 @@
+span.head-tag {
+  font-size: 25x;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #00775f !important;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.matclr {
+  background: #bbdacc !important;
+}
+.fnntwt {
+  font-weight: bold !important;
+  color: #00775f !important;
+  font-size: 1em !important;
+}
+.gbgree {
+  background: #00775f;
+  color: #fff !important;
+  text-align: center !important;
+  padding: 15px;
+}
+.gbgree h4 {
+  margin-bottom: 0;
+}
+.markscls {
+  background-color: #00775f !important;
+  color: #fff !important;
+  padding: 5px !important;
+}

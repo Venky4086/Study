@@ -1,0 +1,361 @@
+/* 3D Slideshow */ 
+
+.bggg{
+    background-size: cover;
+    /* background: url(../../assets/bgrubex.png); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.today-challenge-card{
+  height: 250px !important;
+  margin-top: -30px;
+}
+  #slideshow {
+    margin: 0 auto;
+    padding-top: 50px;
+    height: 600px;
+    width: 100%;
+    /* background-color: #f1f4f6 !important; */
+    box-sizing: border-box;
+  }
+  
+  .slideshow-title {
+    font-family: 'Allerta Stencil';
+    font-size: 62px;
+    color: #fff;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 25%;
+    letter-spacing: 3px;
+    font-weight: 300;
+  }
+  .yes{
+    display: block;
+  }
+  .no{
+    display: none;
+    visibility: hidden;
+  }
+  .sub-heading {
+    padding-top: 50px;
+    font-size: 18px;
+  } .sub-heading-two {
+    font-size: 15px;
+  } .sub-heading-three {
+    font-size: 13px;
+  } .sub-heading-four {
+    font-size: 11px;
+  } .sub-heading-five {
+    font-size: 9px;
+  } .sub-heading-six {
+    font-size: 7px;
+  } .sub-heading-seven {
+    font-size: 5px;
+  } .sub-heading-eight {
+    font-size: 3px;
+  } .sub-heading-nine {
+    font-size: 1px;
+  }
+  
+  .entire-content {
+    margin: auto;
+    /* width: 250px;
+    perspective: 1000px; */
+    width: 200px;
+    perspective: 600px;
+    position: relative;
+    padding-top: 80px;
+  }
+
+  .content-carrousel {
+    width: 100%;
+    position: absolute;
+    float: right;
+    /* animation: rotar 5s infinite linear; */
+    animation: rotar 9s  linear;
+    transform-style: preserve-3d;
+  }
+
+  .content-carrousel:hover {
+    animation-play-state: paused;
+
+  }
+  .mat-card:hover{
+    cursor: pointer;
+    box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+  }
+  
+  .content-carrousel figure {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #3b444b;
+    overflow: hidden;
+    position: absolute;
+  }
+  
+  .content-carrousel figure:nth-child(1) {
+    transform: rotateY(0deg) translateZ(300px); 
+  } .content-carrousel figure:nth-child(2) {
+    transform: rotateY(40deg) translateZ(300px); 
+  } .content-carrousel figure:nth-child(3) {
+    transform: rotateY(80deg) translateZ(300px); 
+  } .content-carrousel figure:nth-child(4) {
+    transform: rotateY(120deg) translateZ(300px); 
+  } .content-carrousel figure:nth-child(5) {
+    transform: rotateY(160deg) translateZ(300px); 
+  } .content-carrousel figure:nth-child(6) {
+    transform: rotateY(200deg) translateZ(300px); 
+  } .content-carrousel figure:nth-child(7) {
+    transform: rotateY(240deg) translateZ(300px); 
+  } .content-carrousel figure:nth-child(8) {
+    transform: rotateY(280deg) translateZ(300px); 
+  } .content-carrousel figure:nth-child(9) {
+    transform: rotateY(320deg) translateZ(300px); 
+  } .content-carrousel figure:nth-child(10) {
+    transform: rotateY(360deg) translateZ(300px); 
+  } 
+  
+  .shadow {
+      position: absolute;
+      box-shadow: 0px 0px 20px 0px #000;
+      border-radius: 1px;
+      background-size: cover;
+  }
+  
+  .content-carrousel img {
+    image-rendering: auto;
+    transition: all 300ms;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .content-carrousel img:hover {
+    transform: scale(1.2);
+    transition: all 300ms;
+  }
+  
+  .content-carrousel .carddd:hover {
+    transform: scale(1.2);
+    transition: all 300ms;
+  }
+  
+  
+  @keyframes rotar {
+    from {
+      transform: rotateY(0deg);
+    } to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  /* today challenge heading animation */
+  
+.wrapper{
+  width:440px;
+  height:70px;
+  position: absolute;
+  left:50%;
+  top:16%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.wrapper span{
+  font-size: 30px;
+  font-weight: bold;
+  color: #4b4b4b;
+  animation: lighting 1000ms alternate infinite ease;
+}
+@keyframes lighting{
+  0%,85%{
+      color: #4b4b4b;
+      text-shadow: none;
+  }
+  100%{
+      color:#188c93;
+      text-shadow: 0 0 5px #fff200, 0 0 3px #ff9f1a;
+  }
+}
+.wrapper span:nth-child(1){
+  animation-delay: 150ms;
+}
+.wrapper span:nth-child(2){
+  animation-delay: 300ms;
+}
+.wrapper span:nth-child(3){
+  animation-delay: 450ms;
+}
+.wrapper span:nth-child(4){
+  animation-delay: 600ms;
+}
+.wrapper span:nth-child(5){
+  animation-delay: 750ms;
+}
+.wrapper span:nth-child(6){
+  animation-delay: 900ms;
+  margin-left: 20px;
+}
+.wrapper span:nth-child(7){
+  animation-delay: 1050ms;
+}
+.wrapper span:nth-child(8){
+  animation-delay: 1200ms;
+}
+.wrapper span:nth-child(9){
+  animation-delay: 1350ms;
+}
+.wrapper span:nth-child(10){
+  animation-delay: 1500ms;
+}
+.wrapper span:nth-child(11){
+  animation-delay: 1650ms;
+}
+.wrapper span:nth-child(12){
+  animation-delay: 1800ms;
+}
+.wrapper span:nth-child(13){
+  animation-delay: 1950ms;
+}
+.wrapper span:nth-child(14){
+  animation-delay: 2100ms;
+}
+.wrapper span:nth-child(15){
+  animation-delay: 2250ms;
+}
+
+/* dilaychallenge-dialogbox css  */
+.active-card{
+  border: 1px solid #c8d0d6;
+  height: auto;
+  -ms-transform: rotateX(0deg) scale(1.33, 1.33);
+  -webkit-transform: rotateX(0deg) scale(1.33, 1.33);
+  transform: rotateX(0deg) scale(0., 1.13);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
+}
+li{
+  border: 1px solid #c7cbce;
+  padding: 7px 0px;
+  margin: 4px 20px;
+  border-radius: 28px;
+}
+li:hover{
+  background: #b8c4ce;
+}
+.prev:hover{
+  background: none!important;
+}
+.badge-warning{ 
+  background: white;
+  padding: 10px 20px;
+  color: black;
+}
+.badge-warning:hover{
+  background: #187d8cd9;
+  color:white;
+  /* cursor: pointer; */
+
+}
+.maths{
+  padding: 9px 0px;
+  margin-top: 6px!important;
+  border: 1px solid #c9cfd4;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.6);
+}
+h6:hover{
+cursor: pointer;
+}
+.topic{
+  border: 1px solid #80808026;
+  padding: 8px;
+}
+.topic:hover{
+  background: #f1f4f6 !important;
+}
+
+
+
+/* btn animation */
+.challenge:hover{
+  background: #18818e;
+  color: white !important;
+}
+.primary{
+  background-color: #00848b !important;
+}
+[type=radio] {
+  display: none;
+}
+.badge-dark {
+  color: #cddc39;
+  background-color: #343a40;
+  margin-right: 10px;
+}
+#slider {
+  height: 35vw;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+#slider label {
+  margin: auto;
+  width: 60%;
+  height: 100%;
+  border-radius: 4px;
+  position: absolute;
+  left: 0; right: 0;
+  /* cursor: pointer; */
+  transition: transform 0.4s ease;
+  overflow-y: scroll;
+}
+
+#s1:checked ~ #slide4, #s2:checked ~ #slide5,
+#s3:checked ~ #slide1, #s4:checked ~ #slide2,
+#s5:checked ~ #slide3 {
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+  transform: translate3d(-30%,0,-200px);
+}
+
+#s1:checked ~ #slide5, #s2:checked ~ #slide1,
+#s3:checked ~ #slide2, #s4:checked ~ #slide3,
+#s5:checked ~ #slide4 {
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,.3), 0 2px 2px 0 rgba(0,0,0,.2);
+  transform: translate3d(-15%,0,-100px);
+}
+
+#s1:checked ~ #slide1, #s2:checked ~ #slide2,
+#s3:checked ~ #slide3, #s4:checked ~ #slide4,
+#s5:checked ~ #slide5 {
+  box-shadow: 0 13px 25px 0 rgba(0,0,0,.3), 0 11px 7px 0 rgba(0,0,0,.19);
+  transform: translate3d(0,0,0);
+}
+
+#s1:checked ~ #slide2, #s2:checked ~ #slide3,
+#s3:checked ~ #slide4, #s4:checked ~ #slide5,
+#s5:checked ~ #slide1 {
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,.3), 0 2px 2px 0 rgba(0,0,0,.2);
+  transform: translate3d(15%,0,-100px);
+}
+
+#s1:checked ~ #slide3, #s2:checked ~ #slide4,
+#s3:checked ~ #slide5, #s4:checked ~ #slide1,
+#s5:checked ~ #slide2 {
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+  transform: translate3d(30%,0,-200px);
+}
+
+#slide1 { background: #00BCD4;cursor: pointer; }
+#slide2 { background: #4CAF50;cursor: pointer; }
+#slide3 { background: #CDDC39;cursor: pointer; }
+/* #slide3 { background: #c6ce78 } */
+#slide4 { background: #FFC107;cursor: pointer; }
+/* #slide5 { background: #FF5722 } */
+#slide5 { background: #ef7751;cursor: pointer; }
+/* #slide5 { background: #FF5722 } */
+
+#slide5::-webkit-scrollbar,#slide2::-webkit-scrollbar,#slide3::-webkit-scrollbar,#slide4::-webkit-scrollbar,#slide1::-webkit-scrollbar{
+  visibility: hidden;
+}
+.locked:hover{
+  cursor: pointer;
+}

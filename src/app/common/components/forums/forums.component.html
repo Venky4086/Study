@@ -1,0 +1,68 @@
+<div class="star card mx-2">
+  <div class="container clsmax">
+    
+    <div id="demo">
+      <div class="backCls my-2">
+        <div>
+          <img
+            src="../assets/images/backBtn.png"
+            (click)="goBack()"
+            alt="btn"
+          />
+        </div>
+        <div class="font-weight-bold mx-2">All Forums</div>
+      </div>
+      <div class="col-md-12 mx-auto d-flex flex-row bd-highlight table-responsive-vertical shadow-z-1 p-3"
+        style="background-color:#fbf8f8 ;margin:1px;">
+        <div class="col text-right">
+          <a aria-label='Add Discussion' class='h-button centered' data-text=' +' (click)="addForum()">
+            <span>A</span>
+            <span>d</span>
+            <span>d</span>
+            <span></span>
+            <span>F</span>
+            <span>o</span>
+            <span>r</span>
+            <span>u</span>
+            <span>m</span>
+            <!-- <span>s</span>
+            <span>s</span>
+            <span>i</span>
+            <span>o</span>
+            <span>n</span> -->
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-12 mx-auto d-flex flex-row bd-highlight table-responsive-vertical shadow-z-1 p-3"
+        *ngFor="let data of queries" (click)="goToDiscussion(data.dqid)">
+        <div class="col-md-1"> <img class="pt-1 border-0 pr-2" width="45" height="45" src="https://storage.googleapis.com/study-amaze-bucket/users/{{ data.userId }}/{{ data.userImageUri }}" alt="img"></div>
+        <div class="col-md-5 title">{{data.title}}<br>
+          <!-- <span>Posted On: {{data.insertedDate  - currentDateTime}}</span>  -->
+          <span>Posted On: {{calculateDiff(data)}} days ago</span> 
+          </div>
+        <div class="col"> </div>
+        <div class="col text-center"><span
+            style="font-size: 20px; font-weight: bold;">{{data.noOfViews}}</span><br /><span>views</span></div>
+        <div class="col text-center"><span
+            style="font-size: 20px; font-weight: bold;">{{data.noOfcomments}}</span><br /><span>comments</span></div>
+      </div>
+
+      <div class="col-md-12 mx-auto d-flex flex-row bd-highlight table-responsive-vertical shadow-z-1 p-3"
+        style="background-color:#fbf8f8 ;margin:1px;">
+        <div class="col">
+          <div class="container">
+            <div class="row text-center">
+              <div class="col mx-auto">
+                <button mat-raised-button class="mx-2"  [disabled]="page==0 ? true : false "
+                  (click)="prev()">Prev</button>
+                <button mat-raised-button  class="mx-2" [disabled]="queries.length!=10 ? true : false "
+                  (click)="next()">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

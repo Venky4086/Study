@@ -1,0 +1,114 @@
+/* .container-fluid{
+  background:radial-gradient(#d610cb, rgb(58 19 179 / 82%)) !important;
+} */
+
+.topic-box {
+  height: 50px;
+  width: 350px;
+  color: #007984;
+  border-radius: 10px;
+  transition-duration: 0.4s;
+}
+.mat-card {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.mat-card:hover {
+  /* background-image: linear-gradient(
+    to right,
+    #25aae1,
+    #40e495,
+    #30dd8a,
+    #2bb673
+  ); */
+  background-color: #32e2bf;
+  color:#fff !important;
+}
+.mat-card:hover > .txt-topic {
+  cursor: pointer;
+  text-decoration: none;
+}
+.txt-topic {
+  font-size: 16px;
+  color: black;
+}
+
+.topic-box:hover {
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  cursor: pointer;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  text-decoration: none;
+  background-color: white;
+  top: -5px;
+  height: 50px;
+  background-image: linear-gradient(
+    to left top,
+    #007984,
+    #0a8c88,
+    #24a783,
+    #34bb85,
+    #67cb7e
+  );
+  width: 350px;
+  color: #ecf5f4;
+  border: 1px solid #007984;
+  border-radius: 10px;
+  transition-duration: 0.4s;
+}
+
+.practise-btn {
+  border-radius: 10px;
+  outline: none;
+  background-color: #186480;
+  color: white;
+  width: 200px;
+  height: 60px;
+}
+
+.active {
+  background-color: #186480 !important;
+  color: white !important;
+  outline: none !important;
+  box-shadow: 0 10px 30px 0 rgba(73, 37, 233, 0.24),
+    0 17px 50px 0 rgba(76, 2, 126, 0.19) !important;
+}
+
+.fa-chevron-right {
+  color: #738f93;
+}
+li {
+  display: flex;
+  list-style: none;
+}
+li:last-child {
+  color: #575366;
+  cursor: context-menu;
+  font-weight: bold;
+}
+
+.dot-p{
+  width: 40px;
+  height: 40px;
+  background-color: #00775f;
+  color: white;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
+  padding: 10px 8px;
+  border-radius: 50%;
+}
+.dot-t{
+  width: 30px;
+  height: 30px;
+  background-color: greenyellow;
+  color: white;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 50%;
+}

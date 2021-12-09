@@ -1,0 +1,34 @@
+<div class="container-fluid">
+
+    <div class="row" *ngFor="let image of uploadData?.images">
+
+        <!-- <div>{{ image.image }}</div> -->
+        <img src="https://storage.googleapis.com/study-amaze-bucket/institutions/{{ uploadData?.instituteIdFK }}/assignments/{{ uploadData?.assignmentIdfk }}/{{ uploadData?.userId }}/{{ image.image }}">
+
+    </div>
+
+    <div class="row">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Marks</mat-label>
+            <input type="text" matInput placeholder="marks" [(ngModel)]="marks">
+        </mat-form-field>
+
+    </div>
+
+    <div class="row">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Remarks</mat-label>
+            <textarea matInput placeholder="Remarks" [(ngModel)]="feedback"></textarea>
+        </mat-form-field>
+
+    </div>
+
+    <div>
+
+        <button mat-raised-button color="primary" (click)="giveUserReport()">Submit</button>
+
+    </div>
+
+</div>

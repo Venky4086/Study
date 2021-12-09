@@ -1,0 +1,76 @@
+<div class="Mainsec">
+<div class="header_now">
+  <div class="div_right p-3">
+    <h5 class="font-weight-bold fnt-zs mb-0">Daily Challenge Questions</h5>
+  </div>
+</div>
+
+<div class="star">
+  <div>
+    <div class="container-fluid mx-2">
+      <div class="row my-1" *ngFor="let q of Questions; let index = index">
+        <div class="mat-card q-card p-3 my-2">
+          <div class="d-flex align-items-center">
+            <span class="qid">{{ q.qid }}</span>
+            <span class="que cls-green"
+              ><ng-katex [equation]="q.question"></ng-katex
+            ></span>
+          </div>
+          <!-- <span class="qid">{{ q.qid }}</span>.
+                    <span class="que cls-green"><ng-katex [equation]="q.question"></ng-katex></span> -->
+
+          <span
+            *ngIf="q.status == true"
+            class="pull-right mr-2 mt-3"
+          >
+            <img
+              src="../../assets/images/check_done.png"
+              alt="done"
+              width="20"
+              height="20"
+            />Already added</span
+          >
+
+          <span class="pull-right ml-auto">
+            <span>
+              <input
+                [disabled]="q.status"
+                [(ngModel)]="postDate[index]"
+                type="date"
+               
+                class="mt-2 mr-1 form-control1"
+              />
+            </span>
+            <button
+              mat-icon-button
+              [disabled]="!postDate[index]"
+              (click)="clearDate(index)"
+            >
+              <mat-icon> <i class="fas fa-times fa-sm"></i> </mat-icon>
+            </button>
+            <button
+              mat-raised-button
+              [disabled]="!postDate[index]"
+              (click)="postQuestion(q.qid, index)"
+            >
+              Save
+            </button>
+          </span>
+
+          <br />
+          <div class="mt-2 ml-5">
+            <span class="badge badge-success mx-2 clsBold">Class {{ q.standard }}</span>
+            <span class="mr-2">{{ q.subject }}</span>
+            Topic: <span class="mr-4">{{ q.topic }}</span>
+
+            <!-- <span  style="color: green; font-size: 12px;" class="ml-2" *ngIf="q.status==true ? 'Already added ':'' ">
+                            already added
+                            <img src="../../assets/check-circle.gif" alt="done" width="40" height="40">
+                             </span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,71 @@
+<div class="js-sans">
+  <mat-toolbar class="fixedElement js-sans global-bg">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="mx-1">
+      <img
+        src="../../assets/images/study-amaze.png"
+        width="40"
+        height="40"
+        alt=""
+      />
+    </div>
+    <div class="js-sans">Studyamaze</div>
+    <div style="margin-left: auto"></div>
+
+    <div class="my-auto">
+      <p class="mb-0 mt-2 mini-text">Hi, {{ name }}</p>
+    </div>
+
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      matTooltip="profile"
+      matTooltipPosition="below"
+      class=""
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+
+  <div class="main-container">
+    <mat-sidenav-container>
+      <mat-sidenav
+        fixedInViewport="true"
+        [fixedTopGap]="64"
+        mode="side"
+        style="width: 240px"
+      >
+        <mat-selection-list #shoes [multiple]="false" class="pt-0">
+          <mat-list-option
+            class="js-sans"
+            *ngFor="let navLink of sideNavData"
+            [value]="navLink.name"
+            [routerLink]="navLink.path"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <mat-icon aria-hidden="false" aria-label="Example home icon">{{
+              navLink.icon
+            }}</mat-icon>
+            <span> {{ navLink.name }}</span>
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+        <section class="content-min-height">
+          <router-outlet></router-outlet>
+        </section>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>

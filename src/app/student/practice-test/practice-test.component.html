@@ -1,0 +1,40 @@
+<div class="star">
+    <div class="container-fluid">
+      <ul class="breadcrumb my-2 ">
+
+      
+          <div class="mx-2">
+            <img
+              src="../assets/images/backBtn.png"
+              (click)="goBack()"
+              alt="btn"
+            />
+          </div>
+         
+       
+        <div class="fat-arrow">
+          <div class="inner" (click)="goToStandards()" style="color: #dee2e6;">Class&nbsp;{{ standardName }}</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner" (click)="goToTopics()" style="color: #dee2e6;">{{ subjectName }}</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner" style="color: #dee2e6;cursor: default;" >{{topicName}}</div>
+        </div>
+      </ul>
+    </div>
+  
+    <!-- <h6 class="text-success ml-5"><a routerLink="/study1">Class {{standardName}}</a> > <a routerLink="/study1">{{subjectName}}</a> > <a routerLink="/topics">{{topicName}}</a></h6> -->
+    <div class="computer m-3">
+      <label for="">Selected Topic is:</label>
+      <div class="screen">
+        <mat-card class="mx-1 mt-2 text-center">{{topicName}}</mat-card>
+      </div>
+      <div class="stand"></div>
+    </div>
+  
+    <div class="d-flex text-center justify-content-center" style="margin-top: 20%;">
+      <button mat-raised-button class="practise-btn mx-2 global-bg" [routerLink]="['/student/practise']">Start Practice</button>
+      <button mat-raised-button class="practise-btn mx-2 global-bg" (click)="checkforqs()">Take a Test</button>
+    </div>
+  </div>

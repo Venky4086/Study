@@ -1,0 +1,16 @@
+<div class="star bcca-breadcrumb">
+
+  <!-- <div class="bcca-breadcrumb-item"></div> -->
+  <div class="bcca-breadcrumb-item last" routerLink='/student/qdiscussion'
+   routerLinkActive="router-link-active">Discussion</div>
+  <div class="bcca-breadcrumb-item"  >
+    <button data-toggle="tooltip" title="submit answer to view answer" 
+    class="nakedbtn"  [disabled]="answerLocked" routerLink='/student/qsolution' 
+    routerLinkActive="router-link-active"> 
+    <span *ngIf="answerLocked"><i class="fas fa-lock"></i></span>
+     <span *ngIf="!answerLocked"><i class="fas fa-unlock"></i></span> Answer</button>
+  </div>
+  <div class="bcca-breadcrumb-item" routerLink='/student/qhistory' routerLinkActive="router-link-active">History</div>
+  <div class="bcca-breadcrumb-item" routerLink='/student/practise-question/{{ qid }}' routerLinkActive="router-link-active">Question</div>
+  
+</div>

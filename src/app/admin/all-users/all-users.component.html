@@ -1,0 +1,99 @@
+<div class="container-header">
+  <div class="header_now">
+    <div class="div_right">
+      <h5 class="font-weight-bold fnt-zs">All Users</h5>
+    </div>
+    <div class="search_sec">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search Record" />
+        <div class="input-group-append">
+          <button class="btn btn-success" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table mx-2">
+      <thead class="header">
+        <tr class="bg-primary1 text-white">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>View</th>
+        </tr>
+      </thead>
+    </table>
+
+    <div class="body_panel">
+      <table class="table">
+        <tbody class="body">
+          <tr
+            *ngFor="let user of Users"
+            (click)="routeToUserDetails(user.userId)"
+          >
+            <!-- <td>{{ user.userId }}</td> -->
+            <td>{{ user.userId }}</td>
+            <td>{{ user.userName }}</td>
+            <td>{{ user.mobileNo }}</td>
+            <td><span class="btn btn-primary1">View Details</span></td>
+            <!-- <td>{{ user.pointsInfo.loginPoints }}</td>
+                <td>{{ user.pointsInfo.referralPoints }}</td> -->
+            <!-- <td>{{ user.pointsInfo.registerPoints }}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <a href="#">&laquo;</a>
+    <a href="#">1</a>
+    <a href="#" class="active">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <a href="#">&raquo;</a>
+  </div>
+
+  <!-- <div class="container-header">
+  <div class="header_now">
+    <h3 class="font-weight-bold">All Users</h3>
+  </div>
+  <div class="row">
+    <section class="mx-5 mt-2 mb-4">
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0" style="width: 100%">
+          <thead>
+            <tr>
+             
+              <th>Id</th>
+              <th>Name</th>
+              <th>Mobile</th>
+              
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <tr
+              *ngFor="let user of Users"
+              (click)="routeToUserDetails(user.userId)"
+            >
+              
+              <td>{{ user.userId }}</td>
+              <td>{{ user.userName }}</td>
+              <td>{{ user.mobileNo }}</td>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div> -->
+</div>

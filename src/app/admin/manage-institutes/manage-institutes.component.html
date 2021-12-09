@@ -1,0 +1,104 @@
+<div class="star">
+    <div class="container-fluid my-2">
+        <h3 class="text-center">Manage Institutes</h3>
+        <div class="container">
+            <div class="col-md-12   mb-3">
+                <div class="row pull-right">
+                    <button data-toggle="modal" data-target="#exampleModalCenter" mat-mini-fab color="accent"
+                        matTooltipPosition="right" matTooltip="Add the Institute" aria-label="Add the Institute">
+                        <mat-icon>+</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <span class="ml-5" style="color: #95a5a6;font-size: 18px;">All Institutes-Info</span>
+            <ul class="responsive-table">
+                <li class="table-header">
+                    <div class="col col-1">ID</div>
+                    <div class="col col-3">Institute Name</div>
+                    <div class="col col-3">HOD Name</div>
+                    <div class="col col-1">Action</div>
+                </li>
+                <li class="table-row" *ngFor="let info of allInstitutes;let i=index;">
+                    <div class="col col-1" data-label="Sl No">{{i+1}}</div>
+                    <div class="col col-3" data-label="Institute Name">{{info.institutionName}}</div>
+                    <div class="col col-3" data-label="Teacher Name">{{info.hod}}</div>
+
+                    <div class="col col-1" data-label="Action">
+                        <button id="openModalButton" [hidden]="true" data-toggle="modal"
+                            data-target="#exampleModalCenter1">Open Modal</button>
+                        <button (click)="openModel(info.id)" mat-icon-button> <i class="fas fa-trash fa-sm"
+                                style="color: crimson;"></i></button>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #95a5a6;">Adding Instituion Page
+                    </h5>
+                    <button #closebutton type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mat-card add-institute-form p-3">
+
+                        <form [formGroup]="formInst">
+                            HOD Name:<input class="form-control" formControlName="hod">
+                            Institute Name:<input class="form-control" formControlName="institutionName">
+                            Institute Established Date:<input type="date" [max]="yesterday" class="form-control"
+                                formControlName="estDate">
+
+                            <div class="buttons text-center mt-2">
+                                <button type="submit" id="closeModal" mat-raised-button color="primary"
+                                    style="margin-right:5px;" (click)="onSubmit()">Submit</button>
+                                <button type="button" mat-raised-button color="warn" style="margin-right:5px;"
+                                    data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- model for delete confirmation  -->
+    <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button #closebutton2 type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mat-card add-institute-form p-3">
+
+                        <form (ngSubmit)="deleteInst()">
+                            <h6>Are you sure you want to delete the Institute?</h6>
+                            <div class="buttons text-center mt-2">
+                                <button type="submit" mat-raised-button color="warn"
+                                    style="margin-right:5px;">Delete</button>
+                                <button type="button" id="closeModal" mat-raised-button color="primary"
+                                    data-dismiss="modal" style="margin-right:5px;">Cancel</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

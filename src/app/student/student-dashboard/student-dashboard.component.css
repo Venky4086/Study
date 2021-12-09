@@ -1,0 +1,35 @@
+.circle_design {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: white;
+  background: #41cb8b;
+  padding: 18px 4px;
+  margin: 15px 0;
+  line-height: 2px;
+  display: inline-block;
+}
+.border-right {
+  border-right: 1px solid #ccc;
+}
+.border3 {
+  border-right-color: blue;
+  border-bottom-color: blue;
+  border-left-color: blue;
+  border-style: solid;
+  border-width: 1px;
+}
+.borderRed {
+  border-right-color: red;
+  border-bottom-color: red;
+  border-left-color: red;
+  border-style: solid;
+  border-width: 1px;
+}
+.bordegree {
+  border-right-color: green;
+  border-bottom-color: green;
+  border-left-color: green;
+  border-style: solid;
+  border-width: 1px;
+}

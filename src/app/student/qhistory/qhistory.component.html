@@ -1,0 +1,73 @@
+<div class="card mx-3 p-3">
+<div class="star">
+  <div class="container-fluid clsmax">
+
+    <ul class="breadcrumb">
+      <div class="fat-arrow">
+        <div class="inner mx-2" (click)="goToStandards()" style="color: #dee2e6;width: auto !important;"> Class&nbsp;{{
+          questionData.standard }}</div>
+      </div>
+      <div class="fat-arrow">
+        <div class="inner mx-2" (click)="goToSubjects()" style="color: #dee2e6;width: auto !important;">{{ subjectName
+          }}</div>
+      </div>
+      <div class="fat-arrow">
+        <div class="inner mx-2" (click)="goToTopics()" style="color: #dee2e6;width: auto !important;">{{ topicName }}
+        </div>
+      </div>
+      <div class="fat-arrow">
+        <div class="inner mx-2" (click)="goToQuestions()" style="color: #f8f9fa;width: auto !important;">Questions</div>
+      </div>
+      <div class="fat-arrow">
+        <div class="inner mx-2" style="color: #dee2e6;width: auto !important;">{{ questionData.title }}</div>
+      </div>
+    </ul>
+
+  </div>
+  <div class="cumb ml-4">
+    <div class="my-3">
+    <app-practice-header></app-practice-header>
+  </div>
+  </div>
+  <div class="backCls my-2">
+    <div>
+      <img
+        src="../assets/images/backBtn.png"
+        (click)="goBack()"
+        alt="btn"
+      />
+    </div>
+    <div class="font-weight-bold mx-2">Question History Page</div>
+  </div>
+  <div class="container pt-2 clsmax" *ngIf="questionHistoryObject.length ;else noQuestions;">
+
+    <h4 class="text-left font1e">This question is attempted by you, following times:</h4>
+
+    <table class="table table-hover clsmax responsive-lay">
+      <thead>
+        <tr class="text-center">
+          <th>Sl No</th>
+          <th>Date & Time</th>
+          <th>Duration (sec)</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center" *ngFor="let history of earlyHistory;let i=index;">
+          <td>{{i+1}}</td>
+          <!-- <td class="text-center">{{ history.attemptedDate | timezone: 'yyyy-MM-dd hh:mm:a zzzz' }}</td> -->
+          <td class="text-center"> {{ history.attemptedDate | date:'short':'+0530'}} </td>
+          <!-- <td class="text-center">{{ history.attemptedDate | date:'short' }}</td> -->
+          <td class="text-center">{{ history.timeTaken | timeSec }}</td>
+          <td class="text-center">{{ history.correct }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noQuestions>
+    <div class=" text-center">
+      <h5>No Practise is done on the question yet.</h5>
+    </div>
+  </ng-template>
+</div>
+</div>

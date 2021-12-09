@@ -1,0 +1,69 @@
+.head-tag {
+  color: darkgray;
+}
+.user-name p {
+  color: gray;
+  letter-spacing: 0.01em;
+}
+.user-mobile p {
+  color: gray;
+  letter-spacing: 0.01em;
+}
+.cls_user {
+  font-weight: bold !important;
+  font-size: 1.5rem;
+}
+.ng-star-inserted {
+  background: #eeeeee !important;
+  margin-bottom: 5px;
+}
+.user-points p {
+  color: gray;
+  letter-spacing: 0.01em;
+}
+.mat-title {
+  color: darkgray;
+  font-size: 30px;
+}
+.mat-sub-title {
+  color: darkgray;
+  font-size: 20px;
+}
+.red-icon {
+  color: red;
+  font-size: 17px;
+  margin-bottom: 7px;
+}
+.red-icon svg {
+  fill: red;
+  font-size: 17px;
+}
+.green-icon {
+  color: green;
+  font-size: 17px;
+  margin-bottom: 7px;
+}
+.green-icon svg {
+  fill: green;
+  font-size: 17px;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+p.sub-head-line {
+  font-size: 17px;
+  color: #fff;
+  padding: 5px;
+  font-weight: bold;
+  line-height: 30px;
+  text-decoration: none;
+  background: #007755;
+  /* background-image: linear-gradient(transparent, transparent),linear-gradient(transparent, transparent),linear-gradient(to right, #72ee24, #487bd6); */
+}
+.bg_green {
+  background-color: #007755 !important;
+  color: #fff !important;
+}

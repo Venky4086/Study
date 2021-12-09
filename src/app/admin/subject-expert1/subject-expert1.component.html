@@ -1,0 +1,103 @@
+
+<div class="Mainsec">
+    <div class="header_now">
+      <div class="div_right p-3">
+        <h5 class="font-weight-bold fnt-zs mb-0">Subject Expert - 1</h5>
+      </div>
+    </div>
+
+<div class="star">
+
+    <!-- <div class="container">
+        <div class="row mb-3 mt-1">
+            <div class="col-md-1">
+                <button mat-raised-button color="primary" class="back" (click)="goBack()">
+                    <i class="fas fa-arrow-alt-circle-left"></i>&nbsp;Back
+                </button>
+            </div>
+           
+        </div>
+    </div> -->
+
+    <div class="container-fluid mx-2 pb-4" style="background-color: white;border-radius: 12px;">
+        <div class="row py-3">
+            <span style="color: #818181;">Select Standard and Subject to get Questions for Approval</span>
+        </div>
+        <div class="row ">
+            <div class="col-md-3">
+                <label for="sel1" class="clrGren">Select Class:</label>
+                <select class="form-control px-2" [(ngModel)]="standardId" (change)="onStandardChange()">
+                    <option value=0>Standard</option>
+                    <option *ngFor="let standard of Standards" [ngValue]="standard.standardId">{{ standard.standard }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="sel1" class="clrGren">Select Subject:</label>
+                <select class="form-control px-2" [(ngModel)]="subjectId" (change)="onSubjectChange()">
+                    <option value=0>Subject</option>
+                    <option *ngFor="let subject of Subjects;let i = index" [ngValue]="subject.subjectId"
+                        [disabled]="!restrictRoles[i]">{{ subject.subject }}</option>
+                </select>
+            </div>
+            
+            <div class="col-md-3" *ngIf="questions.length">
+                <label for="sel1" class="clrGren">Search by Topic:</label>
+                <select class="form-control" name="topic" [(ngModel)]="topic">
+                    <option value="">Search by Topic..</option>      
+                    <option *ngFor="let topic of noDupTopics" [ngValue]="topic">{{ topic }}</option>      
+                </select>
+                <!-- <input type="text"[(ngModel)]="searchTerm" class="form-control search-field " style="width: 300px;height: 40px;" placeholder="Search by topic..." > -->
+            </div>
+        </div>
+    
+    </div>
+    <!-- *ngIf="questions.length;else noQuestions" -->
+    <div class="container-fluid mx-2">
+        <div class="row" *ngFor="let question of questions | filterTopics : topic : filterMetadata ;let i=index">
+
+            <!-- <span>{{i+1}}</span> -->
+            <div class="mat-card col my-2 p-4 qs">
+                <p> <b>Title :</b> {{ question.title }} 
+                    <span class="mx-2"><b>Topic :</b> {{ question.topic }}</span>
+                    <span class="mx-2"><b>Type :</b> {{ question.type }}</span>
+                    <span class="pull-right pb-1">
+                        <button (click)="approve(question.qid)" class="mat-raised-button mx-1">Approve</button>
+                        <button (click)="edit(question.qid)" class="mat-raised-button mx-1">Edit</button>
+                        <button (click)="modify(question.qid)" class="mat-raised-button mx-1">Modify</button>
+                        <button (click)="duplicate(question.qid)" class="mat-raised-button mx-1">Duplicate</button>
+                    </span>
+                </p> 
+                <hr>
+               
+                <span class="quest mr-1"> {{ question.qid }}</span>
+                <span class="qcolor"><ng-katex [equation]="question.question"></ng-katex></span>
+                
+                <div class="row d-flex mt-2">
+                    <div class="col-3"><b>a.</b><ng-katex [equation]="question.a"></ng-katex>
+                    </div>
+                    <div class="col-3"><b>b.</b><ng-katex [equation]="question.b"></ng-katex>
+                    </div>
+                    <div class="col-3"><b>c.</b><ng-katex [equation]="question.c"></ng-katex>
+                    </div>
+                    <div class="col-3"><b>d.</b><ng-katex [equation]="question.d"></ng-katex>
+                    </div>
+                </div>
+                <div class="my-1"> <b>Correct option :</b> {{ question.correctOption }}</div>
+                <div class="my-1"> <b>Level :</b> {{ question.level }}</div>
+                <div class="my-1 text-left bg-soln p-3 bgf0f0f0"> <b class="fontWt">Solution :</b>
+                    <ng-katex [equation]="question.solutionDesc"></ng-katex>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div [ngClass]="static ? 'yes':'no'" class="container-fluid text-center mt-2" *ngIf="questions.length == 0">
+        <mat-card>
+          <h3>No Questions to Approve</h3>
+         </mat-card>
+    </div>
+</div>
+</div>
+

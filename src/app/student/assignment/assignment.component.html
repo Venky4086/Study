@@ -1,0 +1,218 @@
+<div class="card mx-2">
+<div class="container-fluid mt-3">
+    <div class="mx-2">
+        <img
+          src="../assets/images/backBtn.png"
+          (click)="goBack()"
+          alt="btn"
+        />
+      </div>
+    <div class="row">
+
+        <div class="col">
+
+            <mat-tab-group mat-align-tabs="start">
+
+                <mat-tab label="Details" style="font-weight:bold;color:#00775f">
+
+                    <mat-card class="m-2">
+
+                        <div class="container-fluid">
+
+                            <div class="row ml-3">
+                                <h5>Assignment Info</h5>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-3">Title</div>
+
+                                <div class="col-2">:</div>
+
+                                <div class="col-5">{{ assignmentInfo?.title }}</div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-3">Standard</div>
+
+                                <div class="col-2">:</div>
+
+                                <div class="col-5">{{ assignmentInfo?.standard }}</div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-3">Subject</div>
+
+                                <div class="col-2">:</div>
+
+                                <div class="col-5">{{ assignmentInfo?.subject }}</div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-3">Topic</div>
+
+                                <div class="col-2">:</div>
+
+                                <div class="col-5">{{ assignmentInfo?.topic }}</div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-3">Questions</div>
+
+                                <div class="col-2">:</div>
+
+                                <div class="col-5">{{ assignmentInfo?.noOfQuestions }}</div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-3">Marks</div>
+
+                                <div class="col-2">:</div>
+
+                                <div class="col-5">{{ assignmentInfo?.marks }}</div>
+
+                            </div>
+
+                        </div>
+
+                    </mat-card>
+
+                </mat-tab>
+
+                <mat-tab label="Questions">
+
+                    <mat-card class="m-2">
+
+                        <mat-card-header>
+                            <div>Questions</div>
+                            <div class="container-fluid">
+        
+                                <div class="row">
+        
+                                    <div class="col"></div>
+                                    
+                                </div>
+        
+                            </div>
+                        </mat-card-header>
+        
+                        <mat-card-content>
+        
+                            <div class="container-fluid">
+        
+                                <div class="row">
+        
+                                    <div class="col mx-3 mt-3">
+        
+                                        <div *ngFor="let q of Questions;let i=index">
+                                            <p>{{ i+1 }}.{{ q.question }}</p>
+                                        </div>            
+        
+                                    </div>
+        
+                                </div>
+        
+                            </div>
+        
+                        </mat-card-content>
+        
+                    </mat-card>
+
+                </mat-tab>
+
+                <mat-tab label="Submission">
+
+                    <mat-card class="m-2">
+
+                        <div *ngIf="assignmentInfo?.status == 'pending'">
+        
+                            <input type='file' (change)="onSelectFile($event)" multiple>
+    
+                            <br>
+    
+                            <button mat-raised-button class="mt-2" (click)="uploadFiles()">Upload</button>
+    
+                        </div>
+
+                        <div *ngIf="assignmentInfo?.status == 'completed'">
+        
+                            <p>You have already submitted the assignment</p>
+    
+                        </div>
+
+                    </mat-card>
+
+                </mat-tab>
+
+                <mat-tab label="Feedback" *ngIf="feedback.length">
+
+                    <mat-card class="m-2">
+
+                        <div class="container-fluid">
+
+                            <div class="row justify-content-center">
+
+                                <h4>Feedback</h4>
+
+                            </div>
+
+                            <div class="d-flex">
+    
+                                <div>
+    
+                                    <span> Marks</span>
+    
+                                </div>
+    
+                                <div class="mx-3"> : </div>
+    
+                                <div>
+    
+                                    <span class="bold">{{ feedback[0].marks }}</span>
+    
+                                </div>
+    
+                            </div>
+    
+                            <div class="d-flex">
+    
+                                <div>
+    
+                                    <span>Feedback</span>
+    
+                                </div>
+    
+                                <div class="mx-3"> : </div>
+    
+                                <div>
+    
+                                    <span class="bold">{{ feedback[0].feedBack }}</span>
+    
+                                </div>
+    
+                            </div>
+    
+                        </div>
+
+                    </mat-card>
+
+                </mat-tab>
+
+            </mat-tab-group>
+
+        </div>
+
+    </div>
+
+</div>
+</div>

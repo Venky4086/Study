@@ -1,0 +1,32 @@
+.fancy-select {
+  border: none;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  background-color: #e5e5e5;
+}
+.qs {
+  border-radius: 12px;
+}
+.mat-raised-button {
+  background-color: #007755;
+  color: #fff;
+}
+.clrGren {
+  color: #007755;
+  font-weight: 600;
+}
+.quest {
+  background: #007755;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  box-shadow: inset 0 0 10px #007755;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-weight: 600;
+}
+.fontWt {
+  font-weight: 600;
+  color: #007755;
+}

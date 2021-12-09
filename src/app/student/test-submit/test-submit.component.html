@@ -1,0 +1,153 @@
+<div class="star fluid mt-3 mx-3">
+	<!-- <div class="container-fluid pt-5">
+	  <div class="d-flex">
+		<li (click)="goToStandards()" class="bread mx-2">Class {{ standardName }}</li>
+		<li><i class="fas fa-chevron-right mt-1"></i></li>
+		<li (click)="goToSubjects()" class="bread mx-2">{{ subjectName }}</li>
+	  </div>
+	</div> -->
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<div class="fat-arrow">
+				<div class="inner mx-2" (click)="goToTopics()" style="color: #dee2e6;width: auto !important;">Test</div>
+			</div>
+			<div class="fat-arrow">
+				<div class="inner mx-2" (click)="goToStandards()" style="color: #dee2e6;width: auto !important;">
+					Class&nbsp;{{ standardName }}</div>
+			</div>
+			<div class="fat-arrow">
+				<div class="inner mx-2" (click)="goToSubjects()" style="color: #dee2e6;width: auto !important;">
+					{{ subjectName }}
+				</div>
+			</div>
+		</ul>
+	</div>
+
+	<div class="col-md-12 pb-4">
+		<div class="backCls mx-2 my-2">
+			<div>
+			  <img
+				src="../assets/images/backBtn.png"
+				(click)="goBack()"
+				alt="btn"
+			  />
+			</div>
+			<div class="font-weight-bold mx-2">Test Report</div>
+		  </div>
+		<div class="row mx-2 justify-content-center">
+
+			<div class="col-md-6">
+				<mat-card>
+					<div class="d-flex flex-row justify-content-between align-items-center text-center">
+						<div>Result: <span class="font-weight-bold">{{testReport.result}}</span></div>
+						<div>Total Time : <span class="font-weight-bold">{{testReport.testDurationInMin | timeSec}}</span></div>
+						<div>Total Attempted : <span class="font-weight-bold">{{ attempts }}</span></div>
+					</div>
+				</mat-card>
+			</div>
+
+			<div class="col-md-6">
+				<mat-card>
+					<div class="d-flex flex-row justify-content-between align-items-center text-center">
+						
+							<div>Correct Answers : <span class="font-weight-bold">{{ correct }}</span></div>
+							<div>Wrong Answers : <span class="font-weight-bold">{{ wrong }}</span></div>
+							<div>Not Attempted : <span class="font-weight-bold">{{testReport.notAttempted}}</span></div>
+						</div>
+					
+				</mat-card>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid pb-4 px-0">
+
+		<div class="row mx-1">
+
+			<div class="col-md-12">
+				<div class="box1 px-2" *ngFor="let que of questions;let index=index">
+					<div class="box2">
+
+						<div class="container-fluid">
+
+							<p class=" background">
+								<span class="btn btn-default mr-1" style="color: #333;
+								  background-color: #fff;
+								  border-color: #ccc;">{{ que.sequenceNum }}.</span>
+								<span class="col-md-4">
+									<ng-katex [equation]="que.question"></ng-katex>
+								</span>
+							</p>
+
+						</div>
+						<div class="pl-4">
+							<div class="radio mb-3">
+								<label> </label>
+								<label><label id="o1"><span class="opt mx-2 mx-2">A</span>
+										<ng-katex [equation]="que.a"></ng-katex>
+									</label></label>
+							</div>
+							<div class="radio mb-3">
+								<label> </label>
+								<label><label id="o2"><span class="opt mx-2 mx-2">B</span>
+										<ng-katex [equation]="que.b"></ng-katex>
+									</label></label>
+							</div>
+							<div class="radio mb-3">
+								<label> </label>
+								<label><label id="o3"><span class="opt mx-2 mx-2">C</span>
+										<ng-katex [equation]="que.c"></ng-katex>
+									</label></label>
+							</div>
+							<div class="radio mb-3">
+								<label> </label>
+								<label><label id="o4"><span class="opt mx-2 mx-2">D</span>
+										<ng-katex [equation]="que.d"></ng-katex>
+									</label></label>
+							</div>
+						</div>
+
+						<div class="col-md-12" *ngIf="que.userAns ;else notSelected">
+							Your Selected Answer is:<button class="btn btn-outline-primary">{{que.userAns}}</button>
+
+							<span style="padding-left: 25%;">Timetaken:{{ que.durationInSec | timeSec}}</span>
+
+							<span class="pull-right">
+								CorrectAnswer is:<button class="btn btn-outline-success">{{que.correctAns}}</button>
+							</span>
+						</div>
+
+						<ng-template #notSelected>
+							<button class="btn btn-outline-warning">You haven't answered this</button>
+							<span style="padding-left: 25%;">Timetaken:{{ que.durationInSec | timeSec }}</span>
+							<span class="right" style="float:right">CorrectAnswer is:<button
+									class="btn btn-outline-success">{{que.correctAns}}</button></span>
+						</ng-template>
+						<!-- <h6 class="p-1 m-2 alert alert-success w-50">{{que.correctAns}}</h6> -->
+						<div class="alerts">
+							<div *ngIf="que.userAns!=que.correctAns && que.userAns!=''" _ngcontent-nol-c1=""
+								class="p-1 m-2 alert alert-danger">Your answer is wrong.</div>
+							<div *ngIf="que.userAns==que.correctAns" _ngcontent-nol-c1=""
+								class="p-1 m-2 alert alert-success">Your answer is correct.</div>
+							<div *ngIf="que.userAns == ''" _ngcontent-nol-c1="" class="p-1 m-2 alert alert-warning">You
+								haven't attempted this question.</div>
+						</div>
+
+						<div class="text-center">
+							<button type="button" (click)=showSol(index) class="btn  btn-sm soln">Solution Here&nbsp;<i
+									class="fas" [ngClass]=" solndiv ? 'fa-angle-up' : 'fa-angle-down' "></i></button>
+						</div>
+
+						<div class="mat-card solnhere text-center mt-1" *ngIf="visibleIndex === index">
+							<ng-katex [equation]="que.solutionDesc"></ng-katex>
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+.fancy-table tr,td,th{
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+    padding:5px;
+    background-color:white;
+    text-align: center;
+}
+.fancy-table td{
+    text-align: left;
+    padding-left: 30px;
+}
+.clgreen
+{
+    background:#00775f !important;
+    color:#fff !important;
+    width:15% !important;
+}

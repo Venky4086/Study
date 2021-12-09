@@ -1,0 +1,233 @@
+<div class="star">
+    <div *ngIf="isBrd" class="container-fluid mt-1">
+  
+      <ul class="breadcrumb">
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToStandards()" style="color: #dee2e6;width: auto !important;"> Class&nbsp;
+            {{
+            qDetails.standard }}</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToSubjects()" style="color: #dee2e6;width: auto !important;">{{ subjectName }}</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToTopics()" style="color: #dee2e6;width: auto !important;">{{ topicName }}
+          </div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToQuestions()" style="color: #f8f9fa;width: auto !important;">Questions</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner mx-2" style="color: #dee2e6;width: auto !important;">{{ qDetails.title }}</div>
+        </div>
+      </ul>
+    </div>
+  
+    <!--frm dashbord navigation  -->
+    <div *ngIf="!isBrd" class="container-fluid mt-1">
+  
+      <ul class="breadcrumb">
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToDashboard()" style="color: #dee2e6;width: auto !important;">Dashboard</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToDashboard()" style="color: #dee2e6;width: auto !important;">Practice</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToDashboard()" style="color: #dee2e6;width: auto !important;"> Class&nbsp;{{
+            qDetails.standard }}</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToDashboard()" style="color: #dee2e6;width: auto !important;">{{
+            qDetails.subject }}</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToDashboard()" style="color: #dee2e6;width: auto !important;">{{
+            qDetails.topic }}</div>
+        </div>
+        <div class="fat-arrow">
+          <div class="inner mx-2" (click)="goToQuestions()" style="color: #dee2e6;width: auto !important;">{{ qDetails.title }}</div>
+        </div>
+      </ul>
+    </div>
+  
+    <div class="container-fluid pt-3">
+      <div class="d-flex my-2">
+        <div class="back"><img
+          src="../assets/images/backBtn.png"
+          (click)="goBack()"
+          alt="btn"
+        /></div>
+        <div class="back"><app-practice-header></app-practice-header></div>
+      </div>
+  
+      <div class="container mb-2 desccard clsmax my-3">
+  
+        <div class="container1">
+  
+          <div class="row">
+  
+            <div class="col-md-10 title pt-2 pl-4">
+  
+              {{ qDetails.title }}
+  
+            </div>
+  
+            <div class="col-md-2 text-right pt-2 pr-4">
+              <i class="marg-lef far fa-clock" style="color: blue;"></i>&nbsp; <b style="color: red;">{{ timeLeft |
+                timeSec }}</b>
+            </div>
+  
+          </div>
+  
+        </div>
+  
+        <div class="row pt-4">
+  
+          <div class="col-md-4 pl-4">
+  
+            <div class="accepts">
+              <span>
+                Accepted:&nbsp; <b class="ad"> {{ QuestionHistory?.acceptanceCount }}</b>
+              </span>
+              <span class="ml-2">
+                Submitted:&nbsp;<b class="ad">{{ QuestionHistory?.submitCount }}</b>
+              </span>
+            </div>
+  
+          </div>
+  
+          <div class="col-md-8 text-right">
+  
+            <span class="badge badge-pill badge-success"
+              [ngClass]="{'badge-success': qDetails.level=='Easy', 'badge-warning': qDetails.level=='Medium','badge-danger': qDetails.level=='Hard'}">
+              {{ qDetails.level }}
+            </span>
+  
+            <i class="marg-lef fa-thumbs-up" style="color: #00775f;" [ngClass]="liked ? 'fas' : 'far'" (click)="Like()">
+              &nbsp;{{ LikesDislikes?.likes }}
+            </i>
+  
+            <i class="marg-lef fa-thumbs-down" style="color: #00775f;" [ngClass]="disliked ? 'fas' : 'far'"
+              (click)="disLike()">&nbsp;{{ LikesDislikes?.dislikes }}
+            </i>
+  
+            <!-- <i class="marg-lef fa-heart"style="color: #ff4081;" [ngClass]="isAdded.status ? 'fas' : 'far'"(click)="isAdded.status ? deleteFromList() : addToList()">
+                    {{ fav }}</i> -->
+  
+            <!-- <a href="" onclick="window.open('https://twitter.com/intent/tweet?url=http%3A%2F%2F104.154.171.82%2F%23%2Fhome' + 
+                  encodeURIComponent(location.href))"></a> -->
+  
+            <i class="marg-lef clrgee far fa-share-square"  style="color: #00775f" (click)="share()"
+              style="color: #00775f; "> Share</i>
+  
+            <div class="share-btns" *ngIf="showMyContainer2">
+              <share-buttons [theme]="'material-dark'"
+                [include]="['facebook','whatsapp','twitter','linkedin','pinterest','telegram','messenger','email']"
+                [show]="9" [size]="1" [url]="sharableUrl" [autoSetMeta]="false">
+              </share-buttons>
+            </div>
+  
+  
+          </div>
+  
+        </div>
+        <hr />
+  
+  
+        <div class="d-flex mb-3">
+          <div class="ml-1">
+            <span class="quest" style="font-weight: bold;">Q.</span>
+          </div>
+          <div class="mx-1">
+            <ng-katex [equation]="qDetails.question"></ng-katex>
+          </div>
+          <!-- <div class="mx-1">
+                      <p style="width: auto !important;height: auto;"class="form-control" ><ng-katex [equation]="qDetails.question"></ng-katex></p>
+                    </div> -->
+        </div>
+  
+        <div class="d-flex">
+          <div class="col-md-8 options p-3 text-left">
+      <div class="oneqns mb-2">
+            <input type="radio" class="mb-2" name="optn" value="{{ qDetails.option_A }}" (change)="updateSelectedOptionsArray('A')" />
+            <span class="opt mb-2 mx-2">A</span>
+  
+            <label for="optn1">
+              <ng-katex [equation]="qDetails.option_A"></ng-katex>
+            </label>
+      </div>
+
+      <div class="oneqns mb-2">
+           
+            <input type="radio" class="mb-2" name="optn" value="{{ qDetails.option_B }}" (change)="updateSelectedOptionsArray('B')" />
+  
+            <span class="opt mx-2 mb-2">B</span><label for="optn2">
+              <ng-katex [equation]="qDetails.option_B"></ng-katex>
+            </label>
+      </div>
+           
+          <div class="oneqns mb-2">
+            <input type="radio" class="mb-2" name="optn" value="{{ qDetails.option_C }}" (change)="updateSelectedOptionsArray('C')" />
+            <span class="opt mx-2 mb-2">C</span><label for="optn3">
+              <ng-katex [equation]="qDetails.option_C"></ng-katex>
+            </label>
+          </div>
+
+          <div class="oneqns mb-2">
+            <input type="radio" class="mb-2" name="optn" value="{{ qDetails.option_D }}" (change)="updateSelectedOptionsArray('D')" />
+            <span class="opt mx-2 mb-2">D</span>
+            <label for="optn4">
+              <ng-katex [equation]="qDetails.option_D"></ng-katex>
+            </label>
+          </div>
+            <div class="text-center mt-2">
+              <button mat-raised-button color="primary" class="secondary"
+                [disabled]="selectedCorectAnswersArray.length===0" (click)="validateAndProcess()">Submit</button>
+            </div>
+  
+          </div>
+  
+  
+  
+          <div class="col-md-4">
+  
+            <span style="font-size: 14px;">This question appeared exams:</span>
+  
+            <div class="mt-1 appear">
+              <span *ngFor="let q of studsTagDTO" class="exams mx-1">{{q.examsAppeared}}&nbsp;{{q.appYear}}</span>
+            </div>
+            <br />
+            <div class="bline">
+              <p>
+                <span style="font-size: 14px;margin-left: 20px;">In any other exams:</span>
+                <button mat-raised-button color="primary" class="primary"
+                  (click)="showMyContainer = !showMyContainer">Yes</button>
+              </p>
+            </div>
+  
+            <div class="bline2" *ngIf="showMyContainer">
+              <input type="text" placeholder="Exam Appeared Name" class="form-control" [(ngModel)]="examsAppeared" />
+              <select [(ngModel)]="appYear" class="form-control">
+                <option value="undefined" selected>
+                  Appeared Year
+                </option>
+                <option *ngFor="let year of yearsArray" value="{{ year }}">
+                  {{ year }}
+                </option>
+              </select>
+              <button (click)="postTag(examsAppeared,appYear)" [disabled]="!examsAppeared && !appYear" type="submit"
+                style="float: right;background-color: #186480;color: white;border: none;">
+                Save
+              </button>
+            </div>
+          </div>
+  
+  
+        </div>
+        <div class="col-md-12 ">
+        </div>
+  
+      </div>
+    </div>
+  </div>

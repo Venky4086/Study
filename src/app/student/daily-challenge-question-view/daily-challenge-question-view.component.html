@@ -1,0 +1,66 @@
+<div class="star pb-4">
+  <h3 class="text-center">Today Challenge Question Page</h3>
+  <div class="container mx-auto">
+    <!-- DialyChallenge/{{std.subject}}/{{std.topic}} -->
+
+    <div class="col-md-10 card pt-4 pb-2 mx-auto">  
+      <div class="preview-section">
+        <div class="d-flex mb-3">
+          <div class="ml-1">
+            <span class="quest" style="font-weight: bold;">Q.</span>
+          </div>
+          <div class="mx-1">
+            <ng-katex [equation]="TodayChallengeQuestion.question"></ng-katex>
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <div class="col-md-8 mx-2">
+
+        <div class="options my-4 ml-3">
+          <mat-card>
+            <input type="radio" [(ngModel)]="selectedOption" value="A" (change)="onChoose()">
+            <span>
+              <ng-katex [equation]="TodayChallengeQuestion.a"></ng-katex>
+            </span>
+          </mat-card>
+        </div>
+
+        <div class="options my-4 ml-3">
+          <mat-card> 
+            <input type="radio" [(ngModel)]="selectedOption" value="B" (change)="onChoose()">
+            <span>
+              <ng-katex [equation]="TodayChallengeQuestion.b"></ng-katex>
+            </span>
+          </mat-card>
+        </div>
+
+        <div class="options my-4 ml-3">
+          <mat-card>
+            <input type="radio" [(ngModel)]="selectedOption" value="C" (change)="onChoose()">
+            <span>
+              <ng-katex [equation]="TodayChallengeQuestion.c"></ng-katex>
+            </span>
+          </mat-card>
+        </div>
+
+        <div class="options my-4 ml-3">
+          <mat-card><input type="radio" [(ngModel)]="selectedOption" value="D" (change)="onChoose()">
+            <span>
+              <ng-katex [equation]="TodayChallengeQuestion.d"></ng-katex>
+            </span>
+          </mat-card>
+        </div>
+
+      </div>
+
+      <div class="text-center">
+        <button mat-raised-button color="primary" (click)="validateAndProcess()"
+          [disabled]="!selectedOption">Submit</button>
+      </div>
+      <br />
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,391 @@
+<div class="container mt-3">
+
+    <form [formGroup]="timetableForm">
+
+        <div class="row">
+
+            <div class="col-6">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Class</mat-label>
+                    <mat-select [(ngModel)]="standard" formControlName="standardId" placeholder="Select Day" (ngModelChange)="getSubjects()">
+                        <mat-option *ngFor="let s of standards" [value]="s.standardId">{{s.standard}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col-6">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Select section</mat-label>
+                    <mat-select [(ngModel)]="section" formControlName="section" placeholder="Select section">
+                        <mat-option value="A">A</mat-option>
+                        <mat-option value="B">B</mat-option>
+                        <mat-option value="C">C</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 1 </div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period1_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period1_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 2</div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period2_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period2_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 3</div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period3_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period3_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 4</div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period4_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period4_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 5</div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period5_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period5_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 6</div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period6_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period6_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 7</div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period7_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period7_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 8</div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period8_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period8_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 9</div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period9_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period9_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+            <div class="col my-auto">
+    
+                <div>Period 10</div>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <mat-select placeholder="Select subject" formControlName="period10_Subject">
+                        <mat-option *ngFor="let t of subjects" [value]="t.subjectId">{{ t.subject }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+            <div class="col">
+    
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Teachers</mat-label>
+                    <mat-select placeholder="Select teacher" formControlName="period10_Teacher">
+                        <mat-option *ngFor="let t of teachers" [value]="t.userId">{{t.teacherName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+            </div>
+    
+        </div>
+
+    </form>
+
+    <div class="row my-3">
+
+        <div class="col my-auto">
+            <p>Apply to</p>
+        </div>
+
+        <div class="col">
+            <mat-checkbox class="example-margin" [(ngModel)]="monday" (change)="checkDays($event)">Monday</mat-checkbox>
+        </div>
+
+        <div class="col">
+            <mat-checkbox class="example-margin" [(ngModel)]="tuesday" (change)="checkDays($event)">Tuesday</mat-checkbox>
+        </div>
+
+        <div class="col">
+            <mat-checkbox class="example-margin" [(ngModel)]="wednesday" (change)="checkDays($event)">Wednesday</mat-checkbox>
+        </div>
+
+        <div class="col">
+            <mat-checkbox class="example-margin" [(ngModel)]="thursday" (change)="checkDays($event)">Thursday</mat-checkbox>
+        </div>
+
+        <div class="col">
+            <mat-checkbox class="example-margin" [(ngModel)]="friday" (change)="checkDays($event)">Friday</mat-checkbox>
+        </div>
+
+        <div class="col">
+            <mat-checkbox class="example-margin" [(ngModel)]="saturday" (change)="checkDays($event)">Saturday</mat-checkbox>
+        </div>
+
+    </div>
+    
+    <div class="text-center">
+        <button mat-raised-button color="primary" (click)="addTimeTable()">Schedule</button>
+    </div>
+
+</div>

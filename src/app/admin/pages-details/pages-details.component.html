@@ -1,0 +1,81 @@
+<div class="star">
+    <h3 class="text-center font-shadow">List of Admin pages</h3>
+
+    <div class="container admn-details" *ngIf="isAdmin">
+
+        <div class="row">
+
+            <ul>
+                <li routerLink="/all-topics" class="my-2 p-2 fancy-li">All Topics - for managing Topics</li>
+                <li routerLink="/allqas" class="my-2 p-2 fancy-li">All Questions - for editing Questions</li>
+                <li routerLink="/all-qas-info" class="my-2 p-2 fancy-li">All Questions Info - For Overall information
+                    about questions</li>
+                <li routerLink="/user-approval" class="my-2 p-2 fancy-li"> For managing Users</li>
+                <li routerLink="/all-users" class="my-2 p-2 fancy-li"> Displays Users list - on click you can manage the
+                    roles</li>
+                <li routerLink="/add-daily-challenge" class="my-2 p-2 fancy-li">Admin can add daily challenge questions
+                </li>
+                <li routerLink="/add-role" class="my-2 p-2 fancy-li">Adding new roles and usertypes</li>
+                <li routerLink="/all-institutes" class="my-2 p-2 fancy-li">All Institutes</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="container admn-details">
+
+        <div class="row side-heads">
+            Question Approval Mechanism Levels
+        </div>
+
+        <div class="row">
+            <ol>
+                <li routerLink="/subject-expert1" class="my-2 p-2 fancy-li">Subject Expert 1 - to approve questions here
+                    in this page</li>
+                <li routerLink="/general-admin" class="my-2 p-2 fancy-li">General admin - for approving Questions that
+                    are from SE-1</li>
+                <li routerLink="/subject-expert2" class="my-2 p-2 fancy-li">subject expert 2 - for approving Questions
+                    that are from General admin</li>
+                <li routerLink="/super-admin" class="my-2 p-2 fancy-li">Super admin - for approving Questions that are
+                    from SE-2</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="container admn-details">
+
+        <div class="row side-heads">
+            List of Institute pages
+        </div>
+
+        <div class="row">
+
+            <ul>
+                <li routerLink="/teachers-info" class="my-2 p-2 fancy-li">Teachers Info - for managing Teachers</li>
+                <li routerLink="/timetable-info" class="my-2 p-2 fancy-li">Timetable Info - for managing timetable</li>
+                <li routerLink="/students-info" class="my-2 p-2 fancy-li">Students Info - for managing Students</li>
+                <!-- <li routerLink="/students-fee-info" class="my-2 p-2 fancy-li">Fee Info - for fee status of students</li> -->
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="container admn-details mb-4" *ngIf="isTeacher">
+
+        <div class="row side-heads">
+            Teachers's Dashboard
+        </div>
+
+        <div class="row">
+
+            <ul>
+                <li routerLink="/teacher-dashboard" class="my-2 p-2 fancy-li">Teachers's Dashboard</li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>

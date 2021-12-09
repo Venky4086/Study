@@ -1,0 +1,166 @@
+<div class="card mx-3">
+
+  <div class="row px-3">
+    <div class="backCls my-2">
+      <div>
+      <img src="../assets/images/backBtn.png" (click)="goBack()"  alt="btn"> 
+    </div>
+    <div class="font-weight-bold mx-2"> Daily Challenge</div>
+    </div>
+  <div class="star">
+    <div class="dispalyQuestion m-3">
+      <div class="container-fluid">
+        <section id="slider">
+          <input type="radio" name="slider" id="s1" />
+          <input type="radio" name="slider" id="s2" />
+          <input type="radio" name="slider" id="s3" checked />
+          <input type="radio" name="slider" id="s4" />
+          <input type="radio" name="slider" id="s5" />
+
+          <label
+            for="s4"
+            id="slide4"
+            *ngIf="TodayChallengeData.length; else lockedQ"
+          >
+            <h4 class="text-center mt-5">Tomorrow Challenge</h4>
+            <div class="locked text-center mt-5">
+              <img
+                src="../../assets/images/locked.png"
+                width="20%"
+                height="20%"
+              />
+              <h6 class="text-center">Locked</h6>
+            </div>
+          </label>
+          <ng-template #lockedQ>
+            <label for="s4" id="slide4">
+              <h4 class="text-center mt-5">Tomorrow Challenge</h4>
+              <div class="locked text-center mt-5">
+                <img
+                  src="../../assets/images/locked.png"
+                  width="20%"
+                  height="20%"
+                />
+                <h6 class="text-center">Locked</h6>
+              </div>
+            </label>
+          </ng-template>
+
+          <!-- Today Challenge Area  -->
+          <label
+            for="s3"
+            id="slide3"
+            *ngIf="TodayChallengeData.length; else noQuestion"
+          >
+            <h4 class="text-center pt-2 mt-2">Today Challenge</h4>
+            <mat-card
+              class="col-md-10 mx-auto mt-3 text-center"
+              *ngFor="let std of TodayChallengeData"
+              (click)="gotoQ(std.qid, std.status)"
+            >
+              <span class="badge badge-dark ml-5 text-center"
+                >Class&nbsp;{{ std.standard }}</span
+              >&nbsp;&nbsp;
+              <small class="badge badge-dark ml-5 text-center">{{
+                std.subject
+              }}</small
+              >&nbsp;&nbsp;&nbsp;
+              <small class="badge badge-dark ml-5">topic</small
+              ><small>: {{ std.topic }}</small>
+
+              <small
+                style="color: green; font-size: 12px"
+                class="pull-right"
+                *ngIf="std.status == true ? 'Already Attempted ' : ''"
+              >
+                attempted
+                <!-- <img src="../../assets/check-circle.gif" width="40" height="40"> -->
+                <mat-icon>check</mat-icon>
+              </small>
+
+              <p class="ml-5 mt-1">
+                <small>Title:&nbsp;</small>{{ std.title }}
+              </p>
+            </mat-card>
+          </label>
+
+          <ng-template #noQuestion>
+            <label for="s3" id="slide3">
+              <h4 class="text-center mt-5">Today Challenge</h4>
+              <mat-card class="col-md-6 mx-auto mt-5">
+                <h5 class="text-center">No questions to show Today</h5>
+              </mat-card>
+            </label>
+          </ng-template>
+
+          <!-- History Area -->
+          <label
+            for="s2"
+            id="slide2"
+            *ngIf="HistoryChallengeData.length; else noHquestion"
+          >
+            <h4 class="text-center mt-5">History Page</h4>
+
+            <div class="text-center">
+              <input
+                type="date"
+                class="form-control w-25 text-center mx-auto"
+                [(ngModel)]="historyDate"
+                [max]="yesterday"
+                (change)="displayDate()"
+              />
+            </div>
+
+            <mat-card
+              class="col-md-10 mx-auto mt-3 text-center"
+              *ngFor="let std of HistoryChallengeData"
+              (click)="gotoReport(std.qid, std.status)"
+            >
+              <span class="badge badge-dark ml-5 text-center"
+                >Class&nbsp;{{ std.standard }}</span
+              >&nbsp;&nbsp;
+              <small class="badge badge-dark ml-5 text-center">{{
+                std.subject
+              }}</small
+              >&nbsp;&nbsp;&nbsp;
+              <small class="badge badge-dark ml-5">topic</small
+              ><small>: {{ std.topic }}</small>
+              <small
+                style="color: green; font-size: 12px"
+                class="pull-right"
+                *ngIf="std.status == true ? 'Already Attempted ' : ''"
+              >
+                attempted<img
+                  src="../../assets/check-circle.gif"
+                  width="40"
+                  height="40"
+                />
+              </small>
+              <p class="ml-5 mt-1">
+                <small>Title:&nbsp;</small>{{ std.title }}
+              </p>
+            </mat-card>
+          </label>
+          <ng-template #noHquestion>
+            <label for="s2" id="slide2">
+              <h4 class="text-center mt-5">History Page</h4>
+              <div class="text-center">
+                <input
+                  type="date"
+                  class="form-control w-25 text-center mx-auto"
+                  [(ngModel)]="historyDate"
+                  [max]="yesterday"
+                  (change)="displayDate()"
+                />
+                <p>Selected Date is : {{ historyDate | date }}</p>
+              </div>
+              <mat-card class="col-md-6 mx-auto mt-5">
+                <h5 class="text-center">No questions to show</h5>
+              </mat-card>
+            </label>
+          </ng-template>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

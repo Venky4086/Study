@@ -1,0 +1,272 @@
+<div class="star">
+    <div class="container-fluid">
+        <h2 class="text-center py-2" style="color: #187085;">Add new question</h2>
+        <div class="left-forms">
+
+            <form [formGroup]="registerForm" >
+                <div class="row d-flex">
+                    <div class="col-md-3 py-4">
+
+                        <input type="text" placeholder="Title" formControlName="title" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                            <div *ngIf="f.title.errors.required">Please select the title</div>
+                        </div>
+
+                        <select class="form-control" formControlName="type"
+                            [ngClass]="{'is-invalid': submitted && f.type.errors}">
+                            <option value="" hidden>Type</option>
+                            <option value="DailyChallenge">Daily Challenge</option>
+                            <option value="Context">Contest</option>
+                            <option vlaue="Test">Test</option>
+                            <option vlaue="Practice">Practice</option>
+                        </select>
+                        <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+                            <div *ngIf="f.type.errors.required">Please select the question type </div>
+                        </div>
+
+                        <select class="form-control" formControlName="level"
+                            [ngClass]="{'is-invalid':submitted && f.level.errors}">
+                            <option value="" selected default hidden>Level</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                        <div *ngIf="submitted && f.level.errors" class="invalid-feedback">
+                            <div *ngIf="f.level.errors.required">Please select the level</div>
+                        </div>
+
+                        <select class="form-control" formControlName="standardId" (ngModelChange)="getSubjectsById()"
+                            [ngClass]="{'is-invalid':submitted && f.standardId.errors}">
+                            <option value="" hidden>Standard</option>
+                            <option *ngFor="let standard of standards" [value]="standard.standardId">Class {{
+                                standard.standard }}</option>
+                        </select>
+                        <div *ngIf="submitted && f.standardId.errors" class="invalid-feedback">
+                            <div *ngIf="f.standardId.errors.required">Please select the standard</div>
+                        </div>
+
+                        <select class="form-control" formControlName="subjectId" (change)="getTopicById()"
+                            [ngClass]="{'is-invalid':submitted && f.subjectId.errors}">
+                            <option value="" hidden>Subject</option>
+                            <option *ngFor="let subject of fetchedSubjects" [value]="subject.subjectId">{{
+                                subject.subject
+                                }}</option>
+                        </select>
+                        <div *ngIf="submitted && f.subjectId.errors" class="invalid-feedback">
+                            <div *ngIf="f.subjectId.errors.required">Please select the subject</div>
+                        </div>
+
+                        <select class="form-control" formControlName="topicId"
+                            [ngClass]="{'is-invalid':submitted && f.topicId.errors}">
+                            <option value="" hidden>Select Topic</option>
+                            <option *ngFor="let topic of fetchedTopics" [value]="topic.topicId">{{topic.topic}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.topicId.errors" class="invalid-feedback">
+                            <div *ngIf="f.topicId.errors.required">Please select the topic</div>
+                        </div>
+
+                        <select class="form-control" formControlName="quality"
+                            [ngClass]="{'is-invalid':submitted && f.quality.errors}">
+                            <option value="" hidden>Quality</option>
+                            <option value="fundamentals">Fundamentals</option>
+                            <option value="knowledge">Knowledge</option>
+                            <option value="applications">Applications</option>
+                        </select>
+                        <div *ngIf="submitted && f.quality.errors" class="invalid-feedback">
+                            <div *ngIf="f.quality.errors.required">Please select the quality</div>
+                        </div>
+
+                        <select class="form-control" formControlName="correctOption"
+                            [ngClass]="{'is-invalid':submitted && f.correctOption.errors}">
+                            <option value="" hidden>Correct Answer</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        <div *ngIf="submitted && f.correctOption.errors" class="invalid-feedback">
+                            <div *ngIf="f.correctOption.errors.required">Please select the CorrectOption</div>
+                        </div>
+
+                        <input type="text" placeholder="Concept" class="form-control" formControlName="concept"
+                            [ngClass]="{'is-invalid':submitted && f.concept.errors}" />
+                        <div *ngIf="submitted && f.concept.errors" class="invalid-feedback">
+                            <div *ngIf="f.concept.errors.required">Please select the concept</div>
+                        </div>
+                        <select class="form-control" formControlName="authorID"
+                            [ngClass]="{'is-invalid':submitted && f.authorID.errors}">
+                            <option value="0" hidden>Select Author</option>
+                            <option *ngFor="let author of fetchedAuthors" [value]="author.userId">{{author.userName}}
+                            </option>
+                            <div *ngIf="submitted && f.authorID.errors" class="invalid-feedback">
+                                <div *ngIf="f.authorID.errors.required">Please select the author</div>
+                            </div>
+                        </select>
+
+
+
+                        <input type="text" placeholder="Chapter(optional)" class="form-control"
+                            formControlName="chapter" />
+
+                        <input type="text" placeholder="Exam Appeared Name(optional)" class="form-control"
+                            formControlName="examsAppeared" />
+                        <select class="form-control" formControlName="appYear">
+                            <option default selected hidden value="">Appeared Year(optional)</option>
+                            <option *ngFor="let year of yearsArray" value={{year}}>{{year}}</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <label></label>
+                                <textarea placeholder="Question" class="form-control" formControlName="question"
+                                    [ngClass]="{'is-invalid':submitted && f.question.errors}"></textarea>
+                                <div *ngIf="submitted && f.question.errors" class="invalid-feedback">
+                                    <div *ngIf="f.question.errors.required">Please select the Question</div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-1 opptn  pt-4">
+                                <button type="button" class="btn btn-outline-primary"
+                                    (click)="showMyContainer=!showMyContainer">Editor</button>
+                            </div>
+
+                            <div *ngIf="showMyContainer">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+                            <br />
+
+                            <div class="col-md-8">
+                                <label></label>
+                                <textarea placeholder="Option A" class="form-control" formControlName="option_A"
+                                    [ngClass]="{'is-invalid':submitted && f.option_A.errors}"></textarea>
+
+                                <div *ngIf="submitted && f.option_A.errors" class="invalid-feedback">
+                                    <div *ngIf="f.option_A.errors.required">Please select the Option_A</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 opptn  pt-4">
+                                <button type="button" class="btn btn-outline-primary"
+                                    (click)="showMyContainerA=!showMyContainerA">Editor</button>
+                            </div>
+
+                            <div *ngIf="showMyContainerA">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label></label>
+                                <textarea placeholder="Option B" class="form-control" formControlName="option_B"
+                                    [ngClass]="{'is-invalid':submitted && f.option_B.errors}"></textarea>
+
+                                <div *ngIf="submitted && f.option_B.errors" class="invalid-feedback">
+                                    <div *ngIf="f.option_B.errors.required">Please select the Option_B</div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-1 opptn  pt-4">
+                                <button type="button" class="btn btn-outline-primary"
+                                    (click)="showMyContainerB=!showMyContainerB">Editor</button>
+                            </div>
+                            <div *ngIf="showMyContainerB">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label></label>
+                                <textarea placeholder="Option C" class="form-control" formControlName="option_C"
+                                    [ngClass]="{'is-invalid':submitted && f.option_C.errors}"></textarea>
+                                <div *ngIf="submitted && f.option_C.errors" class="invalid-feedback">
+                                    <div *ngIf="f.option_C.errors.required">Please select the Option_C</div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-1 opptn  pt-4">
+                                <button type="button" class="btn btn-outline-primary"
+                                    (click)="showMyContainerC=!showMyContainerC">Editor</button>
+                            </div>
+
+                            <div *ngIf="showMyContainerC">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+
+                            <div class="col-md-8">
+                                <label></label>
+                                <textarea placeholder="Option D" class="form-control" formControlName="option_D"
+                                    [ngClass]="{'is-invalid':submitted && f.option_D.errors}"></textarea>
+                                <div *ngIf="submitted && f.option_D.errors" class="invalid-feedback">
+                                    <div *ngIf="f.option_D.errors.required">Please select the Option_D</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 opptn  pt-4">
+                                <button type="button" class="btn btn-outline-primary"
+                                    (click)="showMyContainerD=!showMyContainerD">Editor</button>
+                            </div>
+
+                            <div *ngIf="showMyContainerD">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label></label>
+                                <textarea placeholder="Solution" class="form-control ml-2"
+                                    formControlName="solutionDesc"
+                                    [ngClass]="{'is-invalid':submitted && f.solutionDesc.errors}"></textarea>
+                                <div *ngIf="submitted && f.solutionDesc.errors" class="invalid-feedback">
+                                    <div *ngIf="f.solutionDesc.errors.required">Please select the Solution</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 opptn  pt-4">
+                                <button type="button" class="btn btn-outline-primary"
+                                    (click)="showMyContainerS=!showMyContainerS">Editor</button>
+                            </div>
+                            <div *ngIf="showMyContainerS">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Question successfully added..!</strong> <a [routerLink]="['/allqas']" class="alert-link">if you
+                        see the question <span style="color: #187085;">click here..</span></a>
+                    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> -->
+                <div class="text-center">
+                    <input type="submit" id="submit1" value="Submit" class="btn btn-success"
+                        (click)="onSubmit($event)" />
+                    <!-- <input type="submit" id="submit1" value="Submit" class="btn btn-success"[disabled]="!registerForm.valid  || registerForm.get('authorID').value==0 " (click)="onSubmit($event)" /> -->
+                    <input type="button" value="Reset" class="btn btn-primary ml-4" (click)="onReset()" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

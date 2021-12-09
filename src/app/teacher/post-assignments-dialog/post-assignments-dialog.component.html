@@ -1,0 +1,260 @@
+<div class="star">
+
+    <h1 mat-dialog-title class="text-primary"> Assignment <button mat-icon-button class="close-button" (click)="onNoClick()">
+            <i class="fas fa-times close-icon" color="warn"></i>
+        </button> </h1>
+    <div mat-dialog-content>
+        <div class="container my-2">
+            <div class="row bg-white" style="border: 1px solid #e2e2e2;">
+                <div class="col">
+
+                    <mat-horizontal-stepper #stepper>
+
+                        <mat-step>
+                            <ng-template matStepLabel>Basic Details</ng-template>
+                            <form [formGroup]="assignmentForm">
+                                <div class="basic__details">
+                                    <div class="my-3 d-flex">
+
+                                        <input formControlName="title" type="text" class="form-control"
+                                            placeholder="Assignment Title">
+
+                                    </div>
+                                    <div class="my-3">
+
+                                        <select class="cust-select mx-2" formControlName="stdId"
+                                            (change)="fetchSubjects()">
+                                            <option value="" selected>Standard</option>
+                                            <option *ngFor="let s of standards" [ngValue]="s.standardId">Class {{
+                                                s.standard }}</option>
+                                        </select>
+
+                                        <select class="cust-select mx-2" formControlName="subjectId"
+                                            (change)="fetchTopics()">
+                                            <option value="" selected>Subject</option>
+                                            <option *ngFor="let s of subjects" [ngValue]="s.subjectId">{{ s.subject }}
+                                            </option>
+                                        </select>
+
+                                        <select class="cust-select mx-2" formControlName="topic">
+                                            <option value="" selected>Topic</option>
+                                            <option *ngFor="let s of topics" [ngValue]="s.topic">{{ s.topic }}</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="my-3 d-flex">
+
+                                        <div class="mx-2">
+                                            Start Date <input formControlName="startDate" class="form-control mt-1"
+                                                type="date">
+
+                                            No Of Questions <input formControlName="noOfQuestions"
+                                                class="form-control mt-1" type="text">
+                                        </div>
+
+                                        <div class="mx-2">
+                                            End Date <input formControlName="endDate" class="form-control mt-1"
+                                                type="date">
+
+                                            Marks <input formControlName="marks" class="form-control mt-1" type="text">
+                                        </div>
+
+                                        <div class="mx-2">
+                                            Section <br>
+                                            <select class="cust-select mx-2" formControlName="section">
+                                                <option value="">section</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                            </select>
+
+                                            <!-- Marks <input formControlName="marks" class="form-control my-1" type="text"> -->
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <button mat-button (click)="addorUpdateAssignment()">{{ isForEdit ? 'Update' : 'add'}}</button>
+                                </div>
+                            </form>
+                            <div>
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+                            </div>
+                        </mat-step>
+
+                        <mat-step>
+                            <ng-template matStepLabel>Add Questions</ng-template>
+                            <div class="questions">
+                                <div class="" *ngIf="Questions.length">
+                                    <div class="py-2">
+                                        <p class="my-3" *ngFor="let q of Questions;let i=index">
+                                            <span>{{ i+1 }} . {{ q.question }}</span>
+                                            <!-- <button class="pull-right" mat-icon-button><i class="fas fa-trash"></i></button> -->
+                                        </p>
+                                        <!-- <button mat-stroked-button>Post assignment</button> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Enter Question here</label>
+                                    <textarea [(ngModel)]="question" class="form-control"
+                                        id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <button class="my-1" mat-stroked-button (click)="addQuestion()">Add</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext (click)="getAssignmentInfo()">Next</button>
+                            </div>
+                        </mat-step>
+
+                        <mat-step>
+                            <ng-template matStepLabel>
+                                <span (click)="getAssignmentInfo()">Review</span>
+                            </ng-template>
+                            <!-- <p>You are now done.Review and post assignment</p> -->
+                            <div style="display: none;">
+                                <form [formGroup]="assignmentForm">
+                                    <div class="basic__details">
+                                        <div class="my-3 d-flex">
+
+                                            <input formControlName="title" type="text" class="form-control"
+                                                placeholder="Assignment Title">
+
+                                        </div>
+                                        <div class="my-3">
+
+                                            <select class="cust-select mx-2" formControlName="stdId"
+                                                (change)="fetchSubjects()">
+                                                <option value="" selected>Standard</option>
+                                                <option *ngFor="let s of standards" [ngValue]="s.standardId">Class {{
+                                                    s.standard }}</option>
+                                            </select>
+
+                                            <select class="cust-select mx-2" formControlName="subjectId"
+                                                (change)="fetchTopics()">
+                                                <option value="" selected>Subject</option>
+                                                <option *ngFor="let s of subjects" [ngValue]="s.subjectId">{{ s.subject
+                                                    }}</option>
+                                            </select>
+
+                                            <select class="cust-select mx-2" formControlName="topic">
+                                                <option value="" selected>Topic</option>
+                                                <option *ngFor="let s of topics" [ngValue]="s.topic">{{ s.topic }}
+                                                </option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="my-3 d-flex">
+
+                                            <div class="mx-2">
+                                                Start Date <input formControlName="startDate" class="form-control mt-1"
+                                                    type="date">
+
+                                                No Of Questions <input formControlName="noOfQuestions"
+                                                    class="form-control mt-1" type="text">
+                                            </div>
+
+                                            <div class="mx-2">
+                                                End Date <input formControlName="endDate" class="form-control mt-1"
+                                                    type="date">
+
+                                                Marks <input formControlName="marks" class="form-control mt-1"
+                                                    type="text">
+                                            </div>
+
+                                            <div class="mx-2">
+                                                <select class="cust-select mx-2" formControlName="section">
+                                                    <option value="">section</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                </select>
+
+                                                <!-- Marks <input formControlName="marks" class="form-control my-1" type="text"> -->
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <button mat-button (click)="addAssignment()" [disabled]="assignmentForm.invalid"
+                                            *ngIf="!isEditable">add</button>
+                                    </div>
+                                </form>
+
+                                <div class="questions">
+                                    <div class="" *ngIf="Questions.length">
+                                        <div class="py-2">
+                                            <p class="my-3" *ngFor="let q of Questions;let i=index">
+                                                <span>{{ i+1 }} . {{ q.question }}</span>
+                                                <!-- <button class="pull-right" mat-icon-button><i class="fas fa-trash"></i></button> -->
+                                            </p>
+                                            <!-- <button mat-stroked-button>Post assignment</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+
+                                <!-- <pre> {{ reviewAssignment | json }}</pre> -->
+
+                                <h2 class="mx-1">{{ reviewAssignment?.assignmentInfo?.title }}</h2>
+                                <p class="bold"> 
+                                    <span class="mx-1">Class {{ reviewAssignment?.assignmentInfo?.standard }} ({{ reviewAssignment?.assignmentInfo?.section }})</span> 
+                                    <span class="mx-1"> {{ reviewAssignment?.assignmentInfo?.subject }}</span> 
+                                    <span class="mx-1">{{ reviewAssignment?.assignmentInfo?.topic }}</span> 
+                                </p>
+                                <p class="bold">
+                                    <span class="mx-1">Start Date : {{ reviewAssignment?.assignmentInfo?.startDate | date }}</span>
+                                    <span class="mx-1">End Date : {{ reviewAssignment?.assignmentInfo?.endDate | date }}</span>
+                                </p>
+                                <p class="bold">
+                                    <span class="mx-1">Marks : {{ reviewAssignment?.assignmentInfo?.marks }}</span>
+                                    <span class="mx-1">No Of Questions : {{ reviewAssignment?.assignmentInfo?.noOfQuestions }}</span>
+                                </p>
+                                <p class="bold">
+                                    <span class="mx-1">Marks : {{ reviewAssignment?.assignmentInfo?.marks }}</span>
+                                    <span class="mx-1">No Of Questions : {{ reviewAssignment?.assignmentInfo?.noOfQuestions }}</span>
+                                </p>
+
+                                <div>
+                                    <h3>Questions</h3>
+                                </div>
+
+                                <div *ngFor="let q of Questions;let i = index">
+
+                                    <div class="d-flex">
+                                        <div class="mx-1">{{ i+1 }}.</div>
+                                        <div class="mx-1">{{ q.question }}</div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <button mat-stroked-button [disabled]="notFulFilled" (click)="publishAssignment(reviewAssignment)">post assignment</button>
+                            <!-- <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="stepper.reset()">Reset</button>
+                      </div> -->
+                        </mat-step>
+
+                    </mat-horizontal-stepper>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div mat-dialog-actions class="justify-content-center">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button> Save</button>
+  </div> -->
+</div>

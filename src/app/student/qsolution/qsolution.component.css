@@ -1,0 +1,28 @@
+.quest{
+    background: #188c94;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    box-shadow: inset 0 0 10px #188c94;
+    border-radius: 4px;
+    padding: 2px;
+    font-weight: 600;
+  }
+  /* .container{
+    box-shadow: -0.3px 2px 20px 0 rgba(0,0,0,.1);
+  } */
+/* .question{
+  border: 1px solid #d2c1ea;
+  padding: 23px;
+} */
+.d-flex{
+  list-style-type: none;
+}
+.cardd{
+  background: white;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+/* .question{
+  background: white;
+} */

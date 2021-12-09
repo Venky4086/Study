@@ -1,0 +1,42 @@
+.close-button{
+    float: right;
+    top:-8px;
+    right:-15px;
+  }
+  
+  .close-icon {
+    color:red;
+    transition: 1s ease-in-out;
+  }
+  
+  .close-icon:hover {
+    transform: rotate(180deg);
+  }
+  
+  ::ng-deep .icon-outside .close-button{
+    float: right;
+    top:-52px;
+    right:-52px;
+  }
+  
+  ::ng-deep .icon-outside .mat-dialog-container {
+   overflow: unset
+  }
+
+
+  .fa-trash{
+    color: red;
+}
+select.cust-select{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+input[type="date"],input[type="time"]{
+    width: 200px;
+    height: 40px;
+}
+/* ::ng-deep .mat-icon{
+    display: none !important;
+} */

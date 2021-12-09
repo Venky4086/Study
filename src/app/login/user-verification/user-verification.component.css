@@ -1,0 +1,34 @@
+.verification-img{
+    width:50%;
+    height:50%;
+    margin-top: 25%;
+}
+.example-card{
+    margin-top: 25%;
+    width:500px;
+    height:300px;
+}
+.title-head{
+    font-size: 27px;
+    font-weight: 500;
+    letter-spacing:0.02em;
+    color:#00b0ea;
+}
+mat-form-field.example-full-width{
+    width:100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height:80px;
+}
+@media screen and (max-width: 600px) {
+    .example-card {
+      width: auto;
+      margin-top: -110%;
+      margin-bottom: 10%;
+      background-color:white;
+      border-radius: 3%;
+    }
+    .forgot-pass-img{
+        margin-top: 0%;
+    }
+}

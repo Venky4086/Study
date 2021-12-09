@@ -1,0 +1,240 @@
+<div class="star">
+    <div class="container-fluid ">
+        <h2 class="text-center py-2" style="font-size: 22px;">Question Editing page</h2>
+        <div class="col-md-12 left-forms mat-card p-2 pb-4">
+
+            <form [formGroup]="registerForm" >
+                <div class="row d-flex justify-content-center ml-5 pl-4">
+                    <div class="col-md-3 pt-4 ">
+                        <div>
+                            <label>Question Id</label>
+                            <input type="text" class="form-control" formControlName="qid"
+                                [(ngModel)]="questionObject.qid" readonly>
+                        </div>
+
+                        <label>Title</label>
+                        <input type="text" placeholder="Title" formControlName="title" class="form-control"
+                            [(ngModel)]="questionObject.title" />
+
+                        Type<select class="form-control" formControlName="type" [(ngModel)]="questionObject.type">
+                            <option value="" hidden>Type</option>
+                            <option value="Context">Contest</option>
+                            <option vlaue="Test">Test</option>
+                            <option vlaue="Practice">Practice</option>
+                            <option value="DailyChallenge">Dialy-Challenge</option>
+                        </select>
+
+                        Level
+                        <select class="form-control" formControlName="level" [(ngModel)]="questionObject.level">
+                            <option value="" selected default hidden>Level</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+
+                        Standard
+                        <select class="form-control" formControlName="standardId"
+                            [(ngModel)]="questionObject.standardId" (ngModelChange)="getSubjectsById()">
+                            <option value="" hidden>Standard</option>
+                            <option *ngFor="let standard of standards" [value]="standard.standardId">Class {{
+                                standard.standard }}</option>
+                        </select>
+
+                        Subject
+                        <select class="form-control" formControlName="subjectId" [(ngModel)]="questionObject.subjectId"
+                            (change)="getTopicById()">
+                            <option value="" hidden>Subject</option>
+                            <option *ngFor="let subject of fetchedSubjects" [value]="subject.subjectId">{{
+                                subject.subject }}</option>
+                        </select>
+
+                        Topic
+                        <select class="form-control" formControlName="topicId" [(ngModel)]="questionObject.topicId">
+                            <!-- <option value="" hidden>Select Topic</option> -->
+                            <option *ngFor="let item of fetchedTopics" value="{{item.topicId}}">{{item.topic}}</option>
+                        </select>
+
+                        Quality
+                        <select class="form-control" formControlName="quality" [(ngModel)]="questionObject.quality">
+                            <option value="" hidden>Quality</option>
+                            <option value="fundamentals">Fundamentals</option>
+                            <option value="knowledge">Knowledge</option>
+                            <option value="applications">Applications</option>
+                        </select>
+
+                        correctOption
+                        <select class="form-control" formControlName="correctOption"
+                            [(ngModel)]="questionObject.answersDTO.correctOption">
+                            <option value="" hidden>Correct Answer</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                        Select Author
+                        <select class="form-control" formControlName="authorID" [(ngModel)]="questionObject.authorId">
+                            <option *ngFor="let author of fetchedAuthors" [value]="author.userId">{{author.userName}}
+                            </option>
+                        </select>
+
+                        Concept
+                        <input type="text" placeholder="Concept" class="form-control" formControlName="concept"
+                            [(ngModel)]="questionObject.concept" />
+
+                        Chapter
+                        <input type="text" placeholder="Chapter(optional)" class="form-control"
+                            formControlName="chapter" [(ngModel)]="questionObject.chapter" />
+                    </div>
+
+                    <div class="col-md-9 pt-4 pl-5">
+                        <!-- <div class="col col-sm-12 col-md-9 question-answers"> -->
+                        <div class="row pl-5">
+
+                            <div class="col-md-8">
+                                <label>Question</label>
+                                <textarea placeholder="Question" class="form-control" formControlName="question"
+                                    [(ngModel)]="questionObject.question"></textarea>
+                            </div>
+
+                            <div class="col-md-1 opptn  pt-4 pl-5">
+                                <button type="button" class="btn btn-primary"
+                                    (click)="showMyContainer=!showMyContainer">Editor</button>
+                            </div>
+
+
+
+                            <div *ngIf="showMyContainer">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+                            <br />
+
+                            <div class="col-md-8">
+                                <label>OptionA</label>
+                                <textarea placeholder="Option A" class="form-control" formControlName="option_A"
+                                    [(ngModel)]="questionObject.option_A"></textarea>
+                            </div>
+
+                            <div class="col-md-1 opptn  pt-4 pl-5">
+                                <button type="button" class="btn btn-primary"
+                                    (click)="showMyContainerA=!showMyContainerA">Editor</button>
+                            </div>
+
+                            <div *ngIf="showMyContainerA">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label>OptionB</label>
+                                <textarea placeholder="Option B" class="form-control" formControlName="option_B"
+                                    [(ngModel)]="questionObject.option_B"></textarea>
+                            </div>
+
+                            <div class="col-md-1 opptn  pt-4 pl-5">
+                                <button type="button" class="btn btn-primary"
+                                    (click)="showMyContainerB=!showMyContainerB">Editor</button>
+                            </div>
+                            <div *ngIf="showMyContainerB">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label>OptionC</label>
+                                <textarea placeholder="Option C" class="form-control" formControlName="option_C"
+                                    [(ngModel)]="questionObject.option_C"></textarea>
+                            </div>
+
+                            <div class="col-md-1 opptn  pt-4 pl-5">
+                                <button type="button" class="btn btn-primary"
+                                    (click)="showMyContainerC=!showMyContainerC">Editor</button>
+                            </div>
+                            <div *ngIf="showMyContainerC">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+
+                            <div class="col-md-8">
+                                <label>OptionD</label>
+                                <textarea placeholder="Option D" class="form-control" formControlName="option_D"
+                                    [(ngModel)]="questionObject.option_D"></textarea>
+                            </div>
+
+                            <div class="col-md-1 opptn  pt-4 pl-5">
+                                <button type="button" class="btn btn-primary"
+                                    (click)="showMyContainerD=!showMyContainerD">Editor</button>
+                            </div>
+
+                            <div *ngIf="showMyContainerD">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+                            <div class="col-md-8 pt-4">
+                                <label>Solution</label>
+                                <textarea placeholder="Solution" class="form-control" formControlName="solutionDesc"
+                                    [(ngModel)]="questionObject.answersDTO.solutionDesc"></textarea>
+                            </div>
+
+                            <div class="col-md-1 opptn  pt-4  pl-5">
+                                <button type="button" class="btn btn-primary"
+                                    (click)="showMyContainerSoln=!showMyContainerSoln">Editor</button>
+                            </div>
+
+                            <div *ngIf="showMyContainerSoln">
+                                <iframe
+                                    src="http://visualmatheditor.equatheque.net/VisualMathEditor.html?runLocal&codeType=Latex&encloseAllFormula=false&style=aguas&localType=en_US&equation=%5Cvec{F}%20=%20%5Cfrac{d%20%5Cvec{p}}{dt}%20=%20m%20%5Cfrac{d%20%5Cvec{v}}{dt}%20=%20m%20%5Cvec{a}"
+                                    scrolling="no" width="100%" height="400" formControlName="option_C"></iframe>
+                            </div>
+
+
+                            <div class="col-md-10 pt-4">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        examsAppeared Name
+                                        <input type="text" placeholder="Exam Appeared Name(optional)"
+                                            class="form-control" formControlName="examsAppeared"
+                                            [(ngModel)]="questionObject.studsTagDTO2.examsAppeared" />
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        Appeared Year
+                                        <select style="width: 262px!important;" class="form-control"
+                                            formControlName="appYear" [(ngModel)]="questionObject.studsTagDTO2.appYear">
+                                            <option default selected hidden value=""></option>
+                                            <option *ngFor="let year of yearsArray" value={{year}}>{{year}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-10 text-center pt-4">
+
+                                        <input type="button" value="Reset" class="btn btn-primary "
+                                            (click)="onReset()" />
+                                        <input type="submit" [disabled]="!registerForm.valid" value="Update"
+                                            class="btn btn-success ml-4" (click)="onSubmit($event)" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Question successfully Edited..!</strong> <a [routerLink]="['/allqas']" class="alert-link">if
+                        you see the question <span style="color: blue;">click here..</span></a>
+                    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> -->
+            </form>
+
+        </div>
+    </div>
+</div>

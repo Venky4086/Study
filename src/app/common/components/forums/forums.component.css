@@ -1,0 +1,112 @@
+*::first-letter{
+	text-transform: uppercase !important;
+  }
+#page-container{
+background:#f1f4f6 !important;
+}
+
+.shadow-z-1 {
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+	background-color: white;
+	margin-bottom: 2px;
+}
+.shadow-z-1:hover{
+	background-color: #f8f9fa;
+	border-left:3px solid #ff5851 ;
+	/* cursor: pointer; */
+}
+.title{
+	color: #00775f;
+}
+.title:hover{
+	cursor: pointer;
+}
+span{
+	color: grey;
+	font-size: 13px;
+}
+
+/* add discussion btn style */
+@import url("https://fonts.googleapis.com/css?family=Roboto:900");
+
+
+
+a {
+	/* font-family: 'Roboto', sans-serif; */
+	font-weight: 900;
+	color: white;
+	text-decoration: none;
+}
+
+.centered {
+	position: absolute;
+	left: 78%;
+	/* top: 50%; */
+	transform: translate(-50%, -50%);
+}
+
+.h-button {
+	background: #00775f;
+    padding: 6px;
+    width: 170px;
+    text-align: center;
+}
+.mat-raised-button.mat-primary{
+	background-color: #00775f;
+}
+
+.h-button span {
+	display: inline-block;
+	min-width: 0.30em;
+	text-transform: uppercase;
+	transition: 0.25s cubic-bezier(0.5, -1, 0.5, 2);
+	opacity: 0;
+	transform: translate(0, -20px);
+	color: white;
+}
+
+.h-button:before {
+	content: attr(data-text);
+	position: absolute;
+	width: 100%;
+	left: 0;
+	transition: 0.25s cubic-bezier(0.5, -1, 0.5, 2);
+	text-transform: uppercase;
+	letter-spacing: 3.5px;
+	opacity: 1;
+	transform: translate(0, 0px);
+}
+
+.h-button:hover:before, .h-button:focus:before {
+	opacity: 0;
+	transform: translate(0, 20px);
+}
+
+.h-button:hover span, .h-button:focus span {
+	opacity: 1;
+	transform: translate(0, 0);
+}
+
+.h-button:hover span:nth-child(1), .h-button:focus span:nth-child(1) {
+	transition-delay: 0.025s;
+}
+
+.h-button:hover span:nth-child(2), .h-button:focus span:nth-child(2) {
+	transition-delay: 0.05s;
+}
+
+.h-button:hover span:nth-child(3), .h-button:focus span:nth-child(3) {
+	transition-delay: 0.075s;
+}
+
+.h-button:hover span:nth-child(4), .h-button:focus span:nth-child(4) {
+	transition-delay: 0.1s;
+}
+
+.h-button:hover span:nth-child(5), .h-button:focus span:nth-child(5) {
+	transition-delay: 0.125s;
+}
+
+.h-button:hover span:nth-child(6), .h-button:focus span:nth-child(6) {
+	transition-delay: 0.15s;
+}

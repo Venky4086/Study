@@ -1,0 +1,100 @@
+<div class="star card mx-2">
+    <div class="heading">
+      <div class="container-fluid">
+        <ul class="breadcrumb my-2">
+
+          <div class="mx-2">
+            <img
+              src="../assets/images/backBtn.png"
+              (click)="goBack()"
+              alt="btn"
+            />
+          </div>
+          <div class="fat-arrow">
+            <div class="inner mx-2" (click)="goToStandards()" style="color: #dee2e6;width: auto !important;">
+              Class&nbsp;{{ standardName }}</div>
+          </div>
+          <div class="fat-arrow">
+            <div class="inner mx-2" (click)="goToSubjects()" style="color: #dee2e6;width: auto !important;">{{ subjectName
+              }}</div>
+          </div>
+          <div class="fat-arrow">
+            <div class="inner mx-2" (click)="goToTopics()" style="color: #dee2e6;">{{ topicName }}</div>
+          </div>
+          <div class="fat-arrow">
+            <div class="inner mx-2" style="color: #f8f9fa;width: auto !important;">Questions</div>
+          </div>
+        </ul>
+      </div>
+  
+  
+      <!-- table section -->
+      <div class="col-md-12 mx-auto" *ngIf="fetchedQuestions.length ">
+        <table class="table table-hover responsive-lay mx-auto">
+          <thead class="my-auto">
+            <tr class="table-active">
+              <th style="width: 50px;">S.No</th>
+              <th scope="col">Question-Title</th>
+              <th scope="col" style="width:100px" class="text-center">Level</th>
+              <th scope="col" style="width:120px" class="text-center">Acceptance</th>
+              <th scope="col" style="width: 100px;" class="text-center">Frequency</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr *ngFor="let question of fetchedQuestions; let i=index" (click)="practise(question.qid)">
+              <td> {{i + 1}}</td>
+  
+              <td class="text-left">{{ question.title }} <small *ngIf="question.submition == true "
+                  class="text-gradient mr-5" style="color: black;float: right;">Practice Again &nbsp;<i
+                    class="fas fa-redo" style="font-size: 12px;"></i></small></td>
+  
+  
+              <td class="text-center">
+                <span class="badge badge-pill"
+                  [ngClass]="{'bg-primary': question.level=='Easy', 'bg-warning': question.level=='Medium','bg-danger': question.level=='Hard'}">
+                  {{question.level}}
+                </span>
+              </td>
+              <td class="text-center">{{ question?.acceptancePercentage }}%</td>
+              <td class="text-center" *ngIf="question.studsTagDTO.length;else notAppeared">
+                <span style="text-transform: uppercase;">
+                  {{ question.studsTagDTO.length }}
+                </span>
+              </td>
+  
+              <ng-template #notAppeared>
+                <td class="text-center">
+                  -
+                </td>
+              </ng-template>
+  
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  
+    <!-- PAGINATION -->
+    <nav aria-label="Page navigation example" *ngIf="fetchedQuestions.length">
+      <ul class="pagination justify-content-center">
+        <li class="page-item mx-2">
+          <button mat-raised-button color="primary" class="fancy" [disabled]="pageno==0" (click)="prev()"
+            tabindex="-1">Prev</button>
+        </li>
+  
+        <li class="page-item mx-2">
+          <button mat-raised-button color="primary" class="fancy" [disabled]="fetchedQuestions.length<10"
+            (click)="next()">Next</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="container col-md-12 static" [ngClass]="static ? 'yes':'no'">
+      <div class="noData text-center">
+        <img src="../../../assets/images/No data-amico.png" width="500" height="400">
+        <h5 class="text-center pb-1">questions not available,please select other topics</h5>
+      </div>
+    </div>
+  
+  </div>

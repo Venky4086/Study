@@ -1,0 +1,312 @@
+<div class="Mainsec">
+<div class="container-header">
+  <div class="header_now">
+    <div class="div_right">
+      <h4 class="font-weight-bold fnt-zs">Questions</h4>
+    </div>
+    <div class="search_sec">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search Record" />
+        <div class="input-group-append">
+          <button class="btn btn-success" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row card p-3 mx-2 header_now">
+    <div class="dropdownsList">
+      <div class="row">
+        <h4 class="fnt-zs1">Filter Now</h4>
+      </div>
+      <div class="mainDiv">
+        <div class="dropdow">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Option</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let school1 of dropdown1"
+                [value]="school1.value"
+              >
+                {{ school1.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="dropdown">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Option</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let school2 of dropdown2"
+                [value]="school2.value"
+              >
+                {{ school2.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="dropdown">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Option</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let school3 of dropdown3"
+                [value]="school3.value"
+              >
+                {{ school3.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="dropdown">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Option</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let school4 of dropdown4"
+                [value]="school4.value"
+              >
+                {{ school4.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="dropdown">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Option</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let school5 of dropdown5"
+                [value]="school5.value"
+              >
+                {{ school5.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="dropdown">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Option</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let school6 of dropdown6"
+                [value]="school6.value"
+              >
+                {{ school6.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="table table-responsive">
+      <table class="table">
+        <thead>
+          <tr class="bg-primary1 text-white">
+            <th class="table__heading">S.no</th>
+            <th class="table__heading">Id</th>
+            <th class="table__heading">Title</th>
+            <th class="table__heading">Type</th>
+            <th class="table__heading">Standard</th>
+            <th class="table__heading">Subject</th>
+            <th class="table__heading">Topic</th>
+            <th class="table__heading">user</th>
+            <th class="table__heading">Status</th>
+            <th class="table__heading">Posted on</th>
+            <!-- <th class="table__heading">Approval History</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="table__row"
+            *ngFor="
+              let q of Questions
+                | filterType: type:filterMetadata
+                | filterStandards: standard:filterMetadata
+                | filterSubjects: subject:filterMetadata
+                | filterTopics: topic:filterMetadata
+                | filterUsers: username:filterMetadata
+                | filterStatus: status:filterMetadata;
+              let i = index
+            "
+            (click)="preview(q.qid)"
+          >
+            <td class="table__content" data-heading="Id">{{ i + 1 }}</td>
+            <td class="table__content" data-heading="Id">{{ q.qid }}</td>
+            <td class="table__content" data-heading="Title">{{ q.title }}</td>
+            <td class="table__content" data-heading="Type">{{ q.type }}</td>
+            <td class="table__content" data-heading="Standard">
+              {{ q.standard }}
+            </td>
+            <td class="table__content" data-heading="Standard">
+              {{ q.subject }}
+            </td>
+            <td class="table__content" data-heading="Standard">
+              {{ q.topic }}
+            </td>
+            <td class="table__content" data-heading="Username">
+              {{ q.userInfo?.userName }}
+            </td>
+            <td class="table__content" data-heading="Status">
+              {{ q.approvalStatus }}
+            </td>
+            <td class="table__content" data-heading="Posted on">
+              {{ q.insertedTime | date: "d-MM-yyyy" }}
+            </td>
+            <!-- <td class="table__content" data-heading="History">
+                              <p *ngFor="let approvalInfo of q.approvalInfo">
+                                  {{ approvalInfo.adminId }} <br>{{ approvalInfo.authentication }} <br> {{ approvalInfo.authenticatedAt | date: 'd-MM-yyyy' }}
+                              </p>
+                          </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+<!-- <div class="container-header">
+ 
+
+  <div
+    class="row my-3 mx-2"
+    style="
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    "
+  >
+    <div class="col-md-1 px-0 bg-white">
+      <div class="pt-2 pl-2">Filters</div>
+    </div>
+    <div class="col-md px-0">
+      <select class="filter-select" name="type" [(ngModel)]="type">
+        <option value="">Type</option>
+        <option value="Practice">Practice</option>
+        <option value="Test">Test</option>
+        <option value="Contest">Contest</option>
+      </select>
+    </div>
+    <div class="col-md px-0">
+      <select class="filter-select" name="standard" [(ngModel)]="standard">
+        <option value="">Standard</option>
+        <option *ngFor="let standard of noDupStandards" [ngValue]="standard">
+          Class {{ standard }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md px-0">
+      <select class="filter-select" name="subject" [(ngModel)]="subject">
+        <option value="">Subejct</option>
+        <option *ngFor="let subject of noDupSubjects" [ngValue]="subject">
+          {{ subject }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md px-0">
+      <select class="filter-select" name="topic" [(ngModel)]="topic">
+        <option value="">Topic</option>
+        <option *ngFor="let topic of noDupTopics" [ngValue]="topic">
+          {{ topic }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md px-0">
+      <select class="filter-select" name="type" [(ngModel)]="status">
+        <option value="">Status</option>
+        <option value="APPROVED">APPROVED</option>
+        <option value="ONEMORE_REVIEW_IS_REQUIRED">
+          ONEMORE_REVIEW_IS_REQUIRED
+        </option>
+        <option value="MODIFY">MODIFY</option>
+        <option value="DECLINED">DECLINED</option>
+      </select>
+    </div>
+    <div class="col-md px-0">
+      <select
+        class="filter-select"
+        name="username"
+        [(ngModel)]="username"
+        (change)="watch()"
+      >
+        <option value="">User</option>
+        <option *ngFor="let user of noDupUsers" [ngValue]="user">
+          {{ user }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row my-2 mx-2">
+    
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="table__heading">S.no</th>
+          <th class="table__heading">Id</th>
+          <th class="table__heading">Title</th>
+          <th class="table__heading">Type</th>
+          <th class="table__heading">Standard</th>
+          <th class="table__heading">Subject</th>
+          <th class="table__heading">Topic</th>
+          <th class="table__heading">user</th>
+          <th class="table__heading">Status</th>
+          <th class="table__heading">Posted on</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="table__row"
+          *ngFor="
+            let q of Questions
+              | filterType: type:filterMetadata
+              | filterStandards: standard:filterMetadata
+              | filterSubjects: subject:filterMetadata
+              | filterTopics: topic:filterMetadata
+              | filterUsers: username:filterMetadata
+              | filterStatus: status:filterMetadata;
+            let i = index
+          "
+          (click)="preview(q.qid)"
+        >
+          <td class="table__content" data-heading="Id">{{ i + 1 }}</td>
+          <td class="table__content" data-heading="Id">{{ q.qid }}</td>
+          <td class="table__content" data-heading="Title">{{ q.title }}</td>
+          <td class="table__content" data-heading="Type">{{ q.type }}</td>
+          <td class="table__content" data-heading="Standard">
+            {{ q.standard }}
+          </td>
+          <td class="table__content" data-heading="Standard">
+            {{ q.subject }}
+          </td>
+          <td class="table__content" data-heading="Standard">
+            {{ q.topic }}
+          </td>
+          <td class="table__content" data-heading="Username">
+            {{ q.userInfo?.userName }}
+          </td>
+          <td class="table__content" data-heading="Status">
+            {{ q.approvalStatus }}
+          </td>
+          <td class="table__content" data-heading="Posted on">
+            {{ q.insertedTime | date: "d-MM-yyyy" }}
+          </td>
+           <td class="table__content" data-heading="History">
+                            <p *ngFor="let approvalInfo of q.approvalInfo">
+                                {{ approvalInfo.adminId }} <br>{{ approvalInfo.authentication }} <br> {{ approvalInfo.authenticatedAt | date: 'd-MM-yyyy' }}
+                            </p>
+                        </td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->

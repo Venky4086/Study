@@ -1,0 +1,54 @@
+<div class="star">
+
+    <h1 mat-dialog-title class="text-primary"> {{ isForEdit ? 'Edit Teacher' : 'Add Teacher' }} <button mat-icon-button
+            class="close-button" [mat-dialog-close]="true">
+            <i class="fas fa-times close-icon" color="warn"></i>
+        </button> </h1>
+    <div mat-dialog-content>
+        <div class="container my-4">
+
+            <div class="row text-center">
+
+                <div class="col-md-4">
+                    <!-- <mat-form-field appearance="outline">
+                    <mat-label>Teacher name</mat-label>
+                    <select matInput [(ngModel)]="teacherInfo.teacherName">
+                        <option *ngFor="let t of Teachers" [value]="t">{{ t.userName }}</option>
+                    </select>
+                </mat-form-field> -->
+                    <mat-form-field *ngIf="isForEdit" appearance="outline">
+                        <mat-label>Teacher name</mat-label>
+                        <mat-select [disabled]="isForEdit" [(value)]="teacherInfo.teacherName">
+                            <mat-option *ngFor="let t of Teachers" [value]="t.userName"> {{ t.userName }} ({{ t.userId }}) </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field *ngIf="!isForEdit" appearance="outline">
+                        <mat-label>Teacher name</mat-label>
+                        <mat-select [disabled]="isForEdit" (selectionChange)="onSelectTeacher();"
+                            [(ngModel)]="teacherDetails">
+                            <mat-option *ngFor="let t of Teachers" [value]="t"> {{ t.userName }} ({{ t.userId }})</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Subject</mat-label>
+                        <input matInput [(ngModel)]="teacherInfo.subject">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Experience</mat-label>
+                        <input matInput [(ngModel)]="teacherInfo.exp">
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div mat-dialog-actions class="justify-content-center">
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button (click)="addTeacher();"> {{ isForEdit ? 'Update' : 'Save' }} </button>
+    </div>
+</div>

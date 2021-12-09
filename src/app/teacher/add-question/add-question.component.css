@@ -1,0 +1,34 @@
+
+
+.container-fluid{
+    /* background: linear-gradient(to bottom, #187085 0%, #ff99cc 100%); */
+    padding-bottom: 60px;
+    margin-bottom: 1px;
+}
+
+.btn-outline-primary {
+    color: #187085;
+    border-color: #187085;
+}
+.btn-outline-primary:hover{
+    background-color: #187085!important;
+    color: white;
+}
+.opptn{
+    margin-top: 18px!important;
+}
+
+select{
+    margin-top: 1px;
+}
+#submit1{
+    margin: 4px!important;
+}
+.form-control{
+    margin-bottom: 4px;
+}
+@media only screen and (min-width: 600px){
+.container-fluid{
+    padding-left: 160px;
+}
+}

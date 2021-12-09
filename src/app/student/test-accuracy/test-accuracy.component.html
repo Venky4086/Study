@@ -1,0 +1,129 @@
+<div class="container-fluid">
+  <div class="">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="container-fluid">
+
+         
+          <ul class="breadcrumb">
+            <div class="fat-arrow">
+              <div class="inner" routerLink="/dashboard" style="color: #dee2e6">
+                Dashboard
+              </div>
+            </div>
+            <div class="fat-arrow">
+              <div class="inner" routerLink="/dashboard" style="color: #dee2e6">
+                Test
+              </div>
+            </div>
+            <div class="fat-arrow">
+              <div class="inner" routerLink="/dashboard" style="color: #dee2e6">
+                Class {{ standard }}
+              </div>
+            </div>
+            <div class="fat-arrow">
+              <div class="inner" style="color: #f8f9fa">{{ subjectName }}</div>
+            </div>
+          </ul>
+        </div>
+        <div class="container-fluid">
+          <div class="backCls mb-2">
+            <div>
+              <img src="../assets/images/backBtn.png" (click)="goBack()"  alt="btn"> 
+            </div>
+             <div class="font-weight-bold mx-2"> Test History Page</div>
+          </div>
+          <div class="col-md-12">
+            <div class="mat-card favorites-head py-4 px-2">
+              <h4 class="font-weight-bold text-center">
+                Total Test Accuracy :<span class="font-weight-bold">{{
+                  SubjectPercentages.subWisePercentage
+                }}</span>
+                %
+              </h4>
+              <div class="row d-flex">
+                <div class="col-md">
+                  <div class="mat-card mx-2 p-4 M">
+                    <span> Tests </span
+                    ><span class="text-white pull-right">{{
+                      SubjectPercentages.numOfTestsAttempted
+                    }}</span>
+                  </div>
+                </div>
+
+                <div class="col-md">
+                  <div class="mat-card mx-2 p-4 M">
+                    <span> Questions </span
+                    ><span class="text-white pull-right">{{
+                      SubjectPercentages.totalQuestions
+                    }}</span>
+                  </div>
+                </div>
+
+                <div class="col-md">
+                  <div class="mat-card mx-2 p-4 P">
+                    <span> Correct </span
+                    ><span class="text-white pull-right">{{
+                      SubjectPercentages.totalCorrectAnswers
+                    }}</span>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="mat-card mx-2 p-4 C">
+                    <span>Wrong </span
+                    ><span class="text-white pull-right">{{
+                      SubjectPercentages.totalWrongAnswers
+                    }}</span>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="mat-card mx-2 p-4 B">
+                    <span> UnAttempted </span
+                    ><span class="text-white pull-right">{{
+                      SubjectPercentages.totalNotAttemptedQuestions
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- table area starts here css -->
+          <div class="col-md-12 text-center table-responsive pt-2 mb-2">
+            <table class="table table-hover w-1001 m-0">
+              <thead>
+                <tr>
+                  <th scope="col">S.No</th>
+                  <th scope="col" class="w-25">Test Name</th>
+                  <th scope="col">Date/Time</th>
+                  <th scope="col">Total Questions</th>
+                  <th scope="col">Correct</th>
+                  <th scope="col">Wrong</th>
+                  <th scope="col">Non Attempted</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr
+                  class="text-center"
+                  *ngFor="let item of SubjectPercentage; let i = index"
+                  (click)="getSubjectPercentage(item.testId)"
+                >
+                  <td class="text-center">{{ i + 1 }}</td>
+                  <td class="text-center">{{ item.testName }}</td>
+                  <td class="text-center">
+                    {{ item.intime | date: "dd/MM/yyyy , hh:mm aa" }}
+                  </td>
+                  <td class="text-center">{{ item.totalQuestions }}</td>
+                  <td class="text-center">{{ item.correctAnswers }}</td>
+                  <td class="text-center">{{ item.wrongAnswers }}</td>
+                  <td class="text-center">{{ item.notAttemptedQuestions }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

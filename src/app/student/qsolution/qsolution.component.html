@@ -1,0 +1,58 @@
+<div class="star container-fluid">
+
+  <ul class="breadcrumb">
+    <div class="fat-arrow">
+      <div class="inner mx-2" (click)="goToStandards()" style="color: #dee2e6;width: auto !important;"> Class&nbsp;{{
+        questionData.standard }}</div>
+    </div>
+    <div class="fat-arrow">
+      <div class="inner mx-2" (click)="goToSubjects()" style="color: #dee2e6;width: auto !important;">{{ subjectName
+        }}</div>
+    </div>
+    <div class="fat-arrow">
+      <div class="inner mx-2" (click)="goToTopics()" style="color: #dee2e6;width: auto !important;">{{ topicName }}
+      </div>
+    </div>
+    <div class="fat-arrow">
+      <div class="inner mx-2" (click)="goToQuestions()" style="color: #f8f9fa;width: auto !important;">Questions</div>
+    </div>
+    <div class="fat-arrow">
+      <div class="inner mx-2" style="color: #dee2e6;width: auto !important;">{{ questionData.title }}</div>
+    </div>
+  </ul>
+
+</div>
+
+<div class="cumb ml-3">
+  <app-practice-header></app-practice-header>
+</div>
+<h4 class="text-center font-shadow ">Question Solution Page</h4>
+<div class="container p-4 mt-2 cardd">
+
+  <div class="d-flex mb-2 q">
+    <div class="mx-1">
+      <span class="quest" style="font-weight: bold;">Q.</span>
+    </div>
+    <div class="mx-1 font-shadow">
+      <ng-katex [equation]="questionData?.question"></ng-katex>
+    </div>
+  </div>
+  <hr />
+
+  <div class="col-md-8 question">
+    <span class="quest mx-2">Answer:</span><br /><br />
+    <div class="d-flex mb-2">
+      <div class="mx-1">
+        <span class="editor pl-1" style="color: #0c7c98;"> CorrectOption:</span>
+      </div>
+      <div class="mx-1">
+        <ng-katex [equation]="solution?.correctOption"></ng-katex>
+      </div>
+    </div>
+    <span class="editor pl-2" style="color: #0c7c98;">Explanation:</span>
+    <span class="mx-auto">
+      <ng-katex [equation]="solution?.solutionDesc"></ng-katex>
+    </span>
+  </div>
+
+</div>
