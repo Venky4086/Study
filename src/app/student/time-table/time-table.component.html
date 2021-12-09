@@ -1,139 +1,235 @@
-<div class="card mx-3">
-  <div class="container clsmax">
-    <div class="row justify-content-center">
-        <div class="backCls my-3">
-            <div>
-              <img src="../assets/images/backBtn.png" (click)="goBack()"  alt="btn"> 
-            </div>
-             <div class="font-weight-bold mx-2"> Time Table</div>
-          </div>
+<div class="container-fluid">
+    <h2>Responsive Table</h2>
+    <p>
+      The .table-responsive class adds a scrollbar to the table when needed:
+    </p>
+
+    <div class="table-responsive">
+      <table class="table table-bordered lstblc1">
+        <thead>
+          <tr>
+            <th rowspan="3">#S.no</th>
+            <th>STD</th>
+            <th>TIME</th>
+            <th>MONDAY</th>
+            <th>TUESDAY</th>
+            <th>WEDNESDAY</th>
+            <th>THURSDAY</th>
+            <th>FRIDAY</th>
+            <th>SATURDAY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="3" class="first1">1</td>
+            <td rowspan="8" class="first1">2</td>
+            <td class="timing">8.30am - 9.30am</td>
+            <td class="subj">GUJARATHI</td>
+            <td class="subj">ENGLISH</td>
+            <td class="subj">SOCIAL</td>
+            <td class="subj">HINDI</td>
+            <td class="subj">MATHS</td>
+            <td class="quiz">Quiz, Game, Activity</td>
+          </tr>
+          <tr>
+            <td class="teach_name">TEACHER'S NAME</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>CLASS TEACHER</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="text-danger font-weight-bold">
+              10MINS REST TIME
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="3" class="first1">2</td>
+            <td class="timing">9.10am - 9.40am</td>
+            <td class="subj">GUJARATHI</td>
+            <td class="subj">ENGLISH</td>
+            <td class="subj">SOCIAL</td>
+            <td class="subj">HINDI</td>
+            <td class="subj">MATHS</td>
+            <td class="quiz">Quiz, Game, Activity</td>
+          </tr>
+          <tr>
+            <td class="teach_name">TEACHER'S NAME</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>CLASS TEACHER</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="text-danger font-weight-bold">
+              10MINS REST TIME
+            </td>
+          </tr>
+
+          <tr>
+            <td rowspan="2" class="first1">3</td>
+            <td class="timing">9.50am - 10.20am</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+          </tr>
+          <tr>
+            <td class="teach_name">TEACHER'S NAME</td>
+            <td>Teacher1</td>
+            <td>Teacher2</td>
+            <td>Teacher3</td>
+            <td>Teacher4</td>
+            <td>Teacher5</td>
+            <td>Teacher6</td>
+          </tr>
+
+          <tr>
+            <td rowspan="3" class="first2">1</td>
+            <td rowspan="8" class="first2">2</td>
+            <td class="timing">8.30am - 9.30am</td>
+            <td class="subj">GUJARATHI</td>
+            <td class="subj">ENGLISH</td>
+            <td class="subj">SOCIAL</td>
+            <td class="subj">HINDI</td>
+            <td class="subj">MATHS</td>
+            <td class="quiz">Quiz, Game, Activity</td>
+          </tr>
+          <tr>
+            <td class="teach_name">TEACHER'S NAME</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>CLASS TEACHER</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="text-danger font-weight-bold">
+              10MINS REST TIME
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="3" class="first2">2</td>
+            <td class="timing">9.10am - 9.40am</td>
+            <td class="subj">GUJARATHI</td>
+            <td class="subj">ENGLISH</td>
+            <td class="subj">SOCIAL</td>
+            <td class="subj">HINDI</td>
+            <td class="subj">MATHS</td>
+            <td class="quiz">Quiz, Game, Activity</td>
+          </tr>
+          <tr>
+            <td class="teach_name">TEACHER'S NAME</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>CLASS TEACHER</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="text-danger font-weight-bold">
+              10MINS REST TIME
+            </td>
+          </tr>
+
+          <tr>
+            <td rowspan="2" class="first2">3</td>
+            <td class="timing">9.50am - 10.20am</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+          </tr>
+          <tr>
+            <td class="teach_name">TEACHER'S NAME</td>
+            <td>Teacher1</td>
+            <td>Teacher2</td>
+            <td>Teacher3</td>
+            <td>Teacher4</td>
+            <td>Teacher5</td>
+            <td>Teacher6</td>
+          </tr>
+
+          <tr>
+            <td rowspan="3" class="first3">1</td>
+            <td rowspan="8" class="first3">2</td>
+            <td class="timing">8.30am - 9.30am</td>
+            <td class="subj">GUJARATHI</td>
+            <td class="subj">ENGLISH</td>
+            <td class="subj">SOCIAL</td>
+            <td class="subj">HINDI</td>
+            <td class="subj">MATHS</td>
+            <td class="quiz">Quiz, Game, Activity</td>
+          </tr>
+          <tr>
+            <td class="teach_name">TEACHER'S NAME</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>CLASS TEACHER</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="text-danger font-weight-bold">
+              10MINS REST TIME
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="3" class="first3">2</td>
+            <td class="timing">9.10am - 9.40am</td>
+            <td class="subj">GUJARATHI</td>
+            <td class="subj">ENGLISH</td>
+            <td class="subj">SOCIAL</td>
+            <td class="subj">HINDI</td>
+            <td class="subj">MATHS</td>
+            <td class="quiz">Quiz, Game, Activity</td>
+          </tr>
+          <tr>
+            <td class="teach_name">TEACHER'S NAME</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>CLASS TEACHER</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="text-danger font-weight-bold">
+              10MINS REST TIME
+            </td>
+          </tr>
+
+          <tr>
+            <td rowspan="2" class="first3">3</td>
+            <td class="timing">9.50am - 10.20am</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+            <td>PROBLEM SOLUTION</td>
+          </tr>
+          <tr>
+            <td class="teach_name">TEACHER'S NAME</td>
+            <td>Teacher1</td>
+            <td>Teacher2</td>
+            <td>Teacher3</td>
+            <td>Teacher4</td>
+            <td>Teacher5</td>
+            <td>Teacher6</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <div class="row">
-        <div class="table table-bordered table-hover clsmax w-100">
-            <tr>
-                <th class="clgreen">TimeTable</th>
-                <th class="clgreen">Monday</th>
-                <th class="clgreen">Tuesday</th>
-                <th class="clgreen">Wednesday</th>
-                <th class="clgreen">Thursday</th>
-                <th class="clgreen">Friday</th>
-                <th class="clgreen">Saturday</th>
-               
-            </tr>
-
-            <tr>
-                <td>8.30AM-9.30AM</td>
-                <td>Telugu</td>
-                <td>Hindi</td>
-                <td>English</td>
-                <td>Maths</td>
-                <td>Science</td>
-                <td>Social</td>
-            </tr>
-
-            <tr>
-                <td>9.30AM-10.30AM</td>
-                <td>Telugu</td>
-                <td>Hindi</td>
-                <td>English</td>
-                <td>Maths</td>
-                <td>Science</td>
-                <td>Social</td>
-            </tr>
-
-            <tr>
-                <td>10.30AM-11.00AM</td>
-                <td>Telugu</td>
-                <td>Hindi</td>
-                <td>English</td>
-                <td>Maths</td>
-                <td>Science</td>
-                <td>Social</td>
-            </tr>
-
-            <tr>
-                <td>11.30AM-12.30PM</td>
-                <td>Telugu</td>
-                <td>Hindi</td>
-                <td>English</td>
-                <td>Maths</td>
-                <td>Science</td>
-                <td>Social</td>
-            </tr>
-
-            
-            <tr>
-                <td>2.30PM-3.30PM</td>
-                <td>Telugu</td>
-                <td>Hindi</td>
-                <td>English</td>
-                <td>Maths</td>
-                <td>Science</td>
-                <td>Social</td>
-            </tr>
-
-            <tr>
-                <td>3.30PM-4.30PM</td>
-                <td>Telugu</td>
-                <td>Hindi</td>
-                <td>English</td>
-                <td>Maths</td>
-                <td>Science</td>
-                <td>Social</td>
-            </tr>
-        </div>
-    </div>
-
-    <!-- <div class="row">
-
-        <table class="table table-bordered fancy-table js-sans">
-            <tr>
-              <td></td>
-              <th scope="col" class="py-2"> <span *ngFor="let d of weekdays" style="text-transform: capitalize;">{{ d.weekDay }}</span> </th>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period1_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period1_Subject }}</div> <div style="width:300px"> {{ timetable?.period1_Teacher }} </div> </div>  </td>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period2_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period2_Subject }}</div> <div style="width:300px"> {{ timetable?.period2_Teacher }} </div> </div>  </td>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period3_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period3_Subject }}</div> <div style="width:300px"> {{ timetable?.period3_Teacher }} </div> </div>  </td>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period4_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period4_Subject }}</div> <div style="width:300px"> {{ timetable?.period4_Teacher }} </div> </div>  </td>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period5_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period5_Subject }}</div> <div style="width:300px"> {{ timetable?.period5_Teacher }} </div> </div>  </td>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period6_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period6_Subject }}</div> <div style="width:300px"> {{ timetable?.period6_Teacher }} </div> </div>  </td>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period7_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period7_Subject }}</div> <div style="width:300px"> {{ timetable?.period7_Teacher }} </div> </div>  </td>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period8_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period8_Subject }}</div> <div style="width:300px"> {{ timetable?.period8_Teacher }} </div> </div>  </td>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period9_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period9_Subject }}</div> <div style="width:300px"> {{ timetable?.period9_Teacher }} </div> </div>  </td>
-            </tr>
-            <tr>
-                <th scope="row">{{ timeslots?.period10_timeSlot }}</th>
-                <td> <div class="d-flex"> <div style="width:300px">{{ timetable?.period10_Subject }}</div> <div style="width:300px"> {{ timetable?.period10_Teacher }} </div> </div>  </td>
-            </tr>
-          </table>
-
-    </div> -->
   </div>
-</div>

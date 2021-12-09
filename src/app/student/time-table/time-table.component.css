@@ -15,3 +15,46 @@
     color:#fff !important;
     width:15% !important;
 }
+
+/* new code */
+
+.lstblc1 th {
+    text-align: center;
+    font-weight: 900;
+    background-color: #007755;
+    color: #fff !important;
+  }
+  .lstblc1 td {
+    text-align: center;
+    padding: 5px !important;
+    vertical-align: middle;
+  }
+  .teach_name {
+    color: #007755;
+    font-weight: bold;
+  }
+  .timing {
+    color: rgb(226, 128, 15);
+    font-weight: bold;
+  }
+  .quiz {
+    background-color: red;
+    color: #fff;
+  }
+  .subj {
+    background-color: rgb(44, 164, 211);
+    font-weight: 400;
+    color: #fff;
+  }
+  .first1 {
+    background-color: #009688;
+    color: #fff;
+  }
+  .first2 {
+    background-color: #5eb8f5;
+    color: #fff;
+  }
+  .first3 {
+    background-color: #e47777;
+    color: #fff;
+  }

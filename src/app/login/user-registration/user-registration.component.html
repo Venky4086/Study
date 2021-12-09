@@ -810,16 +810,28 @@
   
                 <div class="row text-center mt-4">
                   <div class="col">
-                    <button type="submit" mat-raised-button class="mx-2 btn-bg">
+                    <!-- <button type="submit" mat-raised-button class="mx-2 btn-bg">
                       Submit
-                    </button>
-                    <button
+                    </button> -->
+                      <button
+                        type="submit">
+                        <a 
+                          mat-raised-button
+                          class="haptofit-ai1">Submit</a>
+                      </button>
+                      <button
+                      (click)="onReset()">
+                        <a 
+                          mat-raised-button
+                          class="haptofit-ai1"> reset</a>
+                      </button>
+                    <!-- <button
                       mat-raised-button
                       class="mx-2 warn-bg"
                       (click)="onReset()"
                     >
                       reset
-                    </button>
+                    </button> -->
                   </div>
                 </div>
               </form>
