@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 export class TimeTableComponent implements OnInit {
 
   weekdays : any;timeslots : any;timetable : any;
+  MainData: any;
 
   constructor(private _location:Location, private student:StudentService) { }
 
@@ -22,11 +23,13 @@ export class TimeTableComponent implements OnInit {
     }
     this.student.getTimeTable(sessionStorage.getItem('instituteId'),sessionStorage.getItem('standard'),section).subscribe(
       (data:any)=>{
+        console.log(data);
+        this.MainData = data;
         console.log(data.timeSlotsDTO);
         console.log(data.timeTableInfoDTO);
-        this.weekdays = data[0].weekDays;
-        this.timeslots = data[0].timeSlotsDTO;
-        this.timetable = data[0].timeTableInfoDTO[0];
+        this.weekdays = data.weekDays;
+        this.timeslots = data.timeSlotsDTO;
+        this.timetable = data.timeTableInfoDTO[0];
       }
     );
   }
