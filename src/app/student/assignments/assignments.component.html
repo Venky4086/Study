@@ -1,7 +1,7 @@
 <div class="card mx-3">
     <div class="container-fluid">
 
-        <div class="row d-flex my-3">
+        <div class="row d-flex my-3" *ngIf="data">
             <div>  <img
                 src="../assets/images/backBtn.png"
                 (click)="goBack()"
@@ -11,9 +11,9 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" *ngIf="data">
 
-            <div class="col-md-3 my-2" *ngFor="let a of assignments" (click)="goToQuestions(a.aid,a.status)">
+            <div class="col-md-3 my-2" *ngFor="let a of assignments" (click)="goToQuestions(a.aId,a.status)">
                 <mat-card class="matclr" [ngStyle]="styleObject(a.subject)">
                     <div class="py-1 gbgree d-flex justify-content-center align-items-center">
                         <h4>{{ a.title }}</h4>
@@ -47,6 +47,7 @@
             </div>
 
         </div>
+        
     </div>
 
 </div>

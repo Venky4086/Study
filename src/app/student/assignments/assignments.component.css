@@ -32,3 +32,6 @@ span.head-tag {
   color: #fff !important;
   padding: 5px !important;
 }
+.mat-simple-snackbar {
+  justify-content: center !important;
+}

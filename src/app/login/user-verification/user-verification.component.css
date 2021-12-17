@@ -32,3 +32,15 @@ mat-form-field.example-full-width{
         margin-top: 0%;
     }
 }
+.mat-form-field{
+    color: #fff !important;
+}
+.mat-input-element {
+    caret-color: #fff !important;
+}
+.mat-form-field-outline {
+    color: #fff !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #fff !important;
+}

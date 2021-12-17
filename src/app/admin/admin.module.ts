@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -20,6 +20,7 @@ import { UserApprovalComponent } from './user-approval/user-approval.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { PipesModule } from '../common/pipes/pipes.module';
 import { KatexModule } from 'ng-katex';
+import {NgxPaginationModule} from 'ngx-pagination';
 // import { AddDailyChallengesComponent } from './add-daily-challenges/add-daily-challenges.component';
 // import { AddRoleComponent } from './add-role/add-role.component';
 // import { AllQasInfoComponent } from './all-qas-info/all-qas-info.component';
@@ -70,7 +71,9 @@ import { KatexModule } from 'ng-katex';
     PipesModule,
     FormsModule,
     ReactiveFormsModule,
-    KatexModule
-  ]
+    KatexModule,
+    NgxPaginationModule
+  ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AdminModule { }

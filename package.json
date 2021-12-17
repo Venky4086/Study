@@ -30,6 +30,7 @@
     "moment-timezone": "^0.5.33",
     "ng-circle-progress": "^1.6.0",
     "ng-katex": "^2.0.3",
+    "ngx-pagination": "^5.1.1",
     "ngx-spinner": "^10.0.1",
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.7",

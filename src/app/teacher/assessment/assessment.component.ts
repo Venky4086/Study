@@ -14,14 +14,16 @@ export class AssessmentComponent implements OnInit {
   constructor(private router:Router,private teacherservice:TeacherService) { }
 
   ngOnInit(): void {
+    console.log(sessionStorage.getItem('InstituteId'));
     this.teacherservice.getAssignmentsByInstituteTeacher(sessionStorage.getItem('InstituteId'),sessionStorage.getItem('userid'))
     .subscribe(
       (data:any)=>
       {
         console.log(data);
         this.assignments=data;
-      }
-    );
+      },(error)=>{
+        console.error(error);
+      });
   }
 
   styleObject(sub): Object {

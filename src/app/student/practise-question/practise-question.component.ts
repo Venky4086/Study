@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { StudentService } from "src/app/services/student.service";
 import { Location } from "@angular/common";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-practise-question",
@@ -32,7 +33,8 @@ export class PractiseQuestionComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private student: StudentService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private fb:FormBuilder
   ) {}
 
   // @ViewChild(MathjaxComponent) childView: MathjaxComponent;
@@ -75,12 +77,18 @@ export class PractiseQuestionComponent implements OnInit {
   isSubmitted: boolean;
   actualCorrectAnswers = [];
   isCorrect: boolean;
-
+  Appeared:FormGroup;
+  submitted = false;
   ngOnInit(): void {
+    this.Appeared = this.fb.group({
+      exam_name:['', Validators.required],
+      year:['', Validators.required]
+    });
     if (this.route.snapshot.params.id) {
       this.isBrd = true;
       sessionStorage.setItem("questionsView", this.route.snapshot.params.id);
       this.qDetailsId = this.route.snapshot.params.id;
+      console.log(this.route.snapshot.params.id);
     } else {
       this.qDetailsId = this.route.snapshot.params.id;
     }
@@ -154,7 +162,9 @@ export class PractiseQuestionComponent implements OnInit {
         console.log("Error occured while retriving quesiton from db: ", err)
     );
   }
-
+ get A(){
+   return this.Appeared.controls
+ }
   // Likes and Dislikes
 
   Like() {
@@ -302,19 +312,30 @@ export class PractiseQuestionComponent implements OnInit {
   }
 
   postTag(name, year) {
+    this.submitted = true;
+    console.log(this.qDetailsId);
     console.log(name, year);
     let tagData = {
       appYear: 0,
       examsAppeared: "",
-      qid: 0,
+      qId: 0,
     };
     tagData.appYear = year;
     tagData.examsAppeared = name;
-    tagData.qid = this.qDetailsId;
+    tagData.qId = this.qDetailsId;
     console.log(tagData);
     this.student.postTagForQuestion(tagData).subscribe((data: any) => {
       console.log(data);
+      this.snackbar.open(data.message, "close", {
+        duration: 3000,
+      });
+      this.Appeared.reset();
+      this.submitted = false;
       this.questiondata();
+    },(error)=>{
+      console.log(error);
+      this.Appeared.reset();
+      this.submitted = false;
     });
   }
 

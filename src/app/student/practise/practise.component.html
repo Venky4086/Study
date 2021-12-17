@@ -42,7 +42,7 @@
           </thead>
   
           <tbody>
-            <tr *ngFor="let question of fetchedQuestions; let i=index" (click)="practise(question.qid)">
+            <tr *ngFor="let question of fetchedQuestions; let i=index" (click)="practise(question.qId)">
               <td> {{i + 1}}</td>
   
               <td class="text-left">{{ question.title }} <small *ngIf="question.submition == true "
@@ -79,7 +79,7 @@
     <!-- PAGINATION -->
     <nav aria-label="Page navigation example" *ngIf="fetchedQuestions.length">
       <ul class="pagination justify-content-center">
-        <li class="page-item mx-2">
+        <li class="page-item mx-2 my-2">
           <button mat-raised-button color="primary" class="fancy" [disabled]="pageno==0" (click)="prev()"
             tabindex="-1">Prev</button>
         </li>

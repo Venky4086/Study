@@ -107,10 +107,12 @@ export class AddTimeTableComponent implements OnInit {
       (data:any)=>{
         console.log(data);
         if(data.id){
+          this.timetableForm.reset();
           this.snackbar.open('Time Table added successfully','close',{duration: 3000});
         }
-      }
-    );
+      },(error)=>{
+        console.error(error);
+      });
   }
 
   formWeekDays(days){

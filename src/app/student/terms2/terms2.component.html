@@ -1,0 +1,85 @@
+<div class="star">
+
+
+  <div class="gray-bg pt-8">
+    <div class="container ">
+      <div class="search-wrapper contact-overlay">
+
+
+        <div class="row">
+
+          <div class="col l12">
+            <div class="cs-question">
+            
+              <form [formGroup]="termsForm">
+                <div class="form-group">
+                  <div class="container">
+                    <div class="col-md-10 terms mx-auto	pt-4">
+                      <span class=banner><h2 class="text-center">Test instructions</h2></span>
+                      <hr>
+                      <ol start="1" type="1">
+                        <li class="bd">Total duration of this test is <b>180 minutes</b>.</li>
+                        <li class="bd">There will be only <b>75 questions</b> in this test. </li>
+                        <!-- <li class="bd">There are <b>3 sections</b> in the question paper consisting of Physics,
+                          Chemistry and Mathematics having <b>25 questions</b> in each section.</li> -->
+                        <li class="bd">Question No. <b>1 to 20 </b> in each section are <b>Single Choice Type</b>
+                          questions which are allotted <b>10 (ten) marks</b> for each question answered correctly and
+                          <b> 1 (One) mark.</b> </li>
+                        <!-- <li class="bd">Question No. <b>21 to 25</b> in each section are <b>Subjective Numerical Type</b>
+                          questions which are allotted <b>4 (Four) marks</b> for each question answered correctly and
+                          <b>0 (Zero)</b> marks will be deducted for indicating incorrect response.</li> -->
+                        <li class="bd">In all the sections, <strong>No deduction</strong> from the total score will be
+                          made if no response is indicated.</li>
+                        <!-- <li class="bd"><strong>To activate RankUp - Guaranteed improvement plan, you must spend atleast
+                            30% of the time allocated to the test.</strong>&nbsp;</li> -->
+                        <li class="bd">Please use ONE device, browser and tab while taking this test. As an
+                          anti-cheating measure, switching between tabs, browsers or devices will result in loss of your
+                          test data.</li>
+                        <li class="bd">
+                          <div>To get access to your Advanced Test Feedback, ensure that you have:</div>
+                          <ul>
+                            <li style="line-height:2rem;">spent at least 50% of the total test time .</li>
+                            <li style="line-height:2rem;">attempted 60% of the total number of questions in the test.
+                            </li>
+                          </ul>
+                        </li>
+                        <li class="bd">
+                          <div>These are coloured Indicators.</div>
+                          <ul>
+                            <li class="bd"><button type="button" class="btn btn-secondary disabled"
+                                style="background-color:green;border-radius:100%;"></button>&nbsp;Answered Questions.
+                            </li>
+                            <li class="bd"><button type="button" class="btn btn-secondary disabled"
+                                style="background-color:red;border-radius:100%;"></button>&nbsp;Not Answered.</li>
+                            <li class="bd"><button type="button" class="btn btn-secondary disabled"
+                                style="background-color:blue;border-radius:100%;"></button>&nbsp;Mark For Review.</li>
+                            <li class="bd"><button type="button" class="btn btn-secondary disabled"
+                                style="border-radius:100%;"></button>&nbsp;Not Visited.</li>
+                          </ul>
+                        </li>
+                        <li class="bd">If the power goes out in the middle of the test, the test will start again from
+                          the beginning.</li>
+                      </ol>
+                     
+                    </div>
+                  <div style="text-align: right;">
+                    <button mat-raised-button class="practise-btn mx-2 global-bg" (click)="checkforqs()">
+                      Test
+                    </button>
+                  </div>
+                    <div>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

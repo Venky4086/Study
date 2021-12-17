@@ -37,7 +37,7 @@
                 <select class="form-control px-2" [(ngModel)]="subjectId" (change)="onSubjectChange()">
                     <option value=0>Subject</option>
                     <option *ngFor="let subject of Subjects;let i = index" [ngValue]="subject.subjectId"
-                        [disabled]="!restrictRoles[i]">{{ subject.subject }}</option>
+                        [disabled]="restrictRoles[i]">{{ subject.subject }}</option>
                 </select>
             </div>
             

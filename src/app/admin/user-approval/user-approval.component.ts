@@ -28,7 +28,9 @@ export class UserApprovalComponent implements OnInit {
     reason:'',
     auth:''
   };
-
+  totalRecords: any;
+  page:any=1;
+  count:any = 5;
   constructor(public admin:AdminService,private router:Router) { }
 
   ngOnInit() {
@@ -37,7 +39,8 @@ export class UserApprovalComponent implements OnInit {
       (data:any)=>
       {
         console.log(data);
-        this.Users=data;
+        this.Users = data;
+        this.totalRecords = data.length
       }
     );
   }

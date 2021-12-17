@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StudentRoutingModule } from './student-routing.module';
@@ -7,7 +7,7 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { MatSharedModule } from '../common/mat-shared/mat-shared.module';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudyComponent } from './study/study.component';
 import { TopicsComponent } from './topics/topics.component';
 import { PracticeTestComponent } from './practice-test/practice-test.component';
@@ -37,6 +37,7 @@ import { LoaderInterceptor } from '../services/loader.interceptor';
 import { TimeTableComponent } from './time-table/time-table.component';
 import { ChallengeAccuracyComponent } from './challenge-accuracy/challenge-accuracy.component';
 import { DcReportComponent } from './dc-report/dc-report.component';
+import { Terms2Component } from './terms2/terms2.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { DcReportComponent } from './dc-report/dc-report.component';
     TimeTableComponent,
     ChallengeAccuracyComponent,
     DcReportComponent,
+    Terms2Component
     // LoaderComponent
   ],
   imports:[
@@ -75,6 +77,7 @@ import { DcReportComponent } from './dc-report/dc-report.component';
     MatSharedModule,
     PipesModule,
     FormsModule,
+    ReactiveFormsModule,
     KatexModule,
     NgCircleProgressModule.forRoot({
       "backgroundPadding":3,
@@ -96,6 +99,7 @@ import { DcReportComponent } from './dc-report/dc-report.component';
   ],
   providers:[
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
-  ]
+  ],
+  schemas:[NO_ERRORS_SCHEMA]
 })
 export class StudentModule { }

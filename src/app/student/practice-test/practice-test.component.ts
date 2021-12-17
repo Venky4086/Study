@@ -43,7 +43,8 @@ export class PracticeTestComponent implements OnInit {
         console.log(data);
         console.log(data.questions.length);
         if(data.questions.length){
-          this.router.navigate(['/student/test']);
+          this.router.navigate(['/student/test-instruction']);
+          // this.router.navigate(['/terms']);
         }
         else{
           this.toastr.open("No questions exist",'close',{duration: 3000});

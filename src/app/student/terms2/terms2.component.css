@@ -1,0 +1,110 @@
+.banner{
+    background: transparent linear-gradient(90deg, #487BD6 0%, #33D8D1 100%) 0% 0% no-repeat padding-box;
+}
+.star{
+    margin-top: -63px;
+}
+.web-pages-banner{
+    background-color: #00b43c45;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 180px 0 100px;
+}
+.web-pages-banner-title {
+    color: #ffffff;
+    font-size: 45px;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+}
+@media(max-width:768px){
+    .web-pages-banner{    padding: 80px 0 70px;}
+    .web-pages-banner-title{font-size: 35px;}
+}
+@media(max-width:768px){
+    .search-wrapper {
+        padding: 20px 0px !important;
+    }
+    .row{margin-bottom: 5px;}
+     .what-img{
+        display: block;margin: 20px auto auto;
+     }
+     .footer-feature h4{font-size: 18px;margin:1.52rem 0 0.912rem 0;}
+     .cs-section-heading h2{font-size: 25px}
+}
+.search-wrapper{
+    padding: 60px;position: relative;border-radius: 3px;margin-top: -30px;
+    background: #fff;
+    -webkit-box-shadow: 0 2px 44px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 44px 0 rgba(0, 0, 0, 0.08);
+}
+
+.search-wrapper:before {
+    position: absolute;
+    content: "";
+    background: rgba(255, 255, 255, 0.66);
+    width: 97%;
+    height: 30px;
+    top: -10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 3px;
+}
+.search-wrapper:after {
+    position: absolute;
+    content: "";
+    background: rgba(255, 255, 255, 0.88);
+    width: 98%;
+    height: 20px;
+    top: -5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 3px;
+}
+.cs-question h4{
+    font-size: 19px;
+    margin-top: 40px;
+    font-weight: 600;
+    padding-bottom: 0;
+    color: #4d4d4d;
+    position: relative;
+    margin-bottom: 10px;;
+}
+.cs-question p{
+    font-size: 15px;
+}
+
+
+
+.terms{
+    font-family: verdana;
+    /* border: 1px solid #dfdfdf; */
+    border-radius: 5px;
+    background-color: #fff;
+	/* box-shadow: 0 2px 5px 0 rgba(0,0,0,.1); */
+}
+
+.bd {
+    color: #444;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 3.0rem;
+    text-align: left;
+    padding-left: 1rem;
+}
+.bottom{
+	margin-top: 50px;
+	margin-left:30px;
+}
+.btn-secondary{
+	width: 35px;
+	height: 33px;
+}
+li{
+    padding-bottom: 22px;
+}

@@ -30,11 +30,10 @@ export class StudentComponent implements OnInit {
   sideNavData = [
     {icon:'dashboard',name : 'Dashboard', path:'/student/dashboard'},
     {icon:'assessment',name:'Daily Challenge',path:'/student/daily-challenge' },
-    {icon:'person',name : 'Profile', path:'/student/profile'},
     {icon:'menu_book',name : 'Study', path:'/student/study'},
     {icon:'forum',name:'Forums',path:'/student/forums' },
     {icon:'assignment',name:'Assignments',path:'/student/assignments'},
-    {icon:'calendar_today',name:'Time Table',path:'/student/time-table'}
+    {icon:'calendar_today',name:'Time Table',path:'/student/time-table'},
   ];
 
   ngOnInit(): void {
@@ -70,6 +69,10 @@ export class StudentComponent implements OnInit {
     if(this.superAdmin){
       this.sideNavData.push({ icon: 'science' ,name :'Super Admin' , path :'/student/super-admin' })
     }
+    if(this.superAdmin){
+      this.sideNavData.push({icon:'person',name : 'Profile', path:'/student/profile'})
+    }
+
   }
 
   logout(){

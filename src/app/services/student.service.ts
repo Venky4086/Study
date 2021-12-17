@@ -23,7 +23,6 @@ export class StudentService {
   getStudents(){
     return this.http.get("https://studyamaze.com/login/users/getStudents")
   }
-
   getSubjectWisePercentage(userId,standardId){
     return this.http.get(APIConfig.END_POINT + "qas/practice/subjectwisepercentage/" + userId+ "/"+standardId);
   }
@@ -90,6 +89,13 @@ export class StudentService {
   postViews(payload){
     return this.http.post(APIConfig.END_POINT+"view/",payload)
   }
+
+
+// contacts
+
+contactUs(payload){
+  return this.http.post(APIConfig.END_POINT+"giveFeedback",payload)
+}
 
   getSpecificDiscussionById(id){
     return this.http.get(APIConfig.END_POINT +"db/discussionBoard/getDiscussionQuestion/"+id+"");

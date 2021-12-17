@@ -30,11 +30,12 @@ export class TeacherComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = sessionStorage.getItem('username');
+    console.log(sessionStorage.getItem('userid'));
     this.teacher.getTeacherDetails(sessionStorage.getItem('userid')).subscribe(
       (data:any)=>{
         console.log(data);
-        sessionStorage.setItem('ItId',data.itId);
-        sessionStorage.setItem('InstituteId',data.instiId)
+        sessionStorage.setItem('ItId',data[0].itId);
+        sessionStorage.setItem('InstituteId',data[0].instiId)
       }
     );
     this.Roles = JSON.parse(sessionStorage.getItem('Roles'));

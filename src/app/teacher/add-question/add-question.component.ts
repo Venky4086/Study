@@ -105,6 +105,8 @@ export class AddQuestionComponent implements OnInit {
       this.teacher.postQuestion(postObject).subscribe(
         (res:any) => {
           console.log(res);
+          this.registerForm.reset();
+          this.submitted = false;
           // this.router.navigate(['/pqtable']);
           this.showMsg= true;
           if(res.status){
@@ -112,9 +114,10 @@ export class AddQuestionComponent implements OnInit {
           }
 
         },
-        err => console.log("Error occured while posting question to server: ", err)      
+        err => console.log("Error occured while posting question to server: ", err) 
       );
-      
+      this.registerForm.reset();
+      this.submitted = false;   
     }
 
     // display form values on success

@@ -35,7 +35,7 @@
       </div>
 
       <div class="col-md-12 mx-auto d-flex flex-row bd-highlight table-responsive-vertical shadow-z-1 p-3"
-        *ngFor="let data of queries" (click)="goToDiscussion(data.dqid)">
+        *ngFor="let data of queries" (click)="goToDiscussion(data.dQid)">
         <div class="col-md-1"> <img class="pt-1 border-0 pr-2" width="45" height="45" src="https://storage.googleapis.com/study-amaze-bucket/users/{{ data.userId }}/{{ data.userImageUri }}" alt="img"></div>
         <div class="col-md-5 title">{{data.title}}<br>
           <!-- <span>Posted On: {{data.insertedDate  - currentDateTime}}</span>  -->

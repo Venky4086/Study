@@ -875,3 +875,22 @@ button input .save {
 .mb-2 {
   margin-bottom: 1em;
 }
+
+:host ::ng-deep #table {
+  font-family: 'Roboto', sans-serif;
+}
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background: #007755 !important;
+  color: #fefefe;
+  cursor: default;
+}
+.page-item.active .page-link {
+z-index: 3;
+color: #fff;
+background-color: #007755 !important;
+border-color: #007755 !important;
+}
+pagination-controls{
+  text-align: right !important;
+}

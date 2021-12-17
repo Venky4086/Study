@@ -112,8 +112,8 @@
               (click)="disLike()">&nbsp;{{ LikesDislikes?.dislikes }}
             </i>
   
-            <!-- <i class="marg-lef fa-heart"style="color: #ff4081;" [ngClass]="isAdded.status ? 'fas' : 'far'"(click)="isAdded.status ? deleteFromList() : addToList()">
-                    {{ fav }}</i> -->
+            <i class="marg-lef fa-heart"style="color: #ff4081;" [ngClass]="isAdded.status ? 'fas' : 'far'"(click)="isAdded.status ? deleteFromList() : addToList()">
+                    {{ fav }}</i>
   
             <!-- <a href="" onclick="window.open('https://twitter.com/intent/tweet?url=http%3A%2F%2F104.154.171.82%2F%23%2Fhome' + 
                   encodeURIComponent(location.href))"></a> -->
@@ -207,8 +207,12 @@
             </div>
   
             <div class="bline2" *ngIf="showMyContainer">
-              <input type="text" placeholder="Exam Appeared Name" class="form-control" [(ngModel)]="examsAppeared" />
-              <select [(ngModel)]="appYear" class="form-control">
+            <form [formGroup]="Appeared">
+              <input type="text" placeholder="Exam Appeared Name" class="form-control" formControlName="exam_name" [ngClass]="{ 'is-invalid': submitted && f.exam_name.errors }" [(ngModel)]="examsAppeared" />
+              <div *ngIf="submitted && f.exam_name.errors" class="invalid-feedback">
+                <div *ngIf="A.exam_name.errors.required">Exam Name is required</div>
+              </div>
+              <select [(ngModel)]="appYear" class="form-control" formControlName="year" [ngClass]="{ 'is-invalid': submitted && f.year.errors }">
                 <option value="undefined" selected>
                   Appeared Year
                 </option>
@@ -216,10 +220,14 @@
                   {{ year }}
                 </option>
               </select>
+              <div *ngIf="submitted && f.year.errors" class="invalid-feedback">
+                <div *ngIf="A.year.errors.required">Exam Year is required</div>
+              </div>
               <button (click)="postTag(examsAppeared,appYear)" [disabled]="!examsAppeared && !appYear" type="submit"
                 style="float: right;background-color: #186480;color: white;border: none;">
                 Save
               </button>
+            </form>
             </div>
           </div>
   

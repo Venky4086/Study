@@ -13,25 +13,35 @@ import { Location } from '@angular/common';
 export class AssignmentsComponent implements OnInit {
 
   assignments : any;
-
+  userId: string;
+  data = false;
   constructor(private _location:Location, private router:Router, private student:StudentService,private snackbar:MatSnackBar,private datepipe:DatePipe) {  }
 
   ngOnInit(): void {
-    this.student.getAssignmentsByInstStandardUser(sessionStorage.getItem('instituteId'),sessionStorage.getItem('standard'),sessionStorage.getItem('userid')).subscribe(
-      (data:any)=>{
-        console.log(data);
-        this.assignments = data;
-        // this.assignments.forEach(assignment=>{
-        //   let today = new Date();
-        //   console.log(this.datepipe.transform(assignment.endDate,'dd-MM-YYYY'),this.datepipe.transform(today,'dd-MM-YYYY'));
-        //   if(this.datepipe.transform(today,'dd-MM-YYYY') > this.datepipe.transform(assignment.endDate,'dd-MM-YYYY')){
-        //       this.expired.push(assignment);
-        //   }else{
-        //     console.log('Expired');
-        //   }
-        // })
-      }
-    );
+    console.log(sessionStorage.getItem('institution'));
+    if(sessionStorage.getItem('institution') == '0'){
+      this.snackbar.open("Your are not assigned with our listed schools/institutions", "close", { duration: 3000 ,verticalPosition: 'top'});
+    }
+    else{
+      this.data =true;
+      this.student.getAssignmentsByInstStandardUser(sessionStorage.getItem('instituteId'),sessionStorage.getItem('standard'),sessionStorage.getItem('userid')).subscribe(
+        (data:any)=>{
+          console.log(data);
+          this.data =true;
+          this.assignments = data;
+          // this.assignments.forEach(assignment=>{
+          //   let today = new Date();
+          //   console.log(this.datepipe.transform(assignment.endDate,'dd-MM-YYYY'),this.datepipe.transform(today,'dd-MM-YYYY'));
+          //   if(this.datepipe.transform(today,'dd-MM-YYYY') > this.datepipe.transform(assignment.endDate,'dd-MM-YYYY')){
+          //       this.expired.push(assignment);
+          //   }else{
+          //     console.log('Expired');
+          //   }
+          // })
+        }
+      );
+    }
+    
   }
 
   styleObject(sub): Object {

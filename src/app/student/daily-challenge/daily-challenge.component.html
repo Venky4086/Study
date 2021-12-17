@@ -114,8 +114,7 @@
             <mat-card
               class="col-md-10 mx-auto mt-3 text-center"
               *ngFor="let std of HistoryChallengeData"
-              (click)="gotoReport(std.qid, std.status)"
-            >
+              (click)="gotoReport(std.qId, std.status)">
               <span class="badge badge-dark ml-5 text-center"
                 >Class&nbsp;{{ std.standard }}</span
               >&nbsp;&nbsp;

@@ -36,7 +36,7 @@ export class InstituteService {
   }
 
   postTimeTable(tablePayload){
-    return this.http.post(APIConfig.END_POINT + "timeTableAdding",tablePayload);
+    return this.http.post(APIConfig.END_POINT + "qas/insti/timeTableAdding",tablePayload);
   }
   postTimings(timePayload){
       return this.http.post(APIConfig.END_POINT + "qas/insti/addInstitionTimeSlots",timePayload);

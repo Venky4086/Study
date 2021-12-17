@@ -12,6 +12,7 @@ import { StudentService } from "src/app/services/student.service";
 import { TeacherService } from "src/app/services/teacher.service";
 
 import AOS from 'aos'
+import { MatSnackBar } from "@angular/material/snack-bar";
 declare var $: any;
 
 @Component({
@@ -68,7 +69,8 @@ export class HomeComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private student: StudentService,
-    private teacher: TeacherService
+    private teacher: TeacherService,
+    private snackbar: MatSnackBar
   ) {}
   userloginForm = new FormGroup({
     mobileNo: new FormControl("", Validators.required),
@@ -304,18 +306,20 @@ export class HomeComponent implements OnInit {
     let data = this.contactForm.value;
     console.log(data);
     const payload = {
-      fullName: data.fullName,
+      name: data.fullName,
       // MobileNumber :data.MobileNumber,
       email: data.email,
       message: data.message,
     };
-    // this.student.contactUs(payload).subscribe(
-    //   (res:any)=>{
-    //     if(res.status==200){
-    //       console.log("feedback submitted successfully.", res);
-    //       this.toastr.successToastr('Thanks for your feedback..!' , null, {position: 'top-right'});
-    //     }
-    //   }
-    // )
+    console.log(payload);
+    this.student.contactUs(payload).subscribe((res:any)=>{
+          console.log("feedback submitted successfully.", res);
+          this.snackbar.open("Thanks for your feedback..!", "close", { duration: 3000 });
+          this.contactForm.reset();
+          // this.toastr.successToastr('Thanks for your feedback..!' , null, {position: 'top-right'});
+      },(error)=>{
+        console.error(error);
+        this.snackbar.open("Your feedback is Failed", "close", { duration: 3000 });
+    })
   }
 }

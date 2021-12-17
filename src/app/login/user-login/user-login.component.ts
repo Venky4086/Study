@@ -48,6 +48,7 @@ export class UserLoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value).subscribe(
       (data: any) => {
         console.log(data);
+        sessionStorage.setItem('institution',data.result.result.institution);
         if (data.status) {
           this.snackbar.open("Login Success", "close", { duration: 3000 });
           sessionStorage.setItem("userid", data.result.result.userId);

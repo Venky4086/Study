@@ -13,7 +13,7 @@
                             <div *ngIf="f.title.errors.required">Please select the title</div>
                         </div>
 
-                        <select class="form-control" formControlName="type"
+                        <select class="form-control" formControlName="type" placeholder="type"
                             [ngClass]="{'is-invalid': submitted && f.type.errors}">
                             <option value="" hidden>Type</option>
                             <option value="DailyChallenge">Daily Challenge</option>
@@ -25,7 +25,7 @@
                             <div *ngIf="f.type.errors.required">Please select the question type </div>
                         </div>
 
-                        <select class="form-control" formControlName="level"
+                        <select class="form-control" formControlName="level" placeholder="Level"
                             [ngClass]="{'is-invalid':submitted && f.level.errors}">
                             <option value="" selected default hidden>Level</option>
                             <option value="Easy">Easy</option>

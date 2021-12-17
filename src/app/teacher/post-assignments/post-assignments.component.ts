@@ -78,6 +78,7 @@ export class PostAssignmentsComponent implements OnInit {
   }
 
   getAssignments(){
+    console.log(sessionStorage.getItem('InstituteId'));
     this.teacherservice.getAssignmentsByInstituteTeacher(sessionStorage.getItem('InstituteId'),sessionStorage.getItem('userid'))
     .subscribe(
       (data:any)=>

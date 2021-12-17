@@ -79,7 +79,6 @@ export class SubjectExpert1Component implements OnInit {
       {
         console.log(data);
         this.Subjects=data;
-
       }
     );
   }

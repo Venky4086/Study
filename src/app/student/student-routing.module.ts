@@ -29,6 +29,7 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
 import { StudentComponent } from './student.component';
 import { StudyComponent } from './study/study.component';
 import { TaskComponent } from './task/task.component';
+import { Terms2Component } from './terms2/terms2.component';
 import { TestAccuracyComponent } from './test-accuracy/test-accuracy.component';
 import { TestSubmitComponent } from './test-submit/test-submit.component';
 import { TestComponent } from './test/test.component';
@@ -71,6 +72,7 @@ const routes: Routes = [
     {path : 'testsubmit/:sptrId' ,component:TestSubmitComponent,canActivate:[AuthGuard]},
     {path : 'task' ,component:TaskComponent,canActivate:[AuthGuard]},
     {path : 'time-table' ,component:TimeTableComponent,canActivate:[AuthGuard]},
+    {path : 'test-instruction' ,component:Terms2Component,canActivate:[AuthGuard]},
   ]
   
   

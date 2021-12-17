@@ -85,7 +85,7 @@ displayDate(){
         this.snackbar.open('No History','close',{duration: 3000})
       }
       this.HistoryChallengeData = data;
-      console.log(this.TodayChallengeData);
+      console.log(this.HistoryChallengeData);
     }
   )
 
