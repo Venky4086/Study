@@ -1,64 +1,66 @@
 <div class="star">
-  
-    <div class="container clsmax mb-4" *ngFor="let discussion of discussionDetails">
-  
-  
-      <div class="backCls my-2">
-        <div>
-          <img
-            src="../assets/images/backBtn.png"
-            (click)="goBack()"
-            alt="btn"
-          />
-        </div>
-        <div class="font-weight-bold mx-2">Forum</div>
+
+  <div class="container clsmax mb-4" *ngFor="let discussion of discussionDetails">
+
+
+    <div class="backCls my-2">
+      <div>
+        <img src="../assets/images/backBtn.png" (click)="goBack()" alt="btn" />
       </div>
-  
-     
-      <div class="top-card">
-        <div class="col-md-12 matcard p-3">
-          <div class="row">
-            <div class="col-md-1" *ngIf="discussion.userImageUri;else noImage">
-              <img src="https://storage.googleapis.com/study-amaze-bucket/users/{{ discussion.userId }}/{{ discussion.userImageUri }}"
-                class="rounded-circle up" alt="" width="80" height="80">
-              <small class="text-center pt-2 pl-1">{{discussion.username}}</small>
+      <div class="font-weight-bold mx-2">Forum</div>
+    </div>
+
+
+    <div class="top-card">
+      <div class="col-md-12 matcard p-3">
+        <div class="row">
+          <div class="col-md-1" *ngIf="discussion.userImageUri;else noImage">
+            <img
+              src="https://storage.googleapis.com/study-amaze-bucket/users/{{ discussion.userId }}/{{ discussion.userImageUri }}"
+              class="rounded-circle up" alt="" width="80" height="80">
+            <small class="text-center pt-2 pl-1">{{discussion.username}}</small>
+          </div>
+          <!-- if no image  -->
+          <ng-template #noImage>
+            <div class="col-md-1 left">
+              <img src="../../assets/images/profile.png" alt="user-img" width="80" height="80">
+              <small class="text-center">{{discussion.username}}</small>
             </div>
-            <!-- if no image  -->
-            <ng-template #noImage>
-              <div class="col-md-1 left">
-                <img src="../../assets/images/profile.png" alt="user-img" width="80" height="80">
-                <small class="text-center">{{discussion.username}}</small>
-              </div>
-            </ng-template>
-  
-            <div class="col-md-9" *ngFor="let info of LikesDislikesDTO"><strong
-                class="media-count box-offset pull-right"><i *ngIf="discussion.userId==userId"
-                  (click)="editDiscussion(discussion.dQid)" class="far fa-sm fa-edit px-2"></i> <i
-                  *ngIf="discussion.userId==userId && noOfComments==0" (click)="deleteDiscussion(discussion.dQid,userId)"
-                  class="fa fa-trash-o" aria-hidden="true"></i></strong><br>
-  
-              <h5 class="title">{{discussion.title}}</h5>
-              <p>Q.{{discussion.question}}</p>
-              <hr>
-              <span class="">
-                <a class="m-2" (click)="giveLike(info.likeDislikeInfoDTO.disliked)"><i
-                    class="fa-thumbs-up text-success s" [ngClass]=" info.likeDislikeInfoDTO.liked ? 'fas' : 'far'"
-                    id="likes_icon"></i> <span id="likes_count" class="text-success">
-                    <strong> {{ info?.likes }}</strong></span></a>
-                <a class="m-2"  (click)="giveDislike(info.likeDislikeInfoDTO.liked)"><i
-                    class="fa-thumbs-down text-danger ds" [ngClass]=" info.likeDislikeInfoDTO.disliked ? 'fas' : 'far'"
-                    id="dislikes_icon"></i> <span id="dislikes_count" class="text-danger pl-1 "> <strong>{{ info?.dislikes
-                      }}</strong></span></a>
-                <a class="m-2" ><i class="far fa-comment  cmt"></i><span class="cmt"><strong> {{ noOfComments
-                      }}</strong></span></a>
-              </span>
+          </ng-template>
+
+          <div class="col-md-9" *ngFor="let info of LikesDislikesDTO">
+            <strong class="media-count box-offset pull-right"><i *ngIf="discussion.userId==userId"
+                (click)="editDiscussion(discussion.dQid)" class="far fa-sm fa-edit px-2"></i> <i
+                *ngIf="discussion.userId==userId && noOfComments==0" (click)="deleteDiscussion(discussion.dQid,userId)"
+                class="fa fa-trash-o" aria-hidden="true"></i>
+            </strong>
+            <br>
+            <div class="d-flex align-items-center my-3">
+              <h1 class="title mb-0">{{discussion.title}}</h1>
+              <span class="pull-right">Posted On: {{calculateDiff(discussion)}} days ago</span>
             </div>
-  
-            <div class="col-md-2 right ">
-              <div class="span text-center bigdata">
-                <small>Attachment&nbsp;<i class="fa fa-paperclip" aria-hidden="true"></i></small>
-                <br>
-                <!-- <div class="div" style="width: 100;height: 100;">
+
+            <p>Q.{{discussion.question}}</p>
+            <hr>
+            <span class="">
+              <a class="m-2" (click)="giveLike(info.likeDislikeInfoDTO.disliked)"><i class="fa-thumbs-up text-success s"
+                  [ngClass]=" info.likeDislikeInfoDTO.liked ? 'fas' : 'far'" id="likes_icon"></i> <span id="likes_count"
+                  class="text-success">
+                  <strong> {{ info?.likes }}</strong></span></a>
+              <a class="m-2" (click)="giveDislike(info.likeDislikeInfoDTO.liked)"><i
+                  class="fa-thumbs-down text-danger ds" [ngClass]=" info.likeDislikeInfoDTO.disliked ? 'fas' : 'far'"
+                  id="dislikes_icon"></i> <span id="dislikes_count" class="text-danger pl-1 "> <strong>{{ info?.dislikes
+                    }}</strong></span></a>
+              <a class="m-2"><i class="far fa-comment  cmt"></i><span class="cmt"><strong> {{ noOfComments
+                    }}</strong></span></a>
+            </span>
+          </div>
+
+          <div class="col-md-2 right ">
+            <div class="span text-center bigdata">
+              <small>Attachment&nbsp;<i class="fa fa-paperclip" aria-hidden="true"></i></small>
+              <br>
+              <!-- <div class="div" style="width: 100;height: 100;">
                   <span id="multi-pic" class="multi-pic1" matTooltip="image1.png"><img src="../../assets/banner.png"
                       width="25" height="25"></span>
                   <span id="multi-pic" class="multi-pic2" matTooltip="image2.png"><img src="../../assets/banner.png"
@@ -68,92 +70,94 @@
                   <span id="multi-pic" class="multi-pic4" matTooltip="image4.png"><img src="../../assets/banner.png"
                       width="25" height="25"></span>
                 </div> -->
-                <img data-toggle="modal" data-target="#exampleModalCenter" class="img-fluid ap"
-                src="https://storage.googleapis.com/study-amaze-bucket/forums/{{ discussion.dqid }}/{{ discussion.userId + '_' }}{{ discussion.imageUri }}" alt="" width="50px"
-                  height="50px">
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <!-- <div class="modal-header">
+              <img data-toggle="modal" data-target="#exampleModalCenter" class="img-fluid ap"
+                src="https://storage.googleapis.com/study-amaze-bucket/forums/{{ discussion.dqid }}/{{ discussion.userId + '_' }}{{ discussion.imageUri }}"
+                alt="" width="50px" height="50px">
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <!-- <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Image</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div> -->
-                      <div class="modal-body">
-                        <p>{{ discussion.question }}</p>
-  
-                        <img class="img-fluid"
-                          src="https://storage.googleapis.com/study-amaze-bucket/users/{{ discussion.userId }}/{{ discussion.imageUri }}" width=75%
-                          height=100%; alt="">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
+                    <div class="modal-body">
+                      <p>{{ discussion.question }}</p>
+
+                      <img class="img-fluid"
+                        src="https://storage.googleapis.com/study-amaze-bucket/users/{{ discussion.userId }}/{{ discussion.imageUri }}"
+                        width=75% height=100%; alt="">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>
               </div>
-              <a class=" btn btn-info btn-sm ml-2 mt-3 comment-form-toggle show_login waves-effect waves-light"
-                (click)="toggle()">Add comment
-              </a>
             </div>
-  
+            <a class=" btn btn-info btn-sm ml-2 mt-3 comment-form-toggle show_login waves-effect waves-light"
+              (click)="toggle()">Add comment
+            </a>
           </div>
-          <div [ngClass]="toggleCommentDiv ? 'show':'hide' " class="toggleCommentDiv mt-2" *ngIf="toggleCommentDiv">
-            <div class="form-group" style="margin-bottom: 2px;">
-              <textarea [(ngModel)]="comment" class="form-control status-box" rows="2"
-                placeholder="Enter your comment here..."></textarea>
-            </div>
-            <div class="text-center" style="background:#17a2b829;">
-              <input type="file" #fileInput [(ngModel)]="myInputVariable" class="choosefile"
-                (change)="onFileChange($event)" multiple="multiple">
-              <span class="text-center btn btn-info my-1 ml-5 " (click)="addComment()">post</span>
-            </div>
+
+        </div>
+        <div [ngClass]="toggleCommentDiv ? 'show':'hide' " class="toggleCommentDiv mt-2" *ngIf="toggleCommentDiv">
+          <div class="form-group" style="margin-bottom: 2px;">
+            <textarea [(ngModel)]="comment" class="form-control status-box" rows="2"
+              placeholder="Enter your comment here..."></textarea>
           </div>
-  
-          <div class="container mb-1 pt-1 clsmax" *ngFor="let comment of commentDetails;let index=index">
-            <div class="comment-container theme--light">
-              <div class="comments">
-  
-                <div class="col-md-12 card v-card v-sheet theme--light elevation-2">
-                  <div class="row">
-                    <div class="col-md-9">
-                      <div class="">
-                        
-                        <div class="header">
-                          <div class="v-avatar avatar up" style="height: 50px; width: 50px;">
-                            <img
-                              src="https://storage.googleapis.com/study-amaze-bucket/users/{{ comment.userInfoDetailsDTO?.userId }}/{{ comment.userInfoDetailsDTO?.imageUri }}">
-                          </div>
-                          <span class="displayName title">{{comment.userInfoDetailsDTO?.userName}}</span> <span
-                            class="displayName caption">
-                            {{ comment.inDateTime | date : 'EEEE, MMMM d, h:mm' }} {{
-                            comment.inDateTime | date : 'a' | lowercase }}
-                          </span>
+          <div class="text-center" style="background:#17a2b829;">
+            <input type="file" #fileInput [(ngModel)]="myInputVariable" class="choosefile"
+              (change)="onFileChange($event)" multiple="multiple">
+            <span class="text-center btn btn-info my-1 ml-5 " (click)="addComment()">post</span>
+          </div>
+        </div>
+
+        <div class="container mb-1 pt-1 clsmax" *ngFor="let comment of commentDetails;let index=index">
+          <div class="comment-container theme--light">
+            <div class="comments">
+
+              <div class="col-md-12 card v-card v-sheet theme--light elevation-2">
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="">
+
+                      <div class="header">
+                        <div class="v-avatar avatar up" style="height: 50px; width: 50px;">
+                          <img
+                            src="https://storage.googleapis.com/study-amaze-bucket/users/{{ comment.userInfoDetailsDTO?.userId }}/{{ comment.userInfoDetailsDTO?.imageUri }}">
                         </div>
-  
-                        <div class="wrapper comment">
-                          <p>{{ comment.solution }}.</p>
-                          <hr>
-                          <span class="" *ngFor="let info of LikesDislikesDTO">
-                            <a class="m-2" (click)="giveupVote(comment.solutionId)">
-                              <i class="fa-thumbs-up text-success s mx-1" [ngClass]="comment.voteInfoDTO.userVotesInfo.upvote == 1 ? 'fas' : 'far' "></i> 
-                              <span id="likes_count" class="text-success">
-                                <strong>{{ comment.voteInfoDTO.upVotes }}</strong>
-                              </span>
-                            </a>
-                            <a class="m-2" (click)="givedownVote(comment.solutionId)">
-                              <i class="fa-thumbs-down text-danger ds mx-1" [ngClass]="comment.voteInfoDTO.userVotesInfo.downVote == 1 ? 'fas' : 'far' "></i> 
-                                <span id="dislikes_count" class="text-danger pl-1">
-                                  <strong>{{ comment.voteInfoDTO.downVotes }}</strong>
-                               </span>
-                            </a>
-                          </span>
-                        </div>
-                        <!-- <hr>
+                        <span class="displayName title">{{comment.userInfoDetailsDTO?.userName}}</span>
+                        <span class="displayName caption">
+                          {{ comment.inDateTime | date : 'EEEE, MMMM d, h:mm' }} {{
+                          comment.inDateTime | date : 'a' | lowercase }}
+                        </span>
+                      </div>
+
+                      <div class="wrapper comment">
+                        <p>{{ comment.solution }}.</p>
+                        <hr>
+                        <span class="" *ngFor="let info of LikesDislikesDTO">
+                          <a class="m-2" (click)="giveupVote(comment.solutionId)">
+                            <i class="fa-thumbs-up text-success s mx-1"
+                              [ngClass]="comment.voteInfoDTO.userVotesInfo.upvote == 1 ? 'fas' : 'far' "></i>
+                            <span id="likes_count" class="text-success">
+                              <strong>{{ comment.voteInfoDTO.upVotes }}</strong>
+                            </span>
+                          </a>
+                          <a class="m-2" (click)="givedownVote(comment.solutionId)">
+                            <i class="fa-thumbs-down text-danger ds mx-1"
+                              [ngClass]="comment.voteInfoDTO.userVotesInfo.downVote == 1 ? 'fas' : 'far' "></i>
+                            <span id="dislikes_count" class="text-danger pl-1">
+                              <strong>{{ comment.voteInfoDTO.downVotes }}</strong>
+                            </span>
+                          </a>
+                        </span>
+                      </div>
+                      <!-- <hr>
                         <span class="">
                           <a class="mat-raised-button" (click)="giveLike(info.likeDislikeInfoDTO.disliked)"><i
                               class="fa-thumbs-up text-success s" [ngClass]=" info.likeDislikeInfoDTO.liked ? 'fas' : 'far'"
@@ -165,74 +169,80 @@
                                 }}</strong></span></a>
                           
                         </span> -->
-                        <div class="pl-2" *ngIf="replyIndex === index">
-                          <textarea class="form-control ml-4" style="height: 42px;" [(ngModel)]="comments[index]"
-                            placeholder="Give Reply..."></textarea>
-                          <div class="text-center">
-                            <span class="text-center btn btn-info my-1 ml-5 "
-                              (click)="postReply(comment.solutionId,index)">post</span>
-                          </div>
+                      <div class="pl-2" *ngIf="replyIndex === index">
+                        <textarea class="form-control ml-4" style="height: 42px;" [(ngModel)]="comments[index]"
+                          placeholder="Give Reply..."></textarea>
+                        <div class="text-center">
+                          <span class="text-center btn btn-info my-1 ml-5 "
+                            (click)="postReply(comment.solutionId,index)">post</span>
                         </div>
-  
                       </div>
+
                     </div>
-                    <div class="col-md-3 mt-5">
-                      <div class="rs text-center ml-5">
-                        <!-- <button class=" btn btn-info btn-sm  comment-form-toggle show_login waves-effect waves-light sc"
+                  </div>
+                  <div class="col-md-3 mt-5">
+                    <div class="rs text-center ml-5">
+                      <!-- <button class=" btn btn-info btn-sm  comment-form-toggle show_login waves-effect waves-light sc"
                           [disabled]="!comments[index] || loading" (click)="postReply(comment.solutionId,index)">Reply</button> -->
-                        <button class="btn btn-info btn-sm  comment-form-toggle show_login waves-effect waves-light sc"
-                          (click)="replyToggle(index)">Reply</button>
-  
-                        <!-- <button
+                      <button class="btn btn-info btn-sm  comment-form-toggle show_login waves-effect waves-light sc"
+                        (click)="replyToggle(index)">Reply</button>
+
+                      <!-- <button
                           class=" btn btn-info btn-sm mx-2 comment-form-toggle show_login waves-effect waves-light sc ml-2"
                           (click)="getReplies(comment.solutionId,index)">
   
                           <span>show comments</span>&nbsp;<i class="fas fa-angle-down"></i>
                         </button> -->
-                        <button style="padding-left: 5px;cursor: pointer;outline:none;border:none" [disabled]="comment.totalComments == 0" (click)="getReplies(comment.solutionId,index)">{{ comment?.totalComments }} comments</button>
-                      </div>
+                      <button style="padding-left: 5px;cursor: pointer;outline:none;border:none"
+                        [disabled]="comment.totalComments == 0" (click)="getReplies(comment.solutionId,index)">{{
+                        comment?.totalComments }} comments</button>
                     </div>
-  
-  
                   </div>
-                  <div class="comments" *ngIf="visibleIndex === index">
-                    <div class="col-md-12 mat-card " *ngIf="getRepliesDetails.length;else nocomment">
-                      <div *ngFor="let comments of getRepliesDetails">
-                        <div class="py-2 px-4 mb-1 d-flex" style="background-color: #f8f9fa;">
-                          
-                          <div class="mx-2 my-auto">
-                            <img src="https://storage.googleapis.com/study-amaze-bucket/users/{{ comments.userInfoDetailsDTO.userId }}/{{ comments.userInfoDetailsDTO.imageUri }}" class="rounded-circle up" alt="" width="40" height="40">
-                          </div>
 
-                          <div class="mx-2 my-auto">
-                            <span class="caption"> <span style="font-weight:500;color:black;letter-spacing:0.03em"> {{ comments.userInfoDetailsDTO.userName }} </span> {{ comments.inDateTime | date : 'EEEE, MMMM d, h:mm' }} {{
-                              comment.inDateTime | date : 'a' | lowercase }}</span>
-                              <br>
-                            {{ comments.comment }}
-                          </div>
 
-                        </div>
-                      </div>
-                    </div>
-  
-                    <ng-template #nocomment>
-                      <div class="mat-card py-5 text-center"
-                        style="box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);">
-                        <h6>No comments to show</h6>
-                      </div>
-                    </ng-template>
-                  </div>
                 </div>
-  
-  
+                <div class="comments" *ngIf="visibleIndex === index">
+                  <div class="col-md-12 mat-card " *ngIf="getRepliesDetails.length;else nocomment">
+                    <div *ngFor="let comments of getRepliesDetails">
+                      <div class="py-2 px-4 mb-1 d-flex" style="background-color: #f8f9fa;">
+
+                        <div class="mx-2 my-auto">
+                          <img
+                            src="https://storage.googleapis.com/study-amaze-bucket/users/{{ comments.userInfoDetailsDTO.userId }}/{{ comments.userInfoDetailsDTO.imageUri }}"
+                            class="rounded-circle up" alt="" width="40" height="40">
+                        </div>
+
+                        <div class="mx-2 my-auto">
+                          <span class="caption"> <span style="font-weight:500;color:black;letter-spacing:0.03em"> {{
+                              comments.userInfoDetailsDTO.userName }} </span> {{ comments.inDateTime | date : 'EEEE,
+                            MMMM d, h:mm' }} {{
+                            comment.inDateTime | date : 'a' | lowercase }}</span>
+                          <br>
+                          {{ comments.comment }}
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <ng-template #nocomment>
+                    <div class="mat-card py-5 text-center"
+                      style="box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);">
+                      <h6>No comments to show</h6>
+                    </div>
+                  </ng-template>
+                </div>
               </div>
+
+
             </div>
           </div>
-  
         </div>
-  
+
       </div>
-  
-  
-    </div><br>
-  </div>
+
+    </div>
+
+
+  </div><br>
+</div>

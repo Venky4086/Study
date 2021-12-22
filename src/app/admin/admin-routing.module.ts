@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { AllQasInfoComponent } from './all-qas-info/all-qas-info.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FormusapprovalComponent } from './formusapproval/formusapproval.component';
 import { GeneralAdminComponent } from './general-admin/general-admin.component';
 import { ManageInstitutesComponent } from './manage-institutes/manage-institutes.component';
 import { PagesDetailsComponent } from './pages-details/pages-details.component';
@@ -44,7 +45,8 @@ const routes: Routes = [
     {path: 'subject-expert2', component: SubjectExpert2Component},
     {path: 'super-admin', component: SuperAdminComponent},
     {path: 'user-approval', component: UserApprovalComponent},
-    {path: 'user-details/:id', component: UserDetailsComponent}
+    {path: 'user-details/:id', component: UserDetailsComponent},
+    {path: 'formus-approval', component: FormusapprovalComponent}
   ] }
 ];
 

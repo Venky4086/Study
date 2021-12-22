@@ -79,6 +79,13 @@ export class ForumComponent implements OnInit {
     this.getAllDiscussion();
   }
 
+  calculateDiff(data:any){
+    let date = new Date(data.insertedDate);
+    let currentDate = new Date();
+    let days = Math.floor((currentDate.getTime() - date.getTime()) / 1000 / 60 / 60 / 24);
+    return days;
+  }
+
   // findSolutions(){
   //   this.student.getSolutionsOfDiscussion(this.dQid)
   //   .subscribe(

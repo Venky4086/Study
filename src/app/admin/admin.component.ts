@@ -33,6 +33,7 @@ export class AdminComponent implements OnInit {
     { name: "Subject Expert2", path: "/admin/subject-expert2", icon: "filter_2" },
     { name: "Super Admin", path: "/admin/super-admin", icon: "portrait" },
     { name: "User Approval", path: "/admin/user-approval", icon: "approval" },
+    { name: "Formus Approval", path: "/admin/formus-approval", icon: "forum" },
     // {name : 'User Details', path:'/admin/user-details'}
   ];
 

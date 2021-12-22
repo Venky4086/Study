@@ -21,6 +21,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { PipesModule } from '../common/pipes/pipes.module';
 import { KatexModule } from 'ng-katex';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { FormusapprovalComponent } from './formusapproval/formusapproval.component';
 // import { AddDailyChallengesComponent } from './add-daily-challenges/add-daily-challenges.component';
 // import { AddRoleComponent } from './add-role/add-role.component';
 // import { AllQasInfoComponent } from './all-qas-info/all-qas-info.component';
@@ -51,6 +52,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SuperAdminComponent,
     UserApprovalComponent,
     UserDetailsComponent,
+    FormusapprovalComponent,
     // AddDailyChallengesComponent,
     // AddRoleComponent,
     // AllQasInfoComponent,
