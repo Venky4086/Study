@@ -3,13 +3,13 @@ import { TeacherService } from 'src/app/services/teacher.service';
 import { DatePipe, Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
 @Component({
-  selector: 'app-formusapproval',
-  templateUrl: './formusapproval.component.html',
-  styleUrls: ['./formusapproval.component.css']
+  selector: 'app-formus-approval',
+  templateUrl: './formus-approval.component.html',
+  styleUrls: ['./formus-approval.component.css']
 })
-export class FormusapprovalComponent implements OnInit {
+export class FormusApprovalComponent implements OnInit {
+
   AllFormus: Object;
   editdiscussionform: FormGroup;
   img: File;
@@ -59,27 +59,29 @@ export class FormusapprovalComponent implements OnInit {
 
 // approval
 
-  Approval(DqId:any,Image:any,StandardId:any,SubjectId:any,TopicId:any,Question:any,Title:any,Totalpoints:any,userId:any,userImageUri:any,Username:any,View:any){
+  Approval(DqId:any,Image:any,InsertDate:any,StandardId:any,SubjectId:any,TopicId:any,Question:any,Title:any,Totalpoints:any,userId:any,userImageUri:any,Username:any,View:any){
     console.log("Approval");
-    let adminId = this.userId;
+    let adminId = +this.userId;
     const data = {
-       "adminId":adminId,
-       "questionDTO":{
-         "dQid":DqId,
-         "imageUri":Image,
-         "question":Question,
-         "standardId":StandardId,
-         "subjectId":SubjectId,
-         "title":Title,
-         "topicId":TopicId,
-         "totalpoints":Totalpoints,
-         "userId":userId,
-         "userImageUri":userImageUri,
-         "username":Username,
-         "view":View,
-       },
-       "status":"APPROVED",
-    }
+          "adminId": adminId,
+          "questionDTO": {
+            "dQid":DqId,
+            "imageUri": Image,
+            "insertedDate": InsertDate,
+            "question": Question,
+            "standardId": StandardId,
+            "subjectId": SubjectId,
+            "title": Title,
+            "topicId": TopicId,
+            "totalpoints": Totalpoints,
+            "userId": userId,
+             "userImageUri": userImageUri,
+            "username": Username,
+            "view": View
+          },
+        
+          "status": "APPROVED"
+        }
     console.log(data);
     this.teacherservice.discussionUpdate(data)
     .subscribe(
@@ -92,6 +94,7 @@ export class FormusapprovalComponent implements OnInit {
           this.snackbar.open("Approval sucessful done",'close',{duration:3000});
           // this.router.navigate(['student/forums']);
         }
+       this.getForms();
       },
       (error:any)=>
       {
@@ -102,39 +105,42 @@ export class FormusapprovalComponent implements OnInit {
     );
   }
 
- DisApproval(DqId:any,Image:any,StandardId:any,SubjectId:any,TopicId:any,Question:any,Title:any,Totalpoints:any,userId:any,userImageUri:any,Username:any,View:any){
+ DisApproval(DqId:any,Image:any,InsertDate:any,StandardId:any,SubjectId:any,TopicId:any,Question:any,Title:any,Totalpoints:any,userId:any,userImageUri:any,Username:any,View:any){
   console.log('DisApproval');
-  let adminId = this.userId;
+  let adminId = +this.userId;
   const data = {
-      "adminId":adminId,
-      "questionDTO":{
-        "dQid":DqId,
-        "imageUri":Image,
-        "question":Question,
-        "standardId":StandardId,
-        "subjectId":SubjectId,
-        "title":Title,
-        "topicId":TopicId,
-        "totalpoints":Totalpoints,
-        "userId":userId,
-        "userImageUri":userImageUri,
-        "username":Username,
-        "view":View,
-      },
-      "status":"DISAPPROVED",
-   }
+        "adminId": adminId,
+        "questionDTO": {
+          "dQid":DqId,
+          "imageUri": Image,
+          "insertedDate": InsertDate,
+          "question": Question,
+          "standardId": StandardId,
+          "subjectId": SubjectId,
+          "title": Title,
+          "topicId": TopicId,
+          "totalpoints": Totalpoints,
+          "userId": userId,
+           "userImageUri": userImageUri,
+          "username": Username,
+          "view": View
+        },
+      
+        "status": "DISAPPROVED"
+      }
    console.log(data);
    this.teacherservice.discussionUpdate(data)
    .subscribe(
      res=>
      {
        this.response=res;
-       console.log(this.response.status);
+       console.log(this.response);
        this.loading=false;
        if(this.response.status){
          this.snackbar.open("DisApproval sucessful done",'close',{duration:3000});
          // this.router.navigate(['student/forums']);
        }
+    this.getForms();
      },
      (error:any)=>
      {
@@ -191,6 +197,7 @@ export class FormusapprovalComponent implements OnInit {
         this.snackbar.open("Something went wrong");
       })
   }
+
 
 
 }

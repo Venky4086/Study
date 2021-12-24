@@ -25,7 +25,8 @@ export class TeacherComponent implements OnInit {
     { icon:'quiz' , name : 'Tests', path:'/teacher/tests' },
     { icon:'forum' , name : 'Forums' , path:'/teacher/forums' },
     { icon:'add' , name : 'Add Question' , path:'/teacher/add-question' },
-    { icon:'analytics' , name : 'Assessment' , path:'/teacher/assessment' }
+    { icon:'analytics' , name : 'Assessment' , path:'/teacher/assessment' },
+    { name: "Formus Approval", path: "/teacher/formusapproval", icon: "forum" },
   ];
 
   ngOnInit(): void {

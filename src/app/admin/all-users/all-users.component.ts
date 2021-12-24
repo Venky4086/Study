@@ -15,6 +15,8 @@ export class AllUsersComponent implements OnInit {
     this.admin.grabUsers().subscribe((data: any) => {
       console.log(data);
       this.Users = data;
+    },(error)=>{
+      console.error(error);
     });
   }
 

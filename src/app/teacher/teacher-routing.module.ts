@@ -11,6 +11,7 @@ import { AddQuestionComponent } from './add-question/add-question.component';
 import { AssessUserComponent } from './assess-user/assess-user.component';
 import { AssessmentComponent } from './assessment/assessment.component';
 import { AssignmentReportComponent } from './assignment-report/assignment-report.component';
+import { FormusApprovalComponent } from './formus-approval/formus-approval.component';
 import { PostAssignmentsComponent } from './post-assignments/post-assignments.component';
 import { PostTestsComponent } from './post-tests/post-tests.component';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
@@ -30,7 +31,8 @@ const routes: Routes = [
     {path: 'subject-expert2' , component: SubjectExpert2Component,canActivate:[AuthGuard]},
     {path: 'assessment' , component: AssessmentComponent,canActivate:[AuthGuard]},
     { path:'assignment-report/:id', component:AssignmentReportComponent,canActivate:[AuthGuard] },
-    { path:'assess-user/:id/:userid', component:AssessUserComponent,canActivate:[AuthGuard] }
+    { path:'assess-user/:id/:userid', component:AssessUserComponent,canActivate:[AuthGuard] },
+    { path:'formusapproval', component:FormusApprovalComponent, },
   ]}
 ];
 

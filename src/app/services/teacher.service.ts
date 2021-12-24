@@ -15,6 +15,7 @@ export class TeacherService {
   });
 
   // update question
+
   updateQuestion(updateObject){
     return this.http.post(APIConfig.END_POINT + "qas/question/update", updateObject );
   }
@@ -105,8 +106,21 @@ export class TeacherService {
   }
 
   // submit user performance
+
   postUserMarks(payload){
     return this.http.post(APIConfig.END_POINT + "qas/insti/addReports",payload)
+  }
+
+//  all formus
+
+  getAllFormus(){
+    return this.http.get(APIConfig.END_POINT + "db/discussionBoard/getForumsForApproval")
+  }
+
+  // update Formus
+
+  discussionUpdate(payload){
+    return this.http.post(APIConfig.END_POINT+"db/discussionBoard/postApprovedForumsByAdmin",payload);
   }
 
 }

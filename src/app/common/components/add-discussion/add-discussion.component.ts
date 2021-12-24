@@ -215,7 +215,7 @@ export class AddDiscussionComponent implements OnInit {
     formData.append('topicId',this.editdiscussionform.get('topicId').value);
     formData.append('question',this.editdiscussionform.get('question').value);
     formData.append('title',this.editdiscussionform.get('title').value);
-    console.log(formData)
+    console.log(formData);
     this.student.discussionUpdate(formData)
     .subscribe(
       (data:any)=>
