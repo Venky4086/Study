@@ -43,15 +43,18 @@
             <td class="subj">HINDI</td>
             <td class="subj">MATHS</td>
             <td class="quiz">Quiz, Game, Activity</td> -->
-          <!-- <tr>
-            <td class="teach_name">TEACHER'S NAME</td>
-            <td></td>
+          <tr *ngFor="let timetable of timetablearr">
+            <td *ngFor="let time of timetable.time">{{time.timeSlot}}</td>
+            <td *ngFor="let data of timetable.teacherandsuject.monday.subject_teacher">
+              <h1>{{data.subject}}</h1>
+              <h1>{{data.teacher}}</h1>
+            </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td>CLASS TEACHER</td>
-          </tr> -->
+          </tr>
           <tr>
             <td colspan="7" class="text-danger font-weight-bold">
               10MINS REST TIME
