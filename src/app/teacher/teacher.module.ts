@@ -16,6 +16,7 @@ import { AssessmentComponent } from './assessment/assessment.component';
 import { AssignmentReportComponent } from './assignment-report/assignment-report.component';
 import { AssessUserComponent } from './assess-user/assess-user.component';
 import { FormusApprovalComponent } from './formus-approval/formus-approval.component';
+import { EditdiscussionComponent } from './editdiscussion/editdiscussion.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FormusApprovalComponent } from './formus-approval/formus-approval.compo
     AssessmentComponent,
     AssignmentReportComponent,
     AssessUserComponent,
-    FormusApprovalComponent
+    FormusApprovalComponent,
+    EditdiscussionComponent,
   ],
   imports: [
     CommonModule,

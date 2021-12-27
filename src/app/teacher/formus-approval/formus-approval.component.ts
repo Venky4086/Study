@@ -3,6 +3,7 @@ import { TeacherService } from 'src/app/services/teacher.service';
 import { DatePipe, Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-formus-approval',
   templateUrl: './formus-approval.component.html',
@@ -18,7 +19,7 @@ export class FormusApprovalComponent implements OnInit {
   loading:boolean=false;
   response: any;
   userId:any;
-  constructor(private teacherservice:TeacherService,private location:Location,private snackbar:MatSnackBar) { }
+  constructor(private router:Router,private teacherservice:TeacherService,private location:Location,private snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.userId=sessionStorage.getItem('userid');
@@ -166,6 +167,7 @@ export class FormusApprovalComponent implements OnInit {
 
   Edit(Qid:any){
    console.log(Qid);
+   this.router.navigate(['/teacher/edit-disscusion']);
   }
 
 
