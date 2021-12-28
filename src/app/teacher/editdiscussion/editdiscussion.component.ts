@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { StudentService } from 'src/app/services/student.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-editdiscussion',
@@ -27,11 +28,34 @@ export class EditdiscussionComponent implements OnInit {
   discussionDetails:any;
   loading:boolean=false;
   result: any;
+  Quid: any;
+  Totalpoints: any;
+  userImageUri: any;
+  user_Id: any;
+  Username: any;
+  View: any;
+  InserteDate: any;
+  Question: any;
+  standardId: any;
+  subjectId: any;
+  title: any;
+  topicId: any;
 
 
-  constructor(private _location:Location,private student:StudentService,private router:Router,private route:ActivatedRoute,private snackbar:MatSnackBar) { }
+  constructor(private teacherservice:TeacherService,private _location:Location,private student:StudentService,private router:Router,private route:ActivatedRoute,private snackbar:MatSnackBar) { }
 
   ngOnInit() {
+
+    this.adddiscussionform=new FormGroup({
+      'question':new FormControl('',Validators.required),
+      'standardId':new FormControl('',Validators.required),
+      'subjectId':new FormControl('',Validators.required),
+      'title':new FormControl('',Validators.required),
+      'topicId':new FormControl('',Validators.required),
+      'image':new FormControl('')
+    });
+
+    this.userId=sessionStorage.getItem('userid');
     this.student.getStandards()
     .subscribe(
       data=>
@@ -45,14 +69,23 @@ export class EditdiscussionComponent implements OnInit {
     console.log(this.route.snapshot.params.id);
     if(this.route.snapshot.params.id)
     {
-    this.add=false;
-    this.edit=true;
     this.student.getSpecificDiscussionById(this.route.snapshot.params.id)
     .subscribe(
       res=>
       {
         console.log(res);
         this.discussionDetails=res;
+        this.Quid = this.discussionDetails.dQid;
+        this.title = this.discussionDetails.title;
+        this.Question = this.discussionDetails.question;
+        this.standardId = this.discussionDetails.standardId;
+        this.subjectId = this.discussionDetails.subjectId;
+        this.topicId = this.discussionDetails.topicId;
+        this.InserteDate = this.discussionDetails.insertedDate;
+        this.Totalpoints = this.discussionDetails.totalpoints;
+        this.Username = this.discussionDetails.username;
+        this.user_Id = this.discussionDetails.userId;
+        this.View = this.discussionDetails.view;
         this.student.getSubjectsById(this.discussionDetails.standardId)
         .subscribe(
           (data:any)=>
@@ -67,33 +100,11 @@ export class EditdiscussionComponent implements OnInit {
                 this.topics=data;
               }
             );
-            this.editdiscussionform.setValue({
-              dQid:this.discussionDetails.dQid,
-              question:this.discussionDetails.question,
-              standardId:this.discussionDetails.standardId,
-              subjectId:this.discussionDetails.subjectId,
-              topicId:this.discussionDetails.topicId,
-              title:this.discussionDetails.title,
-              image:'',
-              totalpoints:this.discussionDetails.totalpoints,
-              userId:this.discussionDetails.userId,
-              username:this.discussionDetails.username
-            });
               }
             );
           }
         );
     }else{
-      this.add=true;
-      this.edit=false;
-      this.adddiscussionform=new FormGroup({
-        'question':new FormControl('',Validators.required),
-        'standardId':new FormControl('',Validators.required),
-        'subjectId':new FormControl('',Validators.required),
-        'title':new FormControl('',Validators.required),
-        'topicId':new FormControl('',Validators.required),
-        'image':new FormControl('')
-      });
     }
     console.log(this.img);
     this.userId=sessionStorage.getItem('userid');
@@ -158,27 +169,48 @@ export class EditdiscussionComponent implements OnInit {
   }
   
   onUpdate(){
-    console.log(this.editdiscussionform.value);
-    var formData:FormData = new FormData();
+    console.log('Edit');
+    let adminId = +this.userId;
     let file: File = this.fileList[0];
-    formData.append('file', file, file.name);
-    formData.append('dQid',this.editdiscussionform.get('dQid').value);
-    formData.append('userId',this.editdiscussionform.get('userId').value);
-    formData.append('username',this.editdiscussionform.get('username').value);
-    formData.append('totalpoints',this.editdiscussionform.get('totalpoints').value);
-    formData.append('standardId',this.editdiscussionform.get('standardId').value);
-    formData.append('subjectId',this.editdiscussionform.get('subjectId').value);
-    formData.append('topicId',this.editdiscussionform.get('topicId').value);
-    formData.append('question',this.editdiscussionform.get('question').value);
-    formData.append('title',this.editdiscussionform.get('title').value);
-    console.log(formData);
-    this.student.discussionUpdate(formData)
-    .subscribe(
-      (data:any)=>
-      {
-        console.log(data);
-      }
-    );
+    const data = {
+          "adminId": adminId,
+          "questionDTO": {
+            "dQid":this.Quid,
+            "imageUri": file.name,
+            "insertedDate": this.InserteDate,
+            "question": this.Question,
+            "standardId": this.standardId,
+            "subjectId": this.subjectId,
+            "title": this.title,
+            "topicId": this.topicId,
+            "totalpoints": this.Totalpoints,
+            "userId": this.user_Id,
+            "userImageUri": this.userImageUri,
+            "username": this.Username,
+            "view": this.View
+          },
+          "status": "EDIT"
+        }
+   console.log(data);
+   this.teacherservice.discussionUpdate(data)
+   .subscribe(
+     res=>
+     {
+       this.response=res;
+       console.log(this.response);
+       this.loading=false;
+       if(this.response.status){
+         this.snackbar.open("Edit sucessful done",'close',{duration:3000});
+         // this.router.navigate(['student/forums']);
+       }
+     },
+     (error:any)=>
+     {
+       console.error(error);
+       this.loading=false;
+       this.snackbar.open("Something went wrong");
+     }
+   );
   }
 
   goBack(){

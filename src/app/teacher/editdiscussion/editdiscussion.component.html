@@ -1,48 +1,46 @@
 <div class="star card mx-2">
-    <div class="container my-4">
-  
-      <div class="col-md-12">
-       <div class="row">
-        <div class="backCls my-2">
-          <div>
-            <img
-              src="../assets/images/backBtn.png"
-              (click)="goBack()"
-              alt="btn"
-            />
-          </div>
-          
-        </div>
-         <div class="col-md-5">
-             <!-- <img class="img-fluid" src="../../assets/discussion.jpg" alt=""> -->
-             <img class="img-fluid pt-5 mt-5 mx-4" src="../../../assets/images/discussion2-removebg-preview.png" height="700" alt="">
-         </div>
+  <div class="container my-4">
 
-   
-         <div class="col-md-6">
-   
-           <div class="text-center mt-2">
-               <span class="text-center" style="color:#A65DED;font-weight: bold;">Edit Discussion</span>
-           </div>
-   
-           <div class="form-block mx-auto mt-3 py-2 px-5">
-   
-               <form [formGroup]="editdiscussionform" (ngSubmit)="onUpdate()">
-   
+    <div class="col-md-12">
+     <div class="row">
+      <div class="backCls my-2">
+        <div>
+          <img
+            src="../assets/images/backBtn.png"
+            (click)="goBack()"
+            alt="btn"
+          />
+        </div>
+        
+      </div>
+       <div class="col-md-5">
+           <!-- <img class="img-fluid" src="../../assets/discussion.jpg" alt=""> -->
+           <img class="img-fluid pt-5 mt-5 mx-4" src="../../../assets/images/discussion2-removebg-preview.png" height="700" alt="">
+       </div>
+ 
+       <div class="col-md-6 mb-1">
+ 
+           <div class="text-center">
+               <span class="text-center" style="color:#058286;font-weight: bold;font-size:1.5em">Edit Discussion</span>
+           </div>  
+ 
+           <div class="form-block mx-auto mt-1 py-2 px-5 mb-3">
+ 
+               <form [formGroup]="adddiscussionform" (ngSubmit)="onUpdate()">
+ 
                    <div class="my-1">
-                     <input type="text" formControlName='title' placeholder="title">
+                     <input type="text" formControlName='title' [(ngModel)]="title">
                    </div>
                    <br>
    
                    <div class="my-1">
-                     <textarea type="text" formControlName='question' placeholder="Your question"></textarea>
+                     <textarea type="text" formControlName="question" placeholder="Your question" [(ngModel)]="Question"></textarea>
                    </div>
                    <br>
-   
                    <div class="my-1">
-                     <select type="text" formControlName='standardId' (change)="onStandardChange()">
+                     <select type="text" formControlName='standardId' (change)="onStandardChange()" [disabled]=true>
                        <!-- <option value="" selected>Select Standard</option> -->
-                       <option *ngFor="let standard of standards" [value]="standard.standardId">Class {{ standard.standard }}</option>
+                       <option *ngFor="let standard of standards" [value]="standard.standardId" [selected]="standard.standardId == standardId">Class {{ standard.standard }}</option>
                      </select>
                    </div>
                    <br>
@@ -50,7 +48,7 @@
                    <div class="my-1">
                      <select type="text" formControlName='subjectId' (change)="onSubjectChange()">
                        <!-- <option value="" selected>Select Subject</option> -->
-                       <option *ngFor="let subject of subjects" [value]="subject.subjectId"> {{ subject.subject }}</option>
+                       <option *ngFor="let subject of subjects" [value]="subject.subjectId" [selected]="subject.subjectId == subjectId"> {{ subject.subject }}</option>
                      </select>
                    </div>
                    <br>
@@ -58,26 +56,25 @@
                    <div class="my-1">
                      <select type="text" formControlName='topicId'>
                        <!-- <option value="" selected>Select Topic</option> -->
-                       <option *ngFor="let topic of topics" [value]="topic.topicId">{{topic.topic}}</option>
+                       <option *ngFor="let topic of topics" [value]="topic.topicId" [selected]="topic.topicId == topicId">{{topic.topic}}</option>
                      </select>
                    </div>
                    <br>
    
                    <div class="my-1">
-                     <!-- <input type="file" formControlName='image'> -->
-                     <input formControlName='image' type="file" (change)="onFileChange($event)">
+                     <input formControlName='image' type="file" (change)="onFileChange($event)" multiple="multiple"><br>
+                     <span [innerHTML]="result"></span>
                    </div>
    
    
                </form>
-               <button class="btn btn-warning mt-1"  [disabled]="editdiscussionform.invalid" (click)="onUpdate()" style="color: white;">Update</button>
+               <button class="btn btn-warning mt-1" (click)="onUpdate()" style="color: white;">Update <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> </button>
                <button class="btn btn-danger pull-right mt-1" (click)="goBack()">Cancel</button>
            </div>
-   
        </div>
-   
-     </div>
-      </div>
-   
+
    </div>
-  </div>
+    </div>
+ 
+ </div>
+</div>

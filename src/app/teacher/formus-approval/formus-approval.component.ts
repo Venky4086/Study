@@ -165,41 +165,10 @@ export class FormusApprovalComponent implements OnInit {
 
   // edit
 
-  Edit(Qid:any){
-   console.log(Qid);
-   this.router.navigate(['/teacher/edit-disscusion']);
+  Edit(id:any){
+   console.log(id);
+  //  this.router.navigate(['/teacher/edit-disscusion']);
+   this.router.navigate(['/teacher/edit-disscusion',id]);
   }
-
-
-  onUpdate(){
-    console.log(this.editdiscussionform.value);
-    var formData:FormData = new FormData();
-    let file: File = this.fileList[0];
-    formData.append('file', file, file.name);
-    formData.append('dQid',this.editdiscussionform.get('dQid').value);
-    formData.append('userId',this.editdiscussionform.get('userId').value);
-    formData.append('username',this.editdiscussionform.get('username').value);
-    formData.append('totalpoints',this.editdiscussionform.get('totalpoints').value);
-    formData.append('standardId',this.editdiscussionform.get('standardId').value);
-    formData.append('subjectId',this.editdiscussionform.get('subjectId').value);
-    formData.append('topicId',this.editdiscussionform.get('topicId').value);
-    formData.append('question',this.editdiscussionform.get('question').value);
-    formData.append('title',this.editdiscussionform.get('title').value);
-    console.log(formData);
-    this.teacherservice.discussionUpdate(formData)
-    .subscribe(
-      (data:any)=>
-      {
-        console.log(data)
-        this.snackbar.open("Formus Sucessfull Updated",'close',{duration:3000});
-
-      },(error)=>{
-        console.error(error);
-        this.loading=false;
-        this.snackbar.open("Something went wrong");
-      })
-  }
-
-
 
 }

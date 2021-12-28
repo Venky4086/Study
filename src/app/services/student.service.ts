@@ -101,6 +101,8 @@ contactUs(payload){
     return this.http.get(APIConfig.END_POINT +"db/discussionBoard/getDiscussionQuestion/"+id+"");
   }
 
+  // https://studyamaze.com/qas/db/discussionBoard/getDiscussionQuestion/{forumId}
+
   getSolutionsOfDiscussion(id){
     return this.http.get(APIConfig.END_POINT + "db/discussionBoard/"+id+"")
   }

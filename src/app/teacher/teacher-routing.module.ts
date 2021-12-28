@@ -34,7 +34,7 @@ const routes: Routes = [
     { path:'assignment-report/:id', component:AssignmentReportComponent,canActivate:[AuthGuard] },
     { path:'assess-user/:id/:userid', component:AssessUserComponent,canActivate:[AuthGuard] },
     { path:'formusapproval', component:FormusApprovalComponent },
-    { path:'edit-disscusion', component:EditdiscussionComponent },
+    { path:'edit-disscusion/:id', component:EditdiscussionComponent },
   ]}
 ];
 
