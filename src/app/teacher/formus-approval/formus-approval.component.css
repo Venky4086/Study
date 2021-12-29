@@ -24,4 +24,6 @@
   .container{
       padding: 20px;
   }
-  
+  .mgl-auto{
+      margin-left: auto !important;
+  }

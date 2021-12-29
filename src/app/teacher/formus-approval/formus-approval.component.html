@@ -1,40 +1,49 @@
 <div class="container">
-    <div class="backCls my-2">
-        <div>
-          <img
-            src="../assets/images/backBtn.png"
-            (click)="goBack()"
-            alt="btn"
-          />
+  <div class="backCls my-2">
+    <div>
+      <img src="../assets/images/backBtn.png" (click)="goBack()" alt="btn" />
+    </div>
+    <div class="font-weight-bold mx-2">All Forums</div>
+  </div>
+  <div class="row card_formus my-2" *ngFor="let AllFormu of AllFormus">
+    <div class="col-md-1 col-xs-12" *ngIf="AllFormu.ImageUri;else noImage">
+      <img src="https://storage.googleapis.com/study-amaze-bucket/users/{{ AllFormu.userId }}/{{AllFormu.imageUri }}"
+        alt="John Doe" class="mr-4 rounded-circle" style="width:100px;">
+    </div>
+    <!-- if no image  -->
+    <ng-template #noImage>
+      <div class="col-md-1 text-center">
+        <img src="../../assets/images/profile.png" alt="user-img" width="80" height="80">
+        <div class="text-center">
+          <small class="text-center">{{AllFormu.username}}</small>
         </div>
-        <div class="font-weight-bold mx-2">All Forums</div>
       </div>
-            <div class="row card_formus my-2" *ngFor="let AllFormu of AllFormus">
-                <div class="col-md-1 col-xs-12" *ngIf="AllFormu.ImageUri;else noImage">
-                  <img src="https://storage.googleapis.com/study-amaze-bucket/users/{{ AllFormu.userId }}/{{AllFormu.imageUri }}" alt="John Doe" class="mr-4 rounded-circle" style="width:100px;">
-                </div>
-                 <!-- if no image  -->
-          <ng-template #noImage>
-            <div class="col-md-1 text-center">
-              <img src="../../assets/images/profile.png" alt="user-img" width="80" height="80">
-              <div class="text-center">
-                <small class="text-center">{{AllFormu.username}}</small>
-              </div>
-            </div>
-          </ng-template>
-                <div class="col-md-7 col-xs-12">
-                    <h4 class="fw-600 mb-2">{{AllFormu.title}}</h4>
-                    <p class="mb-2">{{AllFormu.question}}</p>
-                </div>
+    </ng-template>
+    <div class="col-md-7 col-xs-12 d-flex">
+      <!-- <div class="d-flex align-items-center"> -->
+        <div>
+          <h4 class="fw-600 mb-2">{{AllFormu.title}}</h4>
+          <p class="mb-2">{{AllFormu.question}}</p>
+        </div>
+        <div class="mgl-auto">
+          <span class="pull-right">Posted On: {{calculateDiff(AllFormu)}} days ago</span>
+        </div>
+      <!-- </div> -->
+    </div>
 
-                <div class="col-md-4 col-xs-12 text-center fs-18">
-                    <div class="btnway">
-                        <div class='btn11'>
-                            <button type="button" class="btn btn-primary1" (click)="Edit(AllFormu.dQid)">Edit <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> </button>
-                            <button type="button" class="btn btn-primary1 approval" (click)="Approval(AllFormu.dQid,AllFormu.imageUri,AllFormu.insertedDate,AllFormu.standardId,AllFormu.subjectId,AllFormu.topicId,AllFormu.question,AllFormu.title,AllFormu.totalpoints,AllFormu.userId,AllFormu.userImageUri,AllFormu.username,AllFormu.view)">Approval <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> </button>
-                            <button type="button" class="btn btn-primary1" (click)="DisApproval(AllFormu.dQid,AllFormu.imageUri,AllFormu.insertedDate,AllFormu.standardId,AllFormu.subjectId,AllFormu.topicId,AllFormu.question,AllFormu.title,AllFormu.totalpoints,AllFormu.userId,AllFormu.userImageUri,AllFormu.username,AllFormu.view)">DisApproval <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="col-md-4 col-xs-12 text-center fs-18">
+      <div class="btnway">
+        <div class='btn11'>
+          <button type="button" class="btn btn-primary1" (click)="Edit(AllFormu.dQid)">Edit <i *ngIf="loading"
+              class="fa fa-spinner fa-spin"></i> </button>
+          <button type="button" class="btn btn-primary1 approval"
+            (click)="Approval(AllFormu.dQid,AllFormu.imageUri,AllFormu.insertedDate,AllFormu.standardId,AllFormu.subjectId,AllFormu.topicId,AllFormu.question,AllFormu.title,AllFormu.totalpoints,AllFormu.userId,AllFormu.userImageUri,AllFormu.username,AllFormu.view)">Approval
+            <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> </button>
+          <button type="button" class="btn btn-primary1"
+            (click)="DisApproval(AllFormu.dQid,AllFormu.imageUri,AllFormu.insertedDate,AllFormu.standardId,AllFormu.subjectId,AllFormu.topicId,AllFormu.question,AllFormu.title,AllFormu.totalpoints,AllFormu.userId,AllFormu.userImageUri,AllFormu.username,AllFormu.view)">DisApproval
+            <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

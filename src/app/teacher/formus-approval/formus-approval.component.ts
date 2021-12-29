@@ -19,7 +19,7 @@ export class FormusApprovalComponent implements OnInit {
   loading:boolean=false;
   response: any;
   userId:any;
-  constructor(private router:Router,private teacherservice:TeacherService,private location:Location,private snackbar:MatSnackBar) { }
+  constructor(private datepipe: DatePipe,private router:Router,private teacherservice:TeacherService,private location:Location,private snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.userId=sessionStorage.getItem('userid');
@@ -169,6 +169,13 @@ export class FormusApprovalComponent implements OnInit {
    console.log(id);
   //  this.router.navigate(['/teacher/edit-disscusion']);
    this.router.navigate(['/teacher/edit-disscusion',id]);
+  }
+
+  calculateDiff(data:any){
+    let date = new Date(data.insertedDate);
+    let currentDate = new Date();
+    let days = Math.floor((currentDate.getTime() - date.getTime()) / 1000 / 60 / 60 / 24);
+    return days;
   }
 
 }

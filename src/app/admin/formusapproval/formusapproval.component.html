@@ -23,8 +23,11 @@
             </div>
           </ng-template>
                 <div class="col-md-7 col-xs-12">
-                    <h4 class="fw-600 mb-2">{{AllFormu.title}}</h4>
-                    <p class="mb-2">{{AllFormu.question}}</p>
+                    <div>
+                      <h4 class="fw-600 mb-2">{{AllFormu.title}}</h4>
+                      <p class="mb-2">{{AllFormu.question}}</p>
+                      <span class="pull-right">Posted On: {{calculateDiff(AllFormu)}} days ago</span>
+                    </div>
                 </div>
 
                 <div class="col-md-4 col-xs-12 text-center fs-18">

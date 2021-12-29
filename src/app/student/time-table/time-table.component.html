@@ -1,49 +1,49 @@
 <div class="container-fluid">
-    <h2>Responsive Table</h2>
-    <p>
-      The .table-responsive class adds a scrollbar to the table when needed:
-    </p>
+  <h2>Responsive Table</h2>
+  <p>
+    The .table-responsive class adds a scrollbar to the table when needed:
+  </p>
 
-    <div class="table-responsive">
-      <table class="table table-bordered lstblc1">
-        <thead>
-          <tr>
-            <!-- <th rowspan="3">#S.no</th>
+  <div class="table-responsive">
+    <table class="table table-bordered lstblc1">
+      <thead>
+        <tr>
+          <!-- <th rowspan="3">#S.no</th>
             <th>STD</th> -->
-            <th>TIME</th>
-            <th>MONDAY</th>
-            <th>TUESDAY</th>
-            <th>WEDNESDAY</th>
-            <th>THURSDAY</th>
-            <th>FRIDAY</th>
-            <th>SATURDAY</th>
-          </tr>
-        </thead>
-        <tbody>
-            <!-- <ng-container *ngFor="let time of timeslots; let data of listOfInfo; let w_days of weekdays; let i= index">
+          <th>TIME</th>
+          <th>MONDAY</th>
+          <th>TUESDAY</th>
+          <th>WEDNESDAY</th>
+          <th>THURSDAY</th>
+          <th>FRIDAY</th>
+          <th>SATURDAY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <ng-container *ngFor="let time of timeslots; let data of listOfInfo; let w_days of weekdays; let i= index">
               <tr>
                 <td>{{time.timeSlot}}</td>
               </tr>
             </ng-container> -->
-            <!-- <tr> -->
-            <!-- <td rowspan="3" class="first1">1</td>
+        <!-- <tr> -->
+        <!-- <td rowspan="3" class="first1">1</td>
             <td rowspan="8" class="first1">2</td> -->
-            <!-- <td class="subj" *ngFor="let listOfInfo of subjectsdatas[i].listOfInfo;let weekDays subjectsdatas[i].weekDays;let i=index">{{weekDays}}</td> -->
-            <!-- <td class="subj">{{subjectsdatas.listOfInfo}}</td> -->
-            <!-- <td class="subj" *ngFor="let data of subjectsdatas.listOfInfo ;let weekdays of subjectsdatas.weekDays;let i = index">
+        <!-- <td class="subj" *ngFor="let listOfInfo of subjectsdatas[i].listOfInfo;let weekDays subjectsdatas[i].weekDays;let i=index">{{weekDays}}</td> -->
+        <!-- <td class="subj">{{subjectsdatas.listOfInfo}}</td> -->
+        <!-- <td class="subj" *ngFor="let data of subjectsdatas.listOfInfo ;let weekdays of subjectsdatas.weekDays;let i = index">
               <h1 *ngIf="weekdays == 'monday'">{{weekdays}}</h1>
             </td> -->
-            <!-- <td class="subj" *ngFor="let data of subjectsdatas.listOfInfo ;let weekdays of subjectsdatas.weekDays;let i = index">
+        <!-- <td class="subj" *ngFor="let data of subjectsdatas.listOfInfo ;let weekdays of subjectsdatas.weekDays;let i = index">
               <h1 *ngIf="weekdays == 'tuesday'">{{weekdays}}</h1>
             </td>
             <td class="subj" *ngFor="let data of subjectsdatas.listOfInfo ;let weekdays of subjectsdatas.weekDays;let i = index">
               <h1 *ngIf="weekdays == 'friday'">{{weekdays}}</h1>
             </td> -->
-            <!-- <td class="subj">SOCIAL</td>
+        <!-- <td class="subj">SOCIAL</td>
             <td class="subj">HINDI</td>
             <td class="subj">MATHS</td>
             <td class="quiz">Quiz, Game, Activity</td> -->
-          <tr *ngFor="let timetable of timetablearr">
+        <!-- <tr *ngFor="let timetable of timetablearr">
             <td *ngFor="let time of timetable.time">{{time.timeSlot}}</td>
             <td *ngFor="let data of timetable.teacherandsuject.monday.subject_teacher">
               <h1>{{data.subject}}</h1>
@@ -54,13 +54,26 @@
             <td></td>
             <td></td>
             <td>CLASS TEACHER</td>
-          </tr>
-          <tr>
-            <td colspan="7" class="text-danger font-weight-bold">
-              10MINS REST TIME
-            </td>
-          </tr>
-          <!-- <tr>
+          </tr> -->
+
+
+        <tr *ngFor="let time of timeSlotsDTO">
+          <td>
+            {{time.timeSlot}}
+          </td>
+          <td class="monday">
+            <h1 class="fs-13 mgb-0">Subject Name:{{monday_even}}</h1>
+            <h1 class="fs-13 mgb-0">Teacher Name:{{monday_odd}}</h1>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td colspan="7" class="text-danger font-weight-bold">
+            10MINS REST TIME
+          </td>
+        </tr>
+        <!-- <tr>
             <td rowspan="3" class="first1">2</td>
             <td class="timing">9.10am - 9.40am</td>
             <td class="subj">GUJARATHI</td>
@@ -244,7 +257,7 @@
             <td>Teacher5</td>
             <td>Teacher6</td>
           </tr> -->
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
   </div>
+</div>

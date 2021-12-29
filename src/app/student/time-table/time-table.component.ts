@@ -13,6 +13,11 @@ export class TimeTableComponent implements OnInit {
   MainData: any;
   listOfInfo: any;
   timetablearr = [];
+  timeSlotsDTO: any;
+  timeTableInfoDTO: any;
+  listOfInfo_Monday: any;
+  monday_even: boolean;
+  monday_odd: any;
   constructor(private _location:Location, private student:StudentService) { }
 
   ngOnInit(): void {
@@ -28,6 +33,33 @@ export class TimeTableComponent implements OnInit {
         this.MainData = data;
         console.log(data.timeSlotsDTO);
         console.log(data.timeTableInfoDTO);
+        this.timeSlotsDTO = data.timeSlotsDTO;
+        this.timeTableInfoDTO = data.timeTableInfoDTO;
+        
+        for (let index = 0; index < this.timeTableInfoDTO.length; index++) {
+          this.weekdays = this.timeTableInfoDTO[index].weekDays;
+          console.log(this.weekdays);
+          for (let index = 0; index < this.weekdays.length; index++) {
+            console.log(this.weekdays[index]);
+            if(this.weekdays[index] == 'monday'){
+              this.listOfInfo_Monday = this.timeTableInfoDTO[index].listOfInfo;
+               for (let index = 0; index < this.listOfInfo_Monday.length; index++) {
+                // console.log(this.listOfInfo_Monday[index]);
+                if(index % 2 === 0){
+                  this.monday_even = this.listOfInfo_Monday[index];
+                  console.log(this.monday_even);
+                }
+                else{
+                  this.monday_odd = this.listOfInfo_Monday[index];
+                  console.log(this.monday_odd);
+                }
+               }
+              console.log(this.listOfInfo_Monday);
+            }
+          }
+        }
+
+      return
         var data_test = data.timeTableInfoDTO;
         var testobj = {};
         var key = "test";
