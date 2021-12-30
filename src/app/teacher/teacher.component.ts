@@ -36,7 +36,7 @@ export class TeacherComponent implements OnInit {
       (data:any)=>{
         console.log(data);
         sessionStorage.setItem('ItId',data[0].itId);
-        sessionStorage.setItem('InstituteId',data[0].instiId)
+        sessionStorage.setItem('InstituteId',data[0].instiId);
       }
     );
     this.Roles = JSON.parse(sessionStorage.getItem('Roles'));
