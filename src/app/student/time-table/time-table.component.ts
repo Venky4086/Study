@@ -43,14 +43,15 @@ export class TimeTableComponent implements OnInit {
             console.log(this.weekdays[index]);
             if(this.weekdays[index] == 'monday'){
               this.listOfInfo_Monday = this.timeTableInfoDTO[index].listOfInfo;
-               for (let index = 0; index < this.listOfInfo_Monday.length; index++) {
-                console.log(this.listOfInfo_Monday[index]);
-                if(index % 2 === 0){
-                  this.monday_even = this.listOfInfo_Monday[index];
+               for (let index = 0; index < this.listOfInfo_Monday.length;index ++) {
+                console.log(this.listOfInfo_Monday);
+                console.log(index+2);
+                if(index+2){
+                  this.monday_even = this.listOfInfo_Monday;
                   console.log(this.monday_even);
                 }
                 else{
-                  this.monday_odd = this.listOfInfo_Monday[index];
+                  this.monday_odd = this.listOfInfo_Monday;
                   console.log(this.monday_odd);
                 }
                }
