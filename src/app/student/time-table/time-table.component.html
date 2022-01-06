@@ -62,8 +62,9 @@
             {{time.timeSlot}}
           </td>
           <td class="monday">
-            <h1 class="fs-13 mgb-0">Subject Name:{{monday_even}}</h1>
-            <h1 class="fs-13 mgb-0">Teacher Name:{{monday_odd}}</h1>
+            <h1 class="fs-13 mgb-0" *ngFor="let m of monday_arr">Subject Name:{{m.subject}} Teacher Name: {{m.teacher}}</h1>
+            <!-- <h1 class="fs-13 mgb-0" *ngFor="let m_even of monday_even">Subject Name:{{m_even}}</h1>
+            <h1 class="fs-13 mgb-0" *ngFor="let m_even of monday_odd">Teacher Name:{{monday_odd}}</h1> -->
           </td>
         </tr>
         <tr>

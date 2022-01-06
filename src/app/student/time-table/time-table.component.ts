@@ -16,8 +16,10 @@ export class TimeTableComponent implements OnInit {
   timeSlotsDTO: any;
   timeTableInfoDTO: any;
   listOfInfo_Monday: any;
-  monday_even: boolean;
+  monday_even: any;
   monday_odd: any;
+  monday_arr = [];
+  monday_arr1 = [];
   constructor(private _location:Location, private student:StudentService) { }
 
   ngOnInit(): void {
@@ -34,6 +36,7 @@ export class TimeTableComponent implements OnInit {
         console.log(data.timeSlotsDTO);
         console.log(data.timeTableInfoDTO);
         this.timeSlotsDTO = data.timeSlotsDTO;
+        console.log('timeslotsDTO',this.timeSlotsDTO);
         this.timeTableInfoDTO = data.timeTableInfoDTO;
         
         for (let index = 0; index < this.timeTableInfoDTO.length; index++) {
@@ -47,12 +50,21 @@ export class TimeTableComponent implements OnInit {
                 console.log(this.listOfInfo_Monday[index]);
                 if(index % 2 === 0){
                   this.monday_even = this.listOfInfo_Monday[index];
-                  console.log(this.monday_even);
+                  console.log('monday_even',this.monday_even);
                 }
                 else{
                   this.monday_odd = this.listOfInfo_Monday[index];
                   console.log(this.monday_odd);
                 }
+                this.monday_arr.push({subject:this.monday_even,teacher:this.monday_odd});
+                // this.monday_arr= this.monday_arr1.reduce((acc, current) => {
+                //   const x = acc.find(item => item.teacher === current.id);
+                //   if (!x) {
+                //     return acc.concat([current]);
+                //   } else {
+                //     return acc;
+                //   }
+                // }, []);
                }
               console.log(this.listOfInfo_Monday);
             }
