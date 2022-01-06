@@ -33,7 +33,7 @@ export class PracticeTestComponent implements OnInit {
     this.subjectName = sessionStorage.getItem('subjectName');
     this.topicName = sessionStorage.getItem('topicName');  
 
-    this.testPractise.standardId=sessionStorage.getItem('standard_Id');
+    this.testPractise.standardId=sessionStorage.getItem('standardId');
     this.testPractise.subjectId=sessionStorage.getItem('subjectId');
     this.testPractise.topicId=sessionStorage.getItem('topicId');
     this.testPractise.userId=sessionStorage.getItem('userid');

@@ -205,37 +205,37 @@
                                 </div>
 
                                 <span class="alloptns ml-5 pl-4">
-                                    <label class="option" [ngClass]="{'active':userChoice[que.qid]==='A'}">
-                                        <input type="radio" [(ngModel)]="userChoice[que.qid]" name="choice{{ que.qid }}"
+                                    <label class="option" [ngClass]="{'active':userChoice[que.qId]==='A'}">
+                                        <input type="radio" [(ngModel)]="userChoice[que.qId]" name="choice{{ que.qId }}"
                                             value="A"
-                                            (change)="onItemChange(que.sequenceNor,que.qid,$event.target.value)"
+                                            (change)="onItemChange(que.sequenceNor,que.qId,$event.target.value)"
                                             id="1055" class="ng-untouched ng-pristine ng-valid">
                                         <span class="opt mx-2 mx-2">A</span>
                                         <ng-katex [equation]="que.option_A"></ng-katex>
                                     </label>
 
-                                    <label class="option" [ngClass]="{'active':userChoice[que.qid]==='B'}">
-                                        <input type="radio" [(ngModel)]="userChoice[que.qid]" name="choice{{ que.qid }}"
+                                    <label class="option" [ngClass]="{'active':userChoice[que.qId]==='B'}">
+                                        <input type="radio" [(ngModel)]="userChoice[que.qId]" name="choice{{ que.qId }}"
                                             value="B"
-                                            (change)="onItemChange(que.sequenceNor,que.qid,$event.target.value)"
+                                            (change)="onItemChange(que.sequenceNor,que.qId,$event.target.value)"
                                             id="1056" class="ng-untouched ng-pristine ng-valid">
                                         <span class="opt mx-2 mx-2">B</span>
                                         <ng-katex [equation]="que.option_B"></ng-katex>
                                     </label>
 
-                                    <label class="option" [ngClass]="{'active':userChoice[que.qid]==='C'}">
-                                        <input type="radio" [(ngModel)]="userChoice[que.qid]" name="choice{{ que.qid }}"
+                                    <label class="option" [ngClass]="{'active':userChoice[que.qId]==='C'}">
+                                        <input type="radio" [(ngModel)]="userChoice[que.qId]" name="choice{{ que.qId }}"
                                             value="C"
-                                            (change)="onItemChange(que.sequenceNor,que.qid,$event.target.value)"
+                                            (change)="onItemChange(que.sequenceNor,que.qId,$event.target.value)"
                                             id="1057" class="ng-untouched ng-pristine ng-valid">
                                         <span class="opt mx-2 mx-2">C</span>
                                         <ng-katex [equation]="que.option_C"></ng-katex>
                                     </label>
 
-                                    <label class="option" [ngClass]="{'active':userChoice[que.qid]==='D'}">
-                                        <input type="radio" [(ngModel)]="userChoice[que.qid]" name="choice{{ que.qid }}"
+                                    <label class="option" [ngClass]="{'active':userChoice[que.qId]==='D'}">
+                                        <input type="radio" [(ngModel)]="userChoice[que.qId]" name="choice{{ que.qId }}"
                                             value="D"
-                                            (change)="onItemChange(que.sequenceNor,que.qid,$event.target.value)"
+                                            (change)="onItemChange(que.sequenceNor,que.qId,$event.target.value)"
                                             id="1058" class="ng-untouched ng-pristine ng-valid">
                                         <span class="opt mx-2 mx-2">D</span>
                                         <ng-katex [equation]="que.option_D"></ng-katex>
@@ -244,20 +244,20 @@
 
                                 <hr>
                                 <!-- <div class="mx-auto mt-2">
-                                    <button mat-raised-button color="accent" class="pull-left" [disabled]="prevButton" (click)="prev(que.qid,que.sequenceNor)"><i class="fa fa-chevron-left"></i>&nbsp;Prev</button>
-                                    <button class="previous" (click)="clear(que.sequenceNor,que.qid)">Clear Option</button>
+                                    <button mat-raised-button color="accent" class="pull-left" [disabled]="prevButton" (click)="prev(que.qId,que.sequenceNor)"><i class="fa fa-chevron-left"></i>&nbsp;Prev</button>
+                                    <button class="previous" (click)="clear(que.sequenceNor,que.qId)">Clear Option</button>
                                     <button class="btn btn-info ml-1" (click)="Review(que.sequenceNor)">Mark For Review</button>
                                     <button class="btn btn-success ml-1" (click)="this.alert=!this.alert">Submit Test</button>
-                                    <button mat-raised-button color="accent" class="pull-right" [disabled]="nextButton" (click)="next(que.qid,que.sequenceNor)">Next&nbsp;<i class="fa fa-chevron-right"></i></button>
+                                    <button mat-raised-button color="accent" class="pull-right" [disabled]="nextButton" (click)="next(que.qId,que.sequenceNor)">Next&nbsp;<i class="fa fa-chevron-right"></i></button>
                                 </div> -->
 
                                 <div class="row d-flex">
 
                                     <div class="col-2">
-                                        <button mat-raised-button color="accent" class="pull-left" [disabled]="prevButton" (click)="prev(que.qid,que.sequenceNor)"><i class="fa fa-chevron-left"></i>&nbsp;Prev</button>
+                                        <button mat-raised-button color="accent" class="pull-left" [disabled]="prevButton" (click)="prev(que.qId,que.sequenceNor)"><i class="fa fa-chevron-left"></i>&nbsp;Prev</button>
                                     </div>
                                     <div class="col-3">
-                                        <button class="previous" (click)="clear(que.sequenceNor,que.qid)">Clear Option</button>
+                                        <button class="previous" (click)="clear(que.sequenceNor,que.qId)">Clear Option</button>
                                     </div>
                                     <div class="col-3">
                                         <button class="btn btn-info" (click)="Review(que.sequenceNor)">Mark For Review</button>
@@ -266,7 +266,7 @@
                                         <button class="btn btn-success" (click)="this.alert=!this.alert">Submit Test</button>
                                     </div>
                                     <div class="col-1" style="text-align:right">
-                                        <button mat-raised-button color="accent" class="pull-right" [disabled]="nextButton" (click)="next(que.qid,que.sequenceNor)">Next&nbsp;<i class="fa fa-chevron-right"></i></button>
+                                        <button mat-raised-button color="accent" class="pull-right" [disabled]="nextButton" (click)="next(que.qId,que.sequenceNor)">Next&nbsp;<i class="fa fa-chevron-right"></i></button>
                                     </div>
 
                                 </div>
@@ -279,7 +279,7 @@
                                         <i class="fas fa-close"></i>
                                     </button>
                                     <button class="btn btn-success btn-sm pull-right"
-                                        (click)="submitTest(que.qid)">OK</button>
+                                        (click)="submitTest(que.qId)">OK</button>
                                 </div>
 
                             </div>
@@ -345,7 +345,7 @@
                         </div>
                         <!-- <div class="col-md-8 ml-5 pl-4">
                             <button mat-raised-button color="accent" class="pull-left" [disabled]="prevButton"
-                                (click)="prev(que.qid,que.sequenceNor)"><i
+                                (click)="prev(que.qId,que.sequenceNor)"><i
                                     class="fa fa-chevron-left"></i>&nbsp;Prev</button>
                             <button mat-raised-button color="accent" class="pull-right" [disabled]="nextButton"
                                 (click)="next(que.qid,que.sequenceNor)">Next&nbsp;<i

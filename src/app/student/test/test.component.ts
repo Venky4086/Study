@@ -79,8 +79,8 @@ export class TestComponent implements OnInit {
         this.questions=this.TestQuestions.questions;
         console.log("questions",this.questions);
         for(var question of this.questions){
-          this.answers.push({'qId':question.qid,'userAns':'','durationInSec':0});
-          this.trackStatus.push({'id':question.sequenceNor,'qId':question.qid,'visited':false,'userAns':'','review':0})
+          this.answers.push({'qId':question.qId,'userAns':'','durationInSec':0});
+          this.trackStatus.push({'id':question.sequenceNor,'qId':question.qId,'visited':false,'userAns':'','review':0})
         }
         console.log("On intialize answers",this.answers);
         console.log("On intialize trackStatus",this.trackStatus);
@@ -100,7 +100,7 @@ export class TestComponent implements OnInit {
   //  ALL TIMER
    this.finalInterval = setInterval(() => {
      if(this.timeLeft===0){
-      this.submitTest(this.question[0].qid);
+      this.submitTest(this.question[0].qId);
     }
      if (this.timeLeft >=1) {
        this.timeLeft--;
@@ -182,7 +182,7 @@ export class TestComponent implements OnInit {
  }
 
  checkIndex(element) {
-  return element.label == this.question[0].qid;
+  return element.label == this.question[0].qId;
 }
 
  getQuestion(i){
@@ -198,7 +198,7 @@ export class TestComponent implements OnInit {
   if(this.i==this.questions.length-1){
     this.nextButton=true;
   }
-  this.matchedTimeId = this.answers.findIndex(obj=> obj.qId === this.question[0].qid);
+  this.matchedTimeId = this.answers.findIndex(obj=> obj.qId === this.question[0].qId);
   console.log(this.matchedTimeId,this.answers,this.individualTimer)
   if(this.answers[this.matchedTimeId].durationInSec==0){
     this.answers[this.matchedTimeId].durationInSec = this.individualTimer;
@@ -213,17 +213,17 @@ export class TestComponent implements OnInit {
    this.question.push(this.questions[i]);
  }
 
- onItemChange(index,qid,value){
+ onItemChange(index,qId,value){
    console.log("index",index);
-   console.log("qid",qid);
+   console.log("qId",qId);
    console.log("value",value);
-   console.log(this.userChoice[qid]);
-   this.matchedIndex = this.answers.findIndex(function(obj){return obj.qId === qid});
-   this.answers[this.matchedIndex].qid = qid;
+   console.log(this.userChoice[qId]);
+   this.matchedIndex = this.answers.findIndex(function(obj){return obj.qId === qId});
+   this.answers[this.matchedIndex].qId = qId;
    this.answers[this.matchedIndex].userAns = value;
   //  this.answers[this.matchedIndex].durationInSec = 0;
-  //  this.matchedIndex=this.answers.findIndex((obj => obj.qid == qid));
-   this.trackStatus[this.matchedIndex].qid = qid;
+  //  this.matchedIndex=this.answers.findIndex((obj => obj.qId == qId));
+   this.trackStatus[this.matchedIndex].qId = qId;
    this.trackStatus[this.matchedIndex].userAns = value;
    console.log("answers",this.answers);
    console.log("trackStatus",this.trackStatus);
@@ -239,8 +239,8 @@ getColor(){
   return done ? 'primary' : 'danger';
 }
 
-clear(id,qid){
-  this.userChoice[qid]="";
+clear(id,qId){
+  this.userChoice[qId]="";
   console.log("clearence",this.userChoice);
   this.trackStatus[id-1].userAns="";
   this.answers[id-1].userAns="";

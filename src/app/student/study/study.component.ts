@@ -101,7 +101,7 @@ export class StudyComponent implements OnInit {
   
   getSubjects(standardId){
     console.log(standardId);
-    sessionStorage.setItem('standard_Id',standardId);
+    // sessionStorage.setItem('standardId',standardId);
     this.student.getSubjectsById(standardId)
     .subscribe(
       data=>
