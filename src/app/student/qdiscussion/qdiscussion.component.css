@@ -487,4 +487,18 @@
     border-color: #17a2b8 !important;
   
   }
-  
+  .add_discussion{
+    background: #00775f;
+    padding: 6px;
+    width: 170px;
+    text-align: center;
+    color: #fff;
+  }
+  .plus{
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 5px;
+  }
+  .fs-14{
+    font-size: 14px;
+  }

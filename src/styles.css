@@ -622,6 +622,7 @@ body {
 }
 .mat-card {
   color: rgb(79 103 109);
+  height: 100px !important;
 }
 .qcolor {
   font-size: 16px;

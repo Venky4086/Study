@@ -85,7 +85,13 @@ export class ForumComponent implements OnInit {
     let days = Math.floor((currentDate.getTime() - date.getTime()) / 1000 / 60 / 60 / 24);
     return days;
   }
-
+  calculateDiffsecond(data:any){
+    console.log(data);
+    let date = new Date(data.inDateTime);
+    let currentDate = new Date();
+    let days = Math.floor((currentDate.getTime() - date.getTime()) / 1000 / 60 / 60 / 24);
+    return days;
+  }
   // findSolutions(){
   //   this.student.getSolutionsOfDiscussion(this.dQid)
   //   .subscribe(

@@ -310,7 +310,6 @@ ngOnDestroy() {
     clearInterval(this.finalInterval);
   }
 }
-  
 
 
 }

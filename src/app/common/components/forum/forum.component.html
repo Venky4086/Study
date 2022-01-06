@@ -131,9 +131,8 @@
                             src="https://storage.googleapis.com/study-amaze-bucket/users/{{ comment.userInfoDetailsDTO?.userId }}/{{ comment.userInfoDetailsDTO?.imageUri }}">
                         </div>
                         <span class="displayName title">{{comment.userInfoDetailsDTO?.userName}}</span>
-                        <span class="displayName caption">
-                          {{ comment.inDateTime | date : 'EEEE, MMMM d, h:mm' }} {{
-                          comment.inDateTime | date : 'a' | lowercase }}
+                        <span class="pull-right">
+                          Posted On: {{calculateDiffsecond(comment)}} days ago
                         </span>
                       </div>
 
