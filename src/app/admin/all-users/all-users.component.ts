@@ -10,11 +10,14 @@ import { AdminService } from "src/app/services/admin.service";
 export class AllUsersComponent implements OnInit {
   constructor(private admin: AdminService, private router: Router) {}
   Users: any;
-
+  totalRecords:any;
+  page:any=1;
+  count:any = 6;
   ngOnInit() {
     this.admin.grabUsers().subscribe((data: any) => {
       console.log(data);
       this.Users = data;
+      this.totalRecords = data.length
     },(error)=>{
       console.error(error);
     });

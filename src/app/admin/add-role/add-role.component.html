@@ -28,44 +28,56 @@
             <!--  -->
             <div class="tab-body">
               <div [ngClass]="role ? 'show' : 'hide'" class="role">
+               <form [formGroup]="AddRole">
                 <div class="mt-5">
                   <input
                     type="text"
                     [(ngModel)]="roleName"
                     class="input-role"
-                    placeholder="Enter Role"
-                  />
+                    formControlName="rolename"
+                    placeholder="Enter Role" [ngClass]="{'is-invalid':submitted && n.rolename.errors}"/>
+                  <div class="invalid-feedback" *ngIf="submitted && n.rolename.errors">
+                    <div class="fs-13 fw-500 text-white" *ngIf="n.rolename.errors.required">
+                        Role Name is required
+                    </div>
+                </div>
                 </div>
 
                 <div class="my-3">
                   <button
                     mat-raised-button
                     (click)="addRole()"
-                    [disabled]="roleName"
                   >
                     Submit
                   </button>
                 </div>
+               </form>
               </div>
               <div [ngClass]="usertype ? 'show' : 'hide'" class="usertype">
+               <form [formGroup]="UserType">
                 <div class="mt-5">
                   <input
                     type="text"
                     [(ngModel)]="usertypeName"
                     class="input-usertype"
                     placeholder="Enter usertype"
-                  />
+                    formControlName="usertype" [ngClass]="{'is-invalid':typesubmitted && t.usertype.errors}"/>
+                  <div class="invalid-feedback" *ngIf="typesubmitted && t.usertype.errors">
+                    <div class="fs-13 fw-500 text-white" *ngIf="t.usertype.errors.required">
+                        User Type is required
+                    </div>
+                </div>
                 </div>
 
                 <div class="my-3">
                   <button
                     mat-raised-button
                     (click)="addUsertype()"
-                    [disabled]="usertypeName"
                   >
                     Submit
                   </button>
                 </div>
+               </form>
               </div>
             </div>
           </div>

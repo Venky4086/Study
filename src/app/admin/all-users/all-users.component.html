@@ -30,7 +30,14 @@
       <table class="table">
         <tbody class="body">
           <tr
-            *ngFor="let user of Users"
+            *ngFor="let user of Users| paginate
+            :{
+              id:'listing_pagination',
+              itemsPerPage:count,
+              currentPage:page,
+              totalItems:totalRecords
+            }
+                ;let i = index"
             (click)="routeToUserDetails(user.userId)"
           >
             <!-- <td>{{ user.userId }}</td> -->
@@ -44,10 +51,14 @@
           </tr>
         </tbody>
       </table>
+      <div class="my-2 text-right">
+        <pagination-controls id="listing_pagination" (pageChange)="page = $event">
+        </pagination-controls>
+      </div>
     </div>
   </div>
 
-  <div class="pagination">
+  <!-- <div class="pagination">
     <a href="#">&laquo;</a>
     <a href="#">1</a>
     <a href="#" class="active">2</a>
@@ -56,7 +67,7 @@
     <a href="#">5</a>
     <a href="#">6</a>
     <a href="#">&raquo;</a>
-  </div>
+  </div> -->
 
   <!-- <div class="container-header">
   <div class="header_now">
