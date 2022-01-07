@@ -74,7 +74,7 @@
                 *ngIf="std.status == true ? 'Already Attempted ' : ''"
               >
                 attempted
-                <!-- <img src="../../assets/check-circle.gif" width="40" height="40"> -->
+                <img src="../../assets/check-circle.gif" width="40" height="40">
                 <mat-icon>check</mat-icon>
               </small>
 
@@ -99,7 +99,7 @@
             id="slide2"
             *ngIf="HistoryChallengeData.length; else noHquestion"
           >
-            <h4 class="text-center mt-5">History Page</h4>
+            <h4 class="text-center mt-5 History-pages">History Page</h4>
 
             <div class="text-center">
               <input
@@ -130,7 +130,7 @@
                 *ngIf="std.status == true ? 'Already Attempted ' : ''"
               >
                 attempted<img
-                  src="../../assets/check-circle.gif"
+                  src="../../assets/images/check-circle.gif"
                   width="40"
                   height="40"
                 />
@@ -142,16 +142,16 @@
           </label>
           <ng-template #noHquestion>
             <label for="s2" id="slide2">
-              <h4 class="text-center mt-5">History Page</h4>
-              <div class="text-center">
+              <h4 class="text-center mt-5 History-pages" style="margin-bottom: 25px;">History Page</h4>
+              <div class="text-center d-flex justify-content-center align-items-center  mx-auto">
+                <p class="mx-2 text-white" style="margin-bottom: 0px;">Selected Date is : {{ historyDate | date }}</p>
                 <input
                   type="date"
-                  class="form-control w-25 text-center mx-auto"
+                  class="form-control w-25 text-cente"
                   [(ngModel)]="historyDate"
                   [max]="yesterday"
                   (change)="displayDate()"
                 />
-                <p>Selected Date is : {{ historyDate | date }}</p>
               </div>
               <mat-card class="col-md-6 mx-auto mt-5">
                 <h5 class="text-center">No questions to show</h5>

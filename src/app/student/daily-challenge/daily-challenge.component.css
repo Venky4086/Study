@@ -359,3 +359,8 @@ cursor: pointer;
 .locked:hover{
   cursor: pointer;
 }
+.History-pages{
+  font-weight: 700;
+  color:#fff;
+  font-size: 23px;
+}

@@ -71,7 +71,7 @@
                       width="25" height="25"></span>
                 </div> -->
               <img data-toggle="modal" data-target="#exampleModalCenter" class="img-fluid ap"
-                src="https://storage.googleapis.com/study-amaze-bucket/forums/{{ discussion.dqid }}/{{ discussion.userId + '_' }}{{ discussion.imageUri }}"
+                src="https://storage.googleapis.com/study-amaze-bucket/forums/{{ discussion.dQid }}/{{ discussion.userId + '_'}}{{ discussion.imageUri}}"
                 alt="" width="50px" height="50px">
               <!-- Modal -->
               <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -120,12 +120,12 @@
           <div class="comment-container theme--light">
             <div class="comments">
 
-              <div class="col-md-12 card v-card v-sheet theme--light elevation-2">
+              <div class="col-md-12 p-3 v-card v-sheet theme--light elevation-2">
                 <div class="row">
-                  <div class="col-md-9">
-                    <div class="row p-2">
+                  <div class="col-md-10">
+                    <div class="row">
 
-                      <div class="header col-md-2">
+                      <div class="header col-md-1">
       
                         <div class="v-avatar avatar up" style="height: 50px; width: 50px;" *ngIf="comment.userImageUri;else noImage">
                           <img
@@ -133,7 +133,7 @@
                         </div>
                         <!-- if no image  -->
                         <ng-template #noImage>
-                          <div class="left">
+                          <div class="left" style="margin-bottom: 10px;">
                             <img src="../../assets/images/profile.png" alt="user-img" width="80" height="80">
                             <!-- <small class="text-center">{{discussion.username}}</small> -->
                           </div>
@@ -142,14 +142,17 @@
                         <span class="displayName title">{{comment.userInfoDetailsDTO?.userName}}</span>
                       </div>
 
-                      <div class="wrapper col-md-10">
-                        <div class="d-flex">
+                      <div class="wrapper col-md-11">
+                        <!-- <div class=""> -->
                         <p>{{ comment.solution }}.</p>
-                          <p class="pull-right">
+                        <div class="pull-right">
+                          <p class="mb-0">- by {{comment.userInfoDetailsDTO?.userName}}</p>
+                          <p class="mx-4">
                             Posted On: {{calculateDiffsecond(comment)}} days ago
                           </p>
                         </div>
-                        <hr>
+                        <!-- </div> -->
+                        <hr class="hr">
                         <span class="" *ngFor="let info of LikesDislikesDTO">
                           <a class="m-2" (click)="giveupVote(comment.solutionId)">
                             <i class="fa-thumbs-up text-success s mx-1"
@@ -190,7 +193,7 @@
 
                     </div>
                   </div>
-                  <div class="col-md-3 mt-5">
+                  <div class="col-md-2 mt-5">
                     <div class="rs text-center ml-5">
                       <!-- <button class=" btn btn-info btn-sm  comment-form-toggle show_login waves-effect waves-light sc"
                           [disabled]="!comments[index] || loading" (click)="postReply(comment.solutionId,index)">Reply</button> -->
@@ -208,7 +211,6 @@
                         comment?.totalComments }} comments</button>
                     </div>
                   </div>
-
 
                 </div>
                 <div class="comments" *ngIf="visibleIndex === index">
