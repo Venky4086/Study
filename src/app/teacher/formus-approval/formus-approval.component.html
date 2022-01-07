@@ -13,9 +13,9 @@
     <!-- if no image  -->
     <ng-template #noImage>
       <div class="col-md-1 text-center">
-        <img src="../../assets/images/profile.png" alt="user-img" width="80" height="80">
+        <img src="../../assets/images/default-placeholder.png" alt="user-img" width="80" height="80">
         <div class="text-center">
-          <small class="text-center">{{AllFormu.username}}</small>
+          <!-- <small class="text-center">{{AllFormu.username}}</small> -->
         </div>
       </div>
     </ng-template>
@@ -26,6 +26,7 @@
           <p class="mb-2">{{AllFormu.question}}</p>
         </div>
         <div class="mgl-auto">
+          <span class="mx-2">By {{AllFormu.username}}</span>
           <span class="pull-right">Posted On: {{calculateDiff(AllFormu)}} days ago</span>
         </div>
       <!-- </div> -->

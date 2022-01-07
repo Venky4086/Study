@@ -32,3 +32,8 @@ select{
     padding-left: 160px;
 }
 }
+.btn-primary1 {
+    color: #fff;
+    background-color: #007755 !important;
+    border-color: #007755 !important;
+  }

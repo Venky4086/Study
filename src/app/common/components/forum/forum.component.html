@@ -123,21 +123,32 @@
               <div class="col-md-12 card v-card v-sheet theme--light elevation-2">
                 <div class="row">
                   <div class="col-md-9">
-                    <div class="">
+                    <div class="row p-2">
 
-                      <div class="header">
-                        <div class="v-avatar avatar up" style="height: 50px; width: 50px;">
+                      <div class="header col-md-2">
+      
+                        <div class="v-avatar avatar up" style="height: 50px; width: 50px;" *ngIf="comment.userImageUri;else noImage">
                           <img
                             src="https://storage.googleapis.com/study-amaze-bucket/users/{{ comment.userInfoDetailsDTO?.userId }}/{{ comment.userInfoDetailsDTO?.imageUri }}">
                         </div>
+                        <!-- if no image  -->
+                        <ng-template #noImage>
+                          <div class="left">
+                            <img src="../../assets/images/profile.png" alt="user-img" width="80" height="80">
+                            <!-- <small class="text-center">{{discussion.username}}</small> -->
+                          </div>
+                        </ng-template>
+
                         <span class="displayName title">{{comment.userInfoDetailsDTO?.userName}}</span>
-                        <span class="pull-right">
-                          Posted On: {{calculateDiffsecond(comment)}} days ago
-                        </span>
                       </div>
 
-                      <div class="wrapper comment">
+                      <div class="wrapper col-md-10">
+                        <div class="d-flex">
                         <p>{{ comment.solution }}.</p>
+                          <p class="pull-right">
+                            Posted On: {{calculateDiffsecond(comment)}} days ago
+                          </p>
+                        </div>
                         <hr>
                         <span class="" *ngFor="let info of LikesDislikesDTO">
                           <a class="m-2" (click)="giveupVote(comment.solutionId)">
