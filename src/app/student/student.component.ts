@@ -34,6 +34,11 @@ export class StudentComponent implements OnInit {
     {icon:'forum',name:'Forums',path:'/student/forums' },
     {icon:'assignment',name:'Assignments',path:'/student/assignments'},
     {icon:'calendar_today',name:'Time Table',path:'/student/time-table'},
+    { icon: 'science' ,name :'Subject Expert 1' , path :'/student/subject-expert1'},
+    { icon: 'science' ,name :'Subject Expert 2' , path :'/student/subject-expert2'},
+    { icon: 'science' ,name :'General Admin' , path :'/student/general-admin' },
+    { icon: 'science' ,name :'Super Admin' , path :'/student/super-admin' },
+    {icon:'person',name : 'Profile', path:'/student/profile'}
   ];
 
   ngOnInit(): void {
@@ -57,21 +62,21 @@ export class StudentComponent implements OnInit {
         }
       });
     }
-    if(this.subjectExpert1){
-      this.sideNavData.push({ icon: 'science' ,name :'Subject Expert 1' , path :'/student/subject-expert1' })
-    }
-    if(this.subjectExpert2){
-      this.sideNavData.push({ icon: 'science' ,name :'Subject Expert 2' , path :'/student/subject-expert2' })
-    }
-    if(this.generalAdmin){
-      this.sideNavData.push({ icon: 'science' ,name :'General Admin' , path :'/student/general-admin' })
-    }
-    if(this.superAdmin){
-      this.sideNavData.push({ icon: 'science' ,name :'Super Admin' , path :'/student/super-admin' })
-    }
-    if(this.superAdmin){
-      this.sideNavData.push({icon:'person',name : 'Profile', path:'/student/profile'})
-    }
+    // if(this.subjectExpert1){
+    //   this.sideNavData.push({ icon: 'science' ,name :'Subject Expert 1' , path :'/student/subject-expert1' })
+    // }
+    // if(this.subjectExpert2){
+    //   this.sideNavData.push({ icon: 'science' ,name :'Subject Expert 2' , path :'/student/subject-expert2' })
+    // }
+    // if(this.generalAdmin){
+    //   this.sideNavData.push({ icon: 'science' ,name :'General Admin' , path :'/student/general-admin' })
+    // }
+    // if(this.superAdmin){
+    //   this.sideNavData.push({ icon: 'science' ,name :'Super Admin' , path :'/student/super-admin' })
+    // }
+    // if(this.superAdmin){
+    //   this.sideNavData.push({icon:'person',name : 'Profile', path:'/student/profile'})
+    // }
 
   }
 
