@@ -32,8 +32,8 @@ export class AddTimeTableComponent implements OnInit {
       "instituteIdFK": new FormControl(sessionStorage.getItem('userid')),
       "period10_Subject": new FormControl('',Validators.required),
       "period10_Teacher": new FormControl('',Validators.required),
-      "period1_Subject": new FormControl(Validators.required),
-      "period1_Teacher": new FormControl(Validators.required),
+      "period1_Subject": new FormControl('', Validators.required),
+      "period1_Teacher": new FormControl('', Validators.required),
       "period2_Subject": new FormControl('',Validators.required),
       "period2_Teacher": new FormControl('',Validators.required),
       "period3_Subject": new FormControl('',Validators.required),
@@ -72,8 +72,9 @@ export class AddTimeTableComponent implements OnInit {
     (data:any)=>{
       console.log(data);
       this.subjects = data;
-    }
-    );
+    },(error)=>{
+      console.error(error);
+    });
   }
 
   addTimeTable(){
@@ -102,7 +103,7 @@ export class AddTimeTableComponent implements OnInit {
       days.push("saturday");
       this.formWeekDays(days);
     }
-    // console.log("time table",this.timetableForm.value);
+    console.log("time table",this.timetableForm.value);
     this.institute.postTimeTable(this.timetableForm.value).subscribe(
       (data:any)=>{
         console.log(data);

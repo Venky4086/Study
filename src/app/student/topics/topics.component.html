@@ -1,17 +1,13 @@
 <div class="card mx-3">
-<div class="star container-fluid">
+  <div class="star container-fluid">
     <div class="topics-bg my-2">
       <div class="breadcrumbss">
         <ul class="breadcrumb">
           <div class="my-2 mx-2">
             <div>
-              <img
-                src="../assets/images/backBtn.png"
-                (click)="goBack()"
-                alt="btn"
-              />
+              <img src="../assets/images/backBtn.png" (click)="goBack()" alt="btn" />
             </div>
-           
+
           </div>
           <div class="fat-arrow my-2">
             <div class="inner" (click)="goToStandards()" style="color: #dee2e6;">Class&nbsp;{{ standardName }}</div>
@@ -30,7 +26,7 @@
           </div>
         </ul>
       </div>
-  
+
       <div class="all-topicss mx-auto" *ngIf="fetchedTopics.length;else noTopics">
         <div class="d-flex row">
           <div class="col-md-3 topic-cardd my-2" *ngFor="let topic of fetchedTopics;let i=index">
@@ -44,12 +40,13 @@
                     <span class="dot-p" *ngIf="topic.status"> TA </span> 
                   </div> -->
                   <div class="col-4 my-auto">
-                    <span class="ml-auto pull-right dot-p" *ngIf="topic.status"> TA </span> 
-                    <span class="ml-auto pull-right dot-p" *ngIf="topic.totalPracticeQuestions != 0">{{ topic.totalPracticeQuestions }}</span> 
-                    <span class="ml-auto pull-right dot-p" *ngIf="topic.totalPracticeQuestions == 0">00</span> 
+                    <span class="ml-auto pull-right dot-p" *ngIf="topic.status"> TA </span>
+                    <span class="ml-auto pull-right dot-p" *ngIf="topic.totalPracticeQuestions != 0">{{
+                      topic.totalPracticeQuestions }}</span>
+                    <span class="ml-auto pull-right dot-p" *ngIf="topic.totalPracticeQuestions == 0">00</span>
                   </div>
                 </div>
-                
+
                 <!-- <span class="pull-right" *ngIf="topic.status"> <mat-icon> check </mat-icon> </span> <span class="pull-right dot-p">{{ topic.totalPracticeQuestions }}</span>  -->
               </div>
               <!-- <div class="d-flex">
@@ -65,17 +62,17 @@
                   </div>
                 </div> -->
             </mat-card>
-  
+
           </div>
         </div>
       </div>
-  
+
       <ng-template #noTopics>
         <div class="py-5 text-center">
           <h5>No topics to show</h5>
         </div>
       </ng-template>
-  
+
       <br />
     </div>
   </div>

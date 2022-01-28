@@ -16,7 +16,7 @@
         <div class="row">
           <div class="col-md-1" *ngIf="discussion.userImageUri;else noImage">
             <img
-              src="https://storage.googleapis.com/study-amaze-bucket/users/{{ discussion.userId }}/{{ discussion.userImageUri }}"
+              src="https://storage.googleapis.com/study-amaze-bucket/users/{{ discussion.userId }}/{{ discussion.userImageUri}}"
               class="rounded-circle up" alt="" width="80" height="80">
             <small class="text-center pt-2 pl-1">{{discussion.username}}</small>
           </div>
@@ -70,9 +70,13 @@
                   <span id="multi-pic" class="multi-pic4" matTooltip="image4.png"><img src="../../assets/banner.png"
                       width="25" height="25"></span>
                 </div> -->
-              <img data-toggle="modal" data-target="#exampleModalCenter" class="img-fluid ap"
+
+              <img *ngIf="discussion.imageUri;else noImage" data-toggle="modal" data-target="#exampleModalCenter" class="img-fluid ap"
                 src="https://storage.googleapis.com/study-amaze-bucket/forums/{{ discussion.dQid }}/{{ discussion.userId + '_'}}{{ discussion.imageUri}}"
                 alt="" width="50px" height="50px">
+
+                <!-- if no image  -->
+                
               <!-- Modal -->
               <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
