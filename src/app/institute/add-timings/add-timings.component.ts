@@ -47,15 +47,49 @@ export class AddTimingsComponent implements OnInit {
       "period8": this.startTimes[7]+ '-' +this.endTimes[7],
       "period9": this.startTimes[8]+ '-' +this.endTimes[8],
     };
+    let array : any[] = [
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[0]+ '-' +this.endTimes[0],
+     },
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[1]+ '-' +this.endTimes[1],
+     },
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[2]+ '-' +this.endTimes[2],
+     },
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[3]+ '-' +this.endTimes[3],
+     },
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[4]+ '-' +this.endTimes[4],
+     },
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[5]+ '-' +this.endTimes[5],
+     },
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[6]+ '-' +this.endTimes[6],
+     },
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[7]+ '-' +this.endTimes[7],
+     },
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[8]+ '-' +this.endTimes[8],
+     },
+     {
+      "instiId_FK": sessionStorage.getItem('userid'),"timeSlot": this.startTimes[9]+ '-' +this.endTimes[9],
+     },
+    ]
     console.log(data);
-    this.institute.postTimings(data).subscribe(
+    console.log(array);
+    this.institute.postTimings(array).subscribe(
       (data:any)=>{
         console.log(data);
         if(data.status){
           this.snackbar.open("Created successfully",'close',{duration: 3000})
         }
-      }
-    );
+      },(error)=>{
+        console.error(error);
+      });
   }
 
   getTime(i){

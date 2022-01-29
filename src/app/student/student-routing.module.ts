@@ -35,7 +35,8 @@ import { TestSubmitComponent } from './test-submit/test-submit.component';
 import { TestComponent } from './test/test.component';
 import { TimeTableComponent } from './time-table/time-table.component';
 import { TopicsComponent } from './topics/topics.component';
-
+import { FavouritesComponent } from './favourites/favourites.component';
+import { HistoryComponent } from './history/history.component';
 const routes: Routes = [
   { path: '', component: StudentComponent,
   children:[   
@@ -73,6 +74,10 @@ const routes: Routes = [
     {path : 'task' ,component:TaskComponent,canActivate:[AuthGuard]},
     {path : 'time-table' ,component:TimeTableComponent,canActivate:[AuthGuard]},
     {path : 'test-instruction' ,component:Terms2Component,canActivate:[AuthGuard]},
+    {path : 'time-table' ,component:TimeTableComponent,canActivate:[AuthGuard]},
+    {path : 'test-instruction' ,component:Terms2Component,canActivate:[AuthGuard]},
+    {path : 'favourite' ,component:FavouritesComponent,canActivate:[AuthGuard]},
+    {path : 'history' ,component:HistoryComponent,canActivate:[AuthGuard]},
   ]
   
   

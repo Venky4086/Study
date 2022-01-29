@@ -38,6 +38,8 @@ import { TimeTableComponent } from './time-table/time-table.component';
 import { ChallengeAccuracyComponent } from './challenge-accuracy/challenge-accuracy.component';
 import { DcReportComponent } from './dc-report/dc-report.component';
 import { Terms2Component } from './terms2/terms2.component';
+import { FavouritesComponent } from './favourites/favourites.component';
+import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({
@@ -68,7 +70,9 @@ import { Terms2Component } from './terms2/terms2.component';
     TimeTableComponent,
     ChallengeAccuracyComponent,
     DcReportComponent,
-    Terms2Component
+    Terms2Component,
+    FavouritesComponent,
+    HistoryComponent
     // LoaderComponent
   ],
   imports:[
