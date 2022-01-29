@@ -70,13 +70,20 @@
                   <span id="multi-pic" class="multi-pic4" matTooltip="image4.png"><img src="../../assets/banner.png"
                       width="25" height="25"></span>
                 </div> -->
+              <div *ngIf="discussion.imageUri;else no_Image">
+                <img data-toggle="modal"
+                  data-target="#exampleModalCenter" class="img-fluid ap"
+                  src="https://storage.googleapis.com/study-amaze-bucket/forums/{{ discussion.dQid }}/{{ discussion.userId + '_'}}{{ discussion.imageUri}}"
+                  alt="" width="50px" height="50px">
+              </div>
 
-              <img *ngIf="discussion.imageUri;else noImage" data-toggle="modal" data-target="#exampleModalCenter" class="img-fluid ap"
-                src="https://storage.googleapis.com/study-amaze-bucket/forums/{{ discussion.dQid }}/{{ discussion.userId + '_'}}{{ discussion.imageUri}}"
-                alt="" width="50px" height="50px">
-
-                <!-- if no image  -->
-                
+              <!-- if no image  -->
+              <ng-template #no_Image>
+                <div class="col-md-1">
+                  <img src="../../assets/images/profile.png" alt="user-img" width="80" height="80">
+                  <!-- <small class="text-center">{{discussion.username}}</small> -->
+                </div>
+              </ng-template>
               <!-- Modal -->
               <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -130,8 +137,9 @@
                     <div class="row">
 
                       <div class="header col-md-1">
-      
-                        <div class="v-avatar avatar up" style="height: 50px; width: 50px;" *ngIf="comment.userImageUri;else noImage">
+
+                        <div class="v-avatar avatar up" style="height: 50px; width: 50px;"
+                          *ngIf="comment.userImageUri;else noImage">
                           <img
                             src="https://storage.googleapis.com/study-amaze-bucket/users/{{ comment.userInfoDetailsDTO?.userId }}/{{ comment.userInfoDetailsDTO?.imageUri }}">
                         </div>

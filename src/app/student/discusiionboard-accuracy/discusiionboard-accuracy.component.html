@@ -96,13 +96,13 @@
                     <tr
                       class="text-center"
                       *ngFor="let item of tableDiscussions; let i = index"
-                      (click)="detailedDiscussions(item.dqid)"
+                      (click)="detailedDiscussions(item.dQid)"
                     >
                       <td class="text-center">{{ item.serialNum }}</td>
                       <td class="text-center">
                         {{ item.date | date: "d/M/yyyy h:mm a" }}
                       </td>
-                      <td class="text-center">{{ item.title }}</td>
+                      <td class="text-center" >{{ item.title }}</td>
                       <td class="text-center">{{ item.comments }}</td>
                       <td class="text-center">{{ item.views }}</td>
                       <td class="text-center">
