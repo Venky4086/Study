@@ -38,7 +38,9 @@ export class StudentComponent implements OnInit {
     { icon: 'science' ,name :'Subject Expert 2' , path :'/student/subject-expert2'},
     { icon: 'science' ,name :'General Admin' , path :'/student/general-admin' },
     { icon: 'science' ,name :'Super Admin' , path :'/student/super-admin' },
-    {icon:'person',name : 'Profile', path:'/student/profile'}
+    {icon:'person',name : 'Profile', path:'/student/profile'},
+    {icon:'favorite',name : 'Favourite', path:'/student/favourite'},
+    {icon:'history',name : 'History', path:'/student/history'}
   ];
 
   ngOnInit(): void {

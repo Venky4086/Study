@@ -323,4 +323,7 @@ getTestReport(sptrid,standardid,subjectid,topicid,userid):Observable<any>{
     return this.http.get(APIConfig.END_POINT + "qas/insti/getFullReport/"+aid+"/"+userid)
   }
 
+  getHistory(userid){
+    return this.http.get("https://studyamaze.com/login/users/info/getUserPointsHistory/"+userid)
+  }
 }

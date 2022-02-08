@@ -897,3 +897,37 @@ border-color: #007755 !important;
 pagination-controls{
   text-align: right !important;
 }
+
+
+.w-98 {
+  max-width: 98% !important;
+}
+.patchgreen {
+  background-color: #007755;
+  color: #fff;
+  border-radius: 10px;
+  height: 150px;
+  padding: 10px;
+  width: 150px;
+  border: 1px solid #fff !important;
+}
+.crdgrn {
+  background-color: #007755;
+  color: #fff !important;
+}
+.font-weight-bold {
+  font-weight: bold !important;
+}
+.clrgn {
+  color: #007755;
+  font-weight: bold !important;
+  font-size: 20px;
+}
+.clrred {
+  color: #b90c1a;
+  font-weight: bold !important;
+  font-size: 20px;
+}
+.border1 {
+  border: 1px solid #777 !important;
+}
